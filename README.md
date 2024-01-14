@@ -68,3 +68,6 @@ SNSでの発信
 * アンケートから　→　気分とか嗜好で豆をおすすめできる
 * ブレンド　紹介　マイブレンド紹介
 
+
+### 画面遷移図URL
+https://www.figma.com/file/ZHMaEXE71toQ1yv1DTJprr/%E3%83%9D%E3%83%BC%E3%83%88%E3%83%95%E3%82%A9%E3%83%AA%E3%82%AA%E7%94%BB%E9%9D%A2%E9%81%B7%E7%A7%BB%E5%9B%B3?type=design&node-id=0-1&mode=design&t=UAhaOeXhxhqkFbxj-0
