@@ -13,7 +13,7 @@
  *= require_tree .
  *= require_self
  */
- 
+
  .logo-image {
     width: 500px;    /* 例として幅を設定 */
     height: auto;    /* 高さを自動調整 */

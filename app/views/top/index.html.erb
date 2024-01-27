@@ -1,6 +1,6 @@
-
+<% provide(:title, "Top") %>
 <head>
-<title>Home | Ruby on Rails Tutorial Sample App</title>
+<title></title>
 </head>
 <div aria-label="クリックして1枚目のスライドを見る" class="_amvr _amvt" tabindex="0" role="button">
   <div class="_amvs">
@@ -13,4 +13,16 @@
     </div>
   </div>
   <!-- その他のコード -->
+</div>
+
+<div class="center jumbotron">
+  <h1>Welcome to the Sample App</h1>
+
+  <h2>
+    This is the home page for the
+    <a href="https://railstutorial.jp/">Ruby on Rails Tutorial</a>
+    sample application.
+  </h2>
+
+  <%= link_to "Sign up now!", '#', class: "btn btn-lg btn-primary" %>
 </div>
