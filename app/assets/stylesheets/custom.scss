@@ -20,3 +20,85 @@ body {
   .center h1 {
     margin-bottom: 10px;
   }
+
+  body {
+    padding-top: 60px;
+  }
+  
+  section {
+    overflow: auto;
+  }
+  
+  textarea {
+    resize: vertical;
+  }
+  
+  .center {
+    text-align: center;
+  }
+  
+  .center h1 {
+    margin-bottom: 10px;
+  }
+
+  /* typography */
+
+  h1, h2, h3, h4, h5, h6 {
+    line-height: 1;
+  }
+  
+  .left-half-content {
+    width: 50%; /* 幅を画面の半分に設定 */
+    text-align: center;
+  } /* ここでブロックを閉じる */
+  
+  h1 {
+    font-size: 3em;
+    letter-spacing: -2px;
+    margin-bottom: 30px;
+    text-align: left; /* 'light'ではなく、'left' に修正 */
+  }
+  
+  h2 {
+    font-size: 1.2em;
+    letter-spacing: -1px;
+    margin-bottom: 30px;
+    text-align: center;
+    font-weight: normal;
+    color: #777;
+  }
+  
+  p {
+    font-size: 1.1em;
+    line-height: 1.7em;
+  }
+
+  #logo {
+    float: left;
+    margin-right: 10px;
+    font-size: 1.7em;
+    color: #492510;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+    padding-top: 9px;
+    font-weight: bold;
+  }
+  
+  #logo:hover {
+    color: #a98874;
+    text-decoration: none;
+  }
+  .navbar-inverse {
+    background-color: #a98874; /* 背景色の変更 */
+    border-color: #170901; /* ボーダー色の変更（必要に応じて） */
+}
+
+.container-flex {
+  display: flex;
+  justify-content: flex-end; /* 内容を右側に配置 */
+}
+
+.right-half-content {
+  width: 50%; /* 幅を画面の半分に設定 */
+  /* 必要に応じて他のスタイルを追加 */
+}
