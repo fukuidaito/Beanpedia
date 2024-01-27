@@ -13,3 +13,14 @@
  *= require_tree .
  *= require_self
  */
+ 
+ .logo-image {
+    width: 500px;    /* 例として幅を設定 */
+    height: auto;    /* 高さを自動調整 */
+    border-radius: 5px; /* 角を丸くする */
+    /* その他のスタイル */
+  }
+
+  .brown-background {
+    background-color: #8B4513; /* 茶色の背景色 */
+  }
