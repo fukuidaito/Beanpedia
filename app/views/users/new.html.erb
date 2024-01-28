@@ -1,0 +1,23 @@
+<h1>Sign up</h1>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <% provide(:title, "初回登録") %>
+
+    <%= form_with(model: @user) do |f| %>
+
+    <%= f.label :name %>
+    <%= f.text_field :name, class: 'form-control'%>
+
+    <%= f.label :emal %>
+    <%= f.text_field :email, class: 'form-control' %>
+  
+    <%= f.label :password %>
+    <%= f.password_field :password, class: 'form-control' %>
+
+    <%= f.label :password_confirmation, "Confirmation" %>
+    <%= f.password_field :password_confirmation, class: 'form-control' %>
+
+    <%= f.submit "登録", class: "btn-outline-primary" %>
+    <% end %>
+  </div>
+</div>
