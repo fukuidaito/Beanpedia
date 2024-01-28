@@ -50,7 +50,7 @@ body {
   .left-half-content {
     width: 50%; /* 幅を画面の半分に設定 */
     text-align: center;
-  } /* ここでブロックを閉じる */
+  } 
   
   h1 {
     font-size: 3em;
@@ -65,7 +65,7 @@ body {
     margin-bottom: 30px;
     text-align: center;
     font-weight: normal;
-    color: #777;
+    color: #654040;
   }
   
   p {
@@ -101,4 +101,54 @@ body {
 .right-half-content {
   width: 50%; /* 幅を画面の半分に設定 */
   /* 必要に応じて他のスタイルを追加 */
+}
+
+.container-flex {
+  display: flex;
+  justify-content: space-between; /* 要素を画面の両端に配置 */
+  align-items: center; /* 要素を垂直方向の中心に配置 */
+  height: 100vh; /* ビューポートの高さに合わせる */
+}
+
+.left-half-image img {
+  width: 50%;
+  max-width: 100%; /* 画像がコンテナを超えないように設定 */
+  height: auto; /* 高さを自動調整してアスペクト比を維持 */
+  border-radius: 15px;
+}
+
+.jumbotron {
+  background: url('mame.png') ;
+  background-size: cover;
+}
+
+/* footer */
+
+footer {
+  margin-top: 45px;
+  padding-top: 5px;
+  border-top: 1px solid #eaeaea;
+  color: #777;
+}
+
+footer a {
+  color: #555;
+}
+
+footer a:hover {
+  color: #222;
+}
+
+footer small {
+  float: left;
+}
+
+footer ul {
+  float: right;
+  list-style: none;
+}
+
+footer ul li {
+  float: left;
+  margin-left: 15px;
 }
