@@ -40,6 +40,7 @@ gem 'jbuilder'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 # Reduces boot times through caching; required in config/boot.rb
+gem "bcrypt",          "3.1.18"
 gem "bootsnap",        "1.16.0", require: false
 gem "sassc-rails",     "2.1.2"
 gem "sqlite3",         "1.6.1"

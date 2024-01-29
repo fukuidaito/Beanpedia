@@ -1,9 +1,10 @@
 <h1>Sign up</h1>
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
-    <% provide(:title, "初回登録") %>
+    <% provide(:title, "Signup") %>
 
     <%= form_with(model: @user) do |f| %>
+    <%= render 'shared/error_messages' %>
 
     <%= f.label :name %>
     <%= f.text_field :name, class: 'form-control'%>
