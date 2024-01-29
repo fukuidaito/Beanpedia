@@ -1,19 +1,28 @@
 document.addEventListener("turbo:load", function() {
     let account = document.querySelector("#account");
     let menu = document.querySelector("#dropdown-menu");
+    let hamburger = document.querySelector("#hamburger");
+    let navbarMenu = document.querySelector("#navbar-menu");
   
-    // アカウントボタンがクリックされたときにメニューをトグルする
     account.addEventListener("click", function(event) {
       event.preventDefault();
       menu.classList.toggle("active");
     });
   
-    // ドキュメント全体のクリックを監視
+    hamburger.addEventListener("click", function(event) {
+      event.preventDefault();
+      navbarMenu.classList.toggle("collapse");
+    });
+  
     document.addEventListener("click", function(event) {
-      // クリックされた要素がアカウントボタンでなく、
-      // メニューの子要素でもない場合、メニューを非表示にする
+      // アカウントメニュー以外がクリックされた場合、メニューを閉じる
       if (!account.contains(event.target) && !menu.contains(event.target)) {
         menu.classList.remove("active");
+      }
+  
+      // ハンバーガーメニュー以外がクリックされた場合、メニューを閉じる
+      if (!hamburger.contains(event.target) && !navbarMenu.contains(event.target) && navbarMenu.classList.contains("collapse")) {
+        navbarMenu.classList.remove("collapse");
       }
     });
   });
