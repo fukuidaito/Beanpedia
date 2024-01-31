@@ -14,7 +14,6 @@
 
       <ul id="navbar-menu" class="nav navbar-nav navbar-right collapse navbar-collapse">
         <li><%= link_to "Home", root_path %></li>
-        <li><%= link_to "Help", help_path %></li>
         <% if logged_in? %>
           <li><%= link_to "Users", '#' %></li>
           <li class="dropdown">
@@ -35,7 +34,10 @@
         <% end %>
 
         <%= link_to profile_path, id: 'header-profile', class: "nav navbar-nav navbar-right collapse navbar-collapse", data: { bs_toggle: 'dropdown' }, aria: { expanded: 'false', haspopup: 'true' } do %>
-        <%= image_tag current_user.avatar_url, alt: 'sample', class: 'navbar-img rounded-circle', size: '40x40' %>
+          <% if current_user %>
+            <%= image_tag current_user.avatar_url, alt: 'sample', class: 'navbar-img rounded-circle', size: '40x40' %>
+          <% else %>
+          <% end %>
         <% end %>
       </ul>
     </nav>
