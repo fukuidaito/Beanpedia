@@ -1,6 +1,6 @@
 <header class="navbar navbar-fixed-top navbar-inverse">
   <div class="container">
-    <%= link_to "cafequest", '#', id: "logo" %>
+    <%= link_to "cafequest", root_path, id: "logo" %>
 
     <nav>
       <div class="navbar-header">
@@ -34,8 +34,8 @@
           <li><%= link_to "Log in", login_path %></li>
         <% end %>
 
-        <%= link_to '#', id: 'header-profile', class: "nav navbar-nav navbar-right collapse navbar-collapse", data: { bs_toggle: 'dropdown' }, aria: { expanded: 'false', haspopup: 'true' } do %>
-        <%= image_tag 'sample.jpg', alt: 'sample', class: 'navbar-img rounded-circle', size: '40x40' %>
+        <%= link_to profile_path, id: 'header-profile', class: "nav navbar-nav navbar-right collapse navbar-collapse", data: { bs_toggle: 'dropdown' }, aria: { expanded: 'false', haspopup: 'true' } do %>
+        <%= image_tag current_user.avatar_url, alt: 'sample', class: 'navbar-img rounded-circle', size: '40x40' %>
         <% end %>
       </ul>
     </nav>

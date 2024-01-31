@@ -11,11 +11,11 @@
         </tr>
         <tr>
           <th scope="row"><%= User.human_attribute_name(:full_name) %></th>
-          <td><%= current_user.decorate.full_name %></td>
+          <td><%= current_user.name %></td>
         </tr>
         <tr>
           <th scope="row"><%= User.human_attribute_name(:avatar) %></th>
-          <td><%= image_tag current_user.avatar.url, class: 'rounded-circle', size: '50x50' %></td>
+          <td><%= image_tag current_user.avatar.url, class: 'rounded-circle', size: '200x200' %></td>
         </tr>
       </table>
     </div>
