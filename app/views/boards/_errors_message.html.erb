@@ -1,0 +1,9 @@
+<% if @board.errors.any? %>
+  <div id="error_explanation">
+    <div class="alert alert-danger">
+      <% @board.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>    
+    </div>
+  </div>
+<% end %>

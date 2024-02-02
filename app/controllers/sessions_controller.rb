@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
       params[:session][:remember_me] == '1' ? remember(user) : forget(user)
       remember user
       log_in user
-      redirect_to user
+      redirect_to boards_path
     else
     flash.now[:danger] = 'パスワードかメールアドレスが間違っています' 
     render 'new', status: :unprocessable_entity 
