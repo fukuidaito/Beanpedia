@@ -1,19 +1,28 @@
 <% content_for(:title, t('.title')) %>
-<div class="container ">
+
+<div class="container">
   <div class="row">
     <div class="col-lg-8 offset-lg-2">
-      <!-- ここからform_withを使う形に修正してください -->     
-      <%= form_with(model: @board, url: boards_path) do |form| %>
-        <%= render 'boards/errors_message' %>
-        <div class="mb-3">
-          <%= form.label :title, "タイトル" %>
-          <%= form.text_field :title, class: "form-control", id: "board_title" %>
+      <h1><%= t('.title') %></h1>
+      <%= form_with model: @board, class: "new_board" do |f| %>
+        <div class="form-group">
+          <%= f.label :title %>
+          <%= f.text_field :title, class: 'form-control' %>
         </div>
-        <div class="mb-3">
-          <%= form.label :body, "本文" %>
-          <%= form.text_area :body, class: "form-control", id: "board_body", rows: 10, style: "height: 200px" %>
+        <div class="form-group">
+          <%= f.label :body %>
+          <%= f.text_area :body, class: 'form-control', rows: 10 %>
         </div>
-        <%= form.submit "登録する", class: "btn btn-primary" %>
+        <div class="form-group">
+          <%= f.label :board_image %>
+          <%= f.file_field :board_image, class: 'form-control mb-3', accept: 'image/*', onchange: 'previewImage(preview)' %>
+          <%= f.hidden_field :board_image_cache %>
+        </div>
+        <div class="mt-3 mb-3">
+          <%= image_tag @board.board_image.url, id: 'preview', size: '300x200' %>
+        </div>
+    
+        <%= f.submit class: 'btn btn-primary' %>
     <% end %>
     </div>
   </div>
