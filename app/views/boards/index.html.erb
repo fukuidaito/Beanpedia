@@ -23,24 +23,3 @@
     </div>
   </div>
 </div>
-
-<div class="container">
-  <div class="row">
-    <div class="input-group mb-3">
-      <div class="input-group-append">
-        <form>
-          <input class="form-control" placeholder="検索ワード" type="search" />
-          <input type="submit" value="検索" class="btn btn-primary" />
-        </form>  
-      </div>  
-    </div>
-  </div>
-
-  <div class="row">
-      <% if @boards.present? %>
-        <%= render @boards %>
-      <% else %>
-        <p><%= t('.no_result') %></p> 
-      <% end %>
-  </div>
-</div>

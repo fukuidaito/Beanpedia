@@ -5,16 +5,25 @@
     <div class="col-lg-8 offset-lg-2">
       <h1><%= t('.title') %></h1>
       <%= form_with model: @board, class: "new_board" do |f| %>
-        <div class="mb-3">
+        <div class="form-group">
           <%= f.label :title %>
-          <%= f.text_field :title, class: "form-control" %>
+          <%= f.text_field :title, class: 'form-control' %>
         </div>
-        <div class="mb-3">
+        <div class="form-group">
           <%= f.label :body %>
-          <%= f.text_area :body, class: "form-control", rows: "10" %>
+          <%= f.text_area :body, class: 'form-control', rows: 10 %>
         </div>
-        <%= f.submit nil, class: "btn btn-primary" %>
-      <% end %>
+        <div class="form-group">
+          <%= f.label :board_image %>
+          <%= f.file_field :board_image, class: 'form-control mb-3', accept: 'image/*', onchange: 'previewImage(preview)' %>
+          <%= f.hidden_field :board_image_cache %>
+        </div>
+        <div class="mt-3 mb-3">
+          <%= image_tag @board.board_image.url, id: 'preview', size: '300x200' %>
+        </div>
+    
+        <%= f.submit class: 'btn btn-primary' %>
+    <% end %>
     </div>
   </div>
 </div>
