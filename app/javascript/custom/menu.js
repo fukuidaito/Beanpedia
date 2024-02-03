@@ -22,7 +22,7 @@ document.addEventListener("turbo:load", function() {
   
       // ハンバーガーメニュー以外がクリックされた場合、メニューを閉じる
       if (!hamburger.contains(event.target) && !navbarMenu.contains(event.target) && navbarMenu.classList.contains("collapse")) {
-        navbarMenu.classList.remove("collapse");
+        navbarMenu.classList.remove("avtive");
       }
     });
   });
