@@ -21,8 +21,9 @@ class BoardsController < ApplicationController
   def edit; end
 
   def destroy
-    @board.destroy!
-    redirect_to boards_path, success: t('defaults.message.deleted', item: Board.model_name.human)
+    board = current_user.boards.find(params[:id])
+    board.destroy!
+    redirect_to index_boards_path, status: :see_other, success: t('defaults.flash_message.deleted', item: Board.model_name.human), status: :see_other
   end
 
   def show; end

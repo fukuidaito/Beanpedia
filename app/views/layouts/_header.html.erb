@@ -1,9 +1,11 @@
-<header style="background-color:brown">
+<header class="navbar-inverse">
+
   <div class="container">
       <div class="navbar-header">
       <div class="row align-items-center">
-       <%= image_tag 'logo.png', size: '40x40' %>
-       <%= link_to "cafequest", root_path, id: "logo" %>
+      <%= link_to root_path, id: "logo" do %>
+        <%= image_tag 'logo.png', alt: 'cafequest logo', size: '40x40' %> cafequest
+      <% end %>
       </div> 
         <button id="hamburger" type="button" class="navbar-toggle collapsed">
           <span class="sr-only">Toggle navigation</span>
@@ -44,3 +46,4 @@
       </ul>
   </div>
 </header>
+
