@@ -18,6 +18,15 @@ class BoardsController < ApplicationController
 		@boards = Board.all.includes(:user).order(created_at: :desc)
 	end
 
+  def edit; end
+
+  def destroy
+    @board.destroy!
+    redirect_to boards_path, success: t('defaults.message.deleted', item: Board.model_name.human)
+  end
+
+  def show; end
+
   private
 
 	def set_board
