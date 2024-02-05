@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container pt-3">
   <div class="row">
     <div class="col-lg-10 offset-lg-1 mb-4">
       <!-- 検索フォーム -->
@@ -12,7 +12,6 @@
       </form>
     </div>
   </div>
-
   <div class="row">
     <div class="col-12">
       <% if @boards.present? %>
@@ -20,6 +19,7 @@
       <% else %>
         <p><%= t('.no_result') %></p> 
       <% end %>
+      <div>
     </div>
   </div>
 </div>

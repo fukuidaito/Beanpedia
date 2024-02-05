@@ -47,6 +47,7 @@ gem "sqlite3",         "1.6.1"
 gem "bootstrap-sass",  "3.4.1"
 gem 'carrierwave', '~> 3.0'
 gem 'font-awesome-sass'
+gem 'bootstrap'
 
 # Use Sass to process CSS
 # gem "sassc-rails"

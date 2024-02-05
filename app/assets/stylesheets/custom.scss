@@ -1,7 +1,6 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-
 body {
     padding-top: 60px;
   }
@@ -86,12 +85,12 @@ body {
   }
   
   #logo:hover {
-    color: #a98874;
+    color: #4e2106;
     text-decoration: none;
   }
   .navbar-inverse {
-    background-color: #a98874; /* 背景色の変更 */
-    border-color: #170901; /* ボーダー色の変更（必要に応じて） */
+    background-color: #642d0b; /* 背景色の変更 */
+    border-color: #9a745e; /* ボーダー色の変更（必要に応じて） */
 }
 
 .container-flex {
@@ -118,22 +117,17 @@ body {
   border-radius: 15px;
 }
 
-.jumbotron {
-  background: url('mame.png') ;
-  background-size: cover;
-}
-
 /* footer */
 
 footer {
   margin-top: 45px;
   padding-top: 5px;
-  border-top: 1px solid #eaeaea;
+  border-top: 1px solid #070606;
   color: #340303;
 }
 
 footer a {
-  color: #555;
+  color: #010000;
 }
 
 footer a:hover {
@@ -210,5 +204,11 @@ footer ul li {
   margin-right: 15px; /* 右側の余白 */
   margin-top: 5px; /* 上側の余白 */
   border-radius: 50%;
+}
+
+.main-container {
+  background-image: url("/images/back.jpeg");
+  height: 800px;
+  background-size: cover;
 }
 
