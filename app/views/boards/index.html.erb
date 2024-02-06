@@ -14,11 +14,12 @@
   </div>
   <div class="row">
     <div class="col-12">
-      <% if @boards.present? %>
-        <%= render @boards %>
-      <% else %>
-        <p><%= t('.no_result') %></p> 
-      <% end %>
+      <div class="row">
+        <% if @boards.present? %>
+          <%= render @boards %>
+        <% else %>
+          <p>掲示板がありません</p>
+        <% end %>
       <div>
     </div>
   </div>
