@@ -1,11 +1,10 @@
 document.addEventListener("turbo:load", function() {
   let account = document.querySelector("#Account");
-  console.log('account')
   let menu = document.querySelector("#dropdown-menu");
   console.log(dropdown-menu)
   let hamburger = document.querySelector("#hamburger");
   let navbarMenu = document.querySelector("#navbar-menu");
-
+  console.log('account')
   account.addEventListener("click", function(event) {
     event.preventDefault();
     menu.classList.toggle("active");
