@@ -26,7 +26,12 @@ class BoardsController < ApplicationController
     redirect_to boards_path, status: :see_other, success: t('defaults.flash_message.deleted', item: Board.model_name.human), status: :see_other
   end
 
-  def show; end
+
+  def show
+    @board = Board.find(params[:id])
+    @comment = Comment.new
+    @comments = @board.comments.includes(:user).order(created_at: :desc)
+  end
 
   private
 

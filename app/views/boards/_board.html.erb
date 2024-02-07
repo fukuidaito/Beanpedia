@@ -1,28 +1,38 @@
-<div class="col-sm-12 col-lg-4 mb-3">
-  <div id="board-id-<%= board.id %>">
-      <div class="card">
+<% unless board.nil? %>
+  <div class="col-md-4">
+    <div id="board-id-<%= board.id %>" class="card mb-4">
       <%= image_tag board.board_image.url, class: 'card-img-top', size: '300x200' %>
-        <div class="card-body">
-          <div class="d-flex">
-            <h4 class="card-title">
-              <%= link_to board.title, board_path(board) %>
-            </h4>
-              <div class='ms-auto'>
-                <%= link_to edit_board_path(board), id: "button-edit-#{board.id}" do %>
-                  <i class='bi bi-pencil-fill'></i>
-                <% end %>
-                <%= link_to board_path(board), id: "button-delete-#{board.id}", data: { turbo_method: :delete, turbo_confirm: t('defaults.message.delete_confirm') } do %>
-                  <i class='bi bi-trash-fill'></i>
-                <% end %>
-              </div>
-          </div>
-          <ul class="list-inline">
-            <li><i class="bi bi-person"></i><%= board.user.name %>
-            <i class="bi bi-calendar"></i><%= l board.created_at, format: :short %></li>
-          </ul>
-          <p class="card-text"><%= board.body %></p>
-        </div>
+      <div class="card-body">
+        <h4 class="card-title">
+
+          <a href="#">
+            <%= board.title %>
+          </a>
+        </h4>
+        <h4 class="card-title">
+        <%= link_to board.title, board_path(board), class: "card-title" %>
+        </h4>
+        <h4 class="card-title">
+          <%= board.title %>
+          <%= link_to edit_board_path(board), id: "button-edit-#{board.id}" do %>
+            <%= icon 'fa', 'pen' %>
+          <% end %>
+          <%= button_to board_path(board), method: :delete, id: "button-delete-#{board.id}", data: { turbo: :delete, turbo_confirm: t('defaults.message.delete_confirm') } do %>
+            <%= icon('fa', 'trash') %>
+          <% end %>
+        </h4>
+        <ul class="list-inline">
+          <li class="list-inline-item">
+            <%= icon 'far', 'user' %>
+            <%= board.user.name %>
+          </li>
+          <li class="list-inline-item">
+            <%= icon 'far', 'calendar' %>
+            <%= l board.created_at, format: :long %>
+          </li>
+        </ul>
+        <p class="card-text"><%= board.body %></p>
       </div>
     </div>
   </div>
-</div>
+<% end %>
