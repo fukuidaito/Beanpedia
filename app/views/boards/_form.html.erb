@@ -1,4 +1,15 @@
-<%= form_with model: board, local: true do |f| %>
-    <%= render 'shared/error_messages', object: f.object %>
-    <div class="form-group">
-      <%= f.label :title %>
+<%= form_with model: @board, local: true do |form| %>
+    <div class="mb-3">
+      <%= form.label :title, "タイトル" %>
+      <%= form.text_field :title, class: "form-control", id: "board_title" %>
+    </div>
+    <div class="mb-3">
+      <%= form.label :body, "本文" %>
+      <%= form.text_area :body, class: "form-control", id: "board_body", rows: 10, style: "height: 200px" %>
+    </div>
+    <div class="mb-3">
+      <%= form.label :image %>
+      <%= form.file_field :board_image, class: "form-control" %>
+    </div>
+    <%= form.submit class: "btn btn-primary" %>
+<% end %>
