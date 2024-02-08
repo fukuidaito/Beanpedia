@@ -1,4 +1,5 @@
 class BoardsController < ApplicationController
+  before_action :set_board, only: %i[edit update destroy]
 
 	def new
 		@board = Board.new
@@ -31,6 +32,15 @@ class BoardsController < ApplicationController
     @board = Board.find(params[:id])
     @comment = Comment.new
     @comments = @board.comments.includes(:user).order(created_at: :desc)
+  end
+
+  def update
+    if @board.update(board_params)
+      redirect_to @board, success: t('defaults.message.updated', item: Board.model_name.human)
+    else
+      flash.now[:danger] = t('defaults.message.not_updated', item: Board.model_name.human)
+      render :edit
+    end
   end
 
   private
