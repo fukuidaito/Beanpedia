@@ -189,3 +189,31 @@ footer ul li {
   background-size: cover;
 }
 
+/* ナビゲーションバーのアイテムのスタイリング */
+.navbar-nav > li > a, .navbar-nav > li > button {
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+/* ドロップダウンメニューのボタンスタイリング */
+#dropdownMenu {
+  background: transparent;
+  border: none;
+  color: #fff; /* ナビゲーションバーの色に合わせて調整してください */
+  padding: 15px;
+  margin: 0;
+  line-height: 20px; /* アイコンとテキストの高さを揃える */
+}
+
+/* アクティブまたはホバー状態のスタイル変更 */
+#dropdownMenu:focus, #dropdownMenu:hover {
+  background: rgba(255, 255, 255, 0.1); /* 軽いホバーエフェクト */
+}
+
+.board-wrapper {
+  border: 3px solid #cccccc; /* 枠線の色と太さ */
+  border-radius: 5px; /* 角丸 */
+  padding: 20px; /* 内側の余白 */
+  margin-bottom: 20px; /* 下の余白 */
+  background-color: #f9f9f9; /* 背景色 */
+}
