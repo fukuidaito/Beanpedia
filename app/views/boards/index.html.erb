@@ -1,3 +1,4 @@
+<% provide(:title, "QUEST一覧") %>
 <div class="container pt-3">
   <div class="row">
     <div class="col-lg-10 offset-lg-1 mb-4">
@@ -10,17 +11,15 @@
     </form>
     </div>
   </div>
-
- </div> 
-  <div class="row">
-    <div class="col-12">
-      <div class="row">
-        <% if @boards.present? %>
-          <%= render @boards %>
-        <% else %>
-          <p>掲示板がありません</p>
-        <% end %>
-      <div>
-    </div>
+  <br><br>
+  <div class="col-12">
+    <div class="row board-wrapper">
+      <% if @boards.present? %>
+        <%= render @boards %>
+      <% else %>
+        <p>掲示板がありません</p>
+      <% end %>
+    <div>
   </div>
+</div>
 
