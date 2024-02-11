@@ -1,9 +1,11 @@
-<% provide(:title, "Top") %>
+<% provide(:title, "CAFE QUEST") %>
 
 <div class="main-container">
     <h1>CAFE QUEST</h1>
-    <h2>
-      コーヒー探求の冒険へ
-    </h2>
-    <%= link_to "登録", signup_path , class: "btn btn-lg btn-primary" %>
-</div>
+    <div class="clearfix">
+    <div class="blackboard answer">
+      <p>コーヒー探求の冒険へ出かけますか？</p>
+      <p id="start-link" class="menu-item"><span class="arrow">▶</span> <%= link_to 'START（ユーザー登録）', new_user_path, class: "blink-before" %></p>
+      <p id="continue-link" class="menu-item"><span class="arrow" style="opacity: 0;">▶</span> <%= link_to 'CONTINUE（ログイン）', login_path, class: "blink-before" %></p>
+    </div>
+  </div>

@@ -217,3 +217,64 @@ footer ul li {
   margin-bottom: 20px; /* 下の余白 */
   background-color: #f9f9f9; /* 背景色 */
 }
+
+/* 黒板 */
+.blackboard {
+ position: relative;
+ margin: 0 auto 1.5rem;
+ padding: 1.6rem 1rem;
+ font-size: 1.2rem;
+ color: #fff;
+ border: 2px solid #000;
+ border-radius: 5px;
+ box-shadow: 0 0 0 4px #fff inset;
+ background-color: rgba(0,0,0,0.9);
+}
+.blackboard.answer p {
+ margin-left: 1.7rem;
+}
+.blackboard .blink-before {
+ font-size: 1.2rem;
+}
+.blackboard a {
+ text-decoration: none;
+ color: #fff;
+}
+
+.blackboard p:last-of-type {
+ margin-bottom: 0;
+}
+/* 回り込み */
+.float-r {
+ float: right;
+}
+/* 回り込み解除 */
+.clearfix {
+ zoom: 1;
+}
+.clearfix:after {
+ clear: both;
+ content: "";
+ display: block;
+}
+/* 点滅 */
+@keyframes blink {
+ 50% { opacity: 0; }
+}
+@-webkit-keyframes blink {
+ 50% { opacity: 0; }
+}
+@keyframes moveArrow {
+  0% { transform: translateX(0); }
+  50% { transform: translateX(10px); }
+  100% { transform: translateX(0); }
+}
+
+.arrow {
+  opacity: 0; /* デフォルトでは非表示 */
+  transition: opacity 0.3s ease; /* 透明度の変化にアニメーションを適用 */
+}
+
+#start-link .arrow {
+  opacity: 1; /* STARTにはデフォルトで表示 */
+}
