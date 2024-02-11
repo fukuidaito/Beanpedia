@@ -6,7 +6,7 @@
       <h3><%= link_to board.title, board_path(board), class: "card-title" %></h3>
         <ul class="list-inline">
           <li class="list-inline-item">
-            <%= icon 'far', 'user' %>
+          <%= image_tag board.user.avatar_url, alt: 'User avatar', class: 'rounded-circle', size: '30x30' %>
             <%= board.user.name %>
           </li>
           <li class="list-inline-item">

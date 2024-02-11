@@ -1,13 +1,19 @@
-<div id="<%= dom_id user %>">
-  <p>
-    <strong>Email:</strong>
-    <%= user.email %>
-  </p>
+<div class="blackboard question">
+  <div id="<%= dom_id user %>">
 
 
-  <p>
-    <strong>name:</strong>
-    <%= user.name %>
-  </p>
+    <%= image_tag current_user.avatar_url, size: '50x50' %>
 
+    <p>
+      <strong>Email:</strong>
+      <%= user.email %>
+    </p>
+
+
+    <p>
+      <strong>name:</strong>
+      <%= user.name %>
+    </p>
+
+  </div>
 </div>

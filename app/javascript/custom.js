@@ -9,3 +9,4 @@ document.addEventListener("DOMContentLoaded", function() {
       this.style.animation = '';
     });
   });
+
