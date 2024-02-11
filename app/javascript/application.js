@@ -18,4 +18,4 @@ document.addEventListener("DOMContentLoaded", function() {
       continueArrow.style.opacity = '0';
     });
   });
-  
+  import "@hotwired/turbo-rails"
