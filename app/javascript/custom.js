@@ -1,12 +1,24 @@
 document.addEventListener("DOMContentLoaded", function() {
-    const blinkBefore = document.querySelector('.blackboard .blink-before');
+    const startLink = document.getElementById('start-link');
+    const continueLink = document.getElementById('continue-link');
+    const startArrow = startLink.querySelector('.arrow');
+    const continueArrow = continueLink.querySelector('.arrow');
   
-    blinkBefore.addEventListener('mouseenter', function() {
-      this.style.animation = 'moveArrow 1s infinite';
+    startLink.addEventListener('mouseenter', function() {
+      startArrow.style.opacity = '1';
+      continueArrow.style.opacity = '0';
     });
   
-    blinkBefore.addEventListener('mouseleave', function() {
-      this.style.animation = '';
+    continueLink.addEventListener('mouseenter', function() {
+      startArrow.style.opacity = '0';
+      continueArrow.style.opacity = '1';
+    });
+  
+    startLink.addEventListener('mouseleave', function() {
+      startArrow.style.opacity = '1';
+    });
+  
+    continueLink.addEventListener('mouseleave', function() {
+      continueArrow.style.opacity = '0';
     });
   });
-

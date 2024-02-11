@@ -240,12 +240,7 @@ footer ul li {
  text-decoration: none;
  color: #fff;
 }
-.blackboard .blink-before::before {
- content: '▶';
- position: absolute;
- left: 1rem;
- animation: blink 1.4s infinite;
-}
+
 .blackboard p:last-of-type {
  margin-bottom: 0;
 }
@@ -273,4 +268,13 @@ footer ul li {
   0% { transform: translateX(0); }
   50% { transform: translateX(10px); }
   100% { transform: translateX(0); }
+}
+
+.arrow {
+  opacity: 0; /* デフォルトでは非表示 */
+  transition: opacity 0.3s ease; /* 透明度の変化にアニメーションを適用 */
+}
+
+#start-link .arrow {
+  opacity: 1; /* STARTにはデフォルトで表示 */
 }

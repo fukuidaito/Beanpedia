@@ -2,10 +2,10 @@
 
 <div class="main-container">
     <h1>CAFE QUEST</h1>
-<div class="clearfix">
-<div class="blackboard answer ">
-<p>コーヒー探求の冒険へでかけますか？</p>
-<p link_to login_path, class="blink-before">START（ユーザー登録）</p>
-<p>CONTINUE(ログイン)</p>
-</div>
-</div>
+    <div class="clearfix">
+    <div class="blackboard answer">
+      <p>コーヒー探求の冒険へ出かけますか？</p>
+      <p id="start-link" class="menu-item"><span class="arrow">▶</span> <%= link_to 'START（ユーザー登録）', login_path, class: "blink-before" %></p>
+      <p id="continue-link" class="menu-item"><span class="arrow" style="opacity: 0;">▶</span> <%= link_to 'CONTINUE（ログイン）', login_path, class: "blink-before" %></p>
+    </div>
+  </div>
