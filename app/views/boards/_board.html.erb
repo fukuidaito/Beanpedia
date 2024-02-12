@@ -17,6 +17,9 @@
         <p class="card-text"><%= board.body %></p>
         <%= render 'crud_menus', board: board if current_user.own?(board) %>
       </div>
+          <p>酸味: <%= board.acidity&.humanize %></p>
+          <p>苦味: <%= board.bitterness&.humanize %></p>
+          <p>コク: <%= board.richness&.humanize %></p>
     </div>
   </div>
 <% end %>
