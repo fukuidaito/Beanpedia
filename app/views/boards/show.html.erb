@@ -2,12 +2,15 @@
 <div class="container pt-5">
   <div class="row mb-3">
     <div class="col-lg-8 offset-lg-2">
-      <h1><%= t('.title') %></h1>
+      <h1><%= t('title') %></h1>
       <article class="card">
         <div class="card-body">
           <div class='row'>
             <div class='col-md-3'>
               <%= image_tag @board.board_image.url, class: 'card-img-top img-fluid', size: '300x200' %>
+              <%= render_progress_bar(@board, :acidity) %>
+              <%= render_progress_bar(@board, :bitterness) %>
+              <%= render_progress_bar(@board, :richness) %>
               <h3 class="d-inline"><%= @board.title %></h3>
               <%= render 'crud_menus', board: @board if current_user.own?(@board) %>
               <ul class="list-inline">

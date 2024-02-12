@@ -16,24 +16,9 @@
         </ul>
         <p class="card-text"><%= board.body %></p>
         <%= render 'crud_menus', board: board if current_user.own?(board) %>
-
-        <p>酸味: <%= board.acidity&.humanize %></p>
-        <!-- 酸味のゲージ -->
-        <div class="coffee-rating">
-          <div class="coffee-rating-bar" style="width: <%= (board.acidity || 0) * 20 %>%;"></div>
-        </div>
-        
-        <p>苦味: <%= board.bitterness&.humanize %></p>
-        <!-- 苦味のゲージ -->
-        <div class="coffee-rating">
-          <div class="coffee-rating-bar" style="width: <%= (board.bitterness || 0) * 20 %>%;"></div>
-        </div>
-        
-        <p>コク: <%= board.richness&.humanize %></p>
-        <!-- コクのゲージ -->
-        <div class="coffee-rating">
-          <div class="coffee-rating-bar" style="width: <%= (board.richness || 0) * 20 %>%;"></div>
-        </div>
+        <%= render_progress_bar(board, :acidity) %>
+        <%= render_progress_bar(board, :bitterness) %>
+        <%= render_progress_bar(board, :richness) %>
       </div>
     </div>
   </div>

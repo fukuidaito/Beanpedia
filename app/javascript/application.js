@@ -1,4 +1,4 @@
-function updateRatingColor(elementId, rating) {
+document.addEventListener("DOMContentLoaded", function(){
   const element = document.getElementById(elementId);
   let color = "#d3c5b3"; // デフォルトの色
 
@@ -11,7 +11,7 @@ function updateRatingColor(elementId, rating) {
   }
 
   element.style.backgroundColor = color;
-}
+});
 
 document.addEventListener("DOMContentLoaded", function() {
     const startArrow = document.querySelector('#start-link .arrow');
