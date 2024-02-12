@@ -3,10 +3,10 @@
     <div id="board-id-<%= board.id %>" class="card mb-4">
       <%= image_tag board.board_image.url, class: 'card-img-top', size: '300x200' %>
       <div class="card-body">
-      <h3><%= link_to board.title, board_path(board), class: "card-title" %></h3>
+        <h3><%= link_to board.title, board_path(board), class: "card-title" %></h3>
         <ul class="list-inline">
           <li class="list-inline-item">
-          <%= image_tag board.user.avatar_url, alt: 'User avatar', class: 'rounded-circle', size: '30x30' %>
+            <%= image_tag board.user.avatar_url, alt: 'User avatar', class: 'rounded-circle', size: '30x30' %>
             <%= board.user.name %>
           </li>
           <li class="list-inline-item">
@@ -16,6 +16,24 @@
         </ul>
         <p class="card-text"><%= board.body %></p>
         <%= render 'crud_menus', board: board if current_user.own?(board) %>
+
+        <p>酸味: <%= board.acidity&.humanize %></p>
+        <!-- 酸味のゲージ -->
+        <div class="coffee-rating">
+          <div class="coffee-rating-bar" style="width: <%= (board.acidity || 0) * 20 %>%;"></div>
+        </div>
+        
+        <p>苦味: <%= board.bitterness&.humanize %></p>
+        <!-- 苦味のゲージ -->
+        <div class="coffee-rating">
+          <div class="coffee-rating-bar" style="width: <%= (board.bitterness || 0) * 20 %>%;"></div>
+        </div>
+        
+        <p>コク: <%= board.richness&.humanize %></p>
+        <!-- コクのゲージ -->
+        <div class="coffee-rating">
+          <div class="coffee-rating-bar" style="width: <%= (board.richness || 0) * 20 %>%;"></div>
+        </div>
       </div>
     </div>
   </div>

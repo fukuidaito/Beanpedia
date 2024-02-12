@@ -1,3 +1,18 @@
+function updateRatingColor(elementId, rating) {
+  const element = document.getElementById(elementId);
+  let color = "#d3c5b3"; // デフォルトの色
+
+  if (rating >= 4) {
+    color = "#8d4e2f"; // 濃い茶色
+  } else if (rating >= 3) {
+    color = "#a6735f"; // 中間の茶色
+  } else if (rating >= 2) {
+    color = "#bea18d"; // やや薄い茶色
+  }
+
+  element.style.backgroundColor = color;
+}
+
 document.addEventListener("DOMContentLoaded", function() {
     const startArrow = document.querySelector('#start-link .arrow');
     const continueArrow = document.querySelector('#continue-link .arrow');
