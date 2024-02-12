@@ -15,4 +15,10 @@ module BoardsHelper
         0 # デフォルト値またはエラー値
     end  
   end
+
+  def render_progress_bar(board, attribute)
+    label = attribute.to_s.humanize
+    percentage = enum_to_percentage(board.send(attribute))
+    render partial: 'boards/progress_bar', locals: { label: label, percentage: percentage }
+  end
 end
