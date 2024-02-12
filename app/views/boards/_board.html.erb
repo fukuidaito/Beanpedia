@@ -19,20 +19,22 @@
 
         <p>酸味: <%= board.acidity&.humanize %></p>
         <!-- 酸味のゲージ -->
-        <div class="coffee-rating">
-          <div class="coffee-rating-bar" style="width: <%= (board.acidity || 0) * 20 %>%;"></div>
+        <div class="progress" role="progressbar" aria-label="Acidity level" aria-valuenow="<%= enum_to_percentage(board.acidity) %>" aria-valuemin="0" aria-valuemax="100">
+          <div class="progress-bar custom-progress-bar progress-bar-striped progress-bar-animated" style="width: <%= enum_to_percentage(board.acidity) %>%;">
+          </div>
         </div>
         
         <p>苦味: <%= board.bitterness&.humanize %></p>
         <!-- 苦味のゲージ -->
-        <div class="coffee-rating">
-          <div class="coffee-rating-bar" style="width: <%= (board.bitterness || 0) * 20 %>%;"></div>
+        <div class="progress" role="progressbar" aria-label="Acidity level" aria-valuenow="<%= enum_to_percentage(board.bitterness) %>" aria-valuemin="0" aria-valuemax="100">
+          <div class="progress-bar custom-progress-bar progress-bar-striped progress-bar-animated" style="width: <%= enum_to_percentage(board.bitterness) %>%;">
+          </div>
         </div>
-        
         <p>コク: <%= board.richness&.humanize %></p>
         <!-- コクのゲージ -->
-        <div class="coffee-rating">
-          <div class="coffee-rating-bar" style="width: <%= (board.richness || 0) * 20 %>%;"></div>
+        <div class="progress" role="progressbar" aria-label="Acidity level" aria-valuenow="<%= enum_to_percentage(board.richness) %>" aria-valuemin="0" aria-valuemax="100">
+          <div class="progress-bar custom-progress-bar progress-bar-striped progress-bar-animated" style="width: <%= enum_to_percentage(board.richness) %>%;">
+          </div>
         </div>
       </div>
     </div>
