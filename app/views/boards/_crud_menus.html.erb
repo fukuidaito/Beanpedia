@@ -5,8 +5,8 @@
     <% end %>
   </li>
   <li class="list-inline-item">
-    <%= link_to '#', id: "button-delete-#{board.id}" do %>
-      <%= icon 'fas', 'trash' %>
-    <% end %>
+  <%= link_to board_path(board), id: "button-delete-#{board.id}", data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } do %>
+  <%= icon('fas', 'trash') %>
+<% end %>
   </li>
 </ul>

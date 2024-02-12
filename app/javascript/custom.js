@@ -1,3 +1,4 @@
+console.log('konnnitiwa')
 document.addEventListener("DOMContentLoaded", function() {
     const startLink = document.getElementById('start-link');
     const continueLink = document.getElementById('continue-link');
