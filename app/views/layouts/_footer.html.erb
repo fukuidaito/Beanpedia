@@ -1,13 +1,28 @@
-<footer class="footer">
-  <small>
-    The <a href="#">cafe quest </a>
-    by <a href="https://github.com/fukuidaito">fukuidaito</a>
-  </small>
-  <nav>
-    <ul>
-      <li><%= link_to "About", "#" %></li>
-      <li><%= link_to "Contact", "#" %></li>
-      <li><a href="https://news.railstutorial.org/">News</a></li>
-    </ul>
-  </nav>
+<footer class="footer bg-brown text-center text-lg-start">
+  <div class="container p-4">
+    <div class="row">
+      <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+        <small>
+          The <a href="#" class="text-reset">cafe quest</a>
+          by <a href="https://github.com/fukuidaito" class="text-reset">fukuidaito</a>
+        </small>
+      </div>
+      <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+        <ul class="list-unstyled mb-0 d-flex justify-content-center justify-content-lg-end">
+          <li class="ms-3">
+            <%= link_to "About", "#", class: "link-dark" %>
+          </li>
+          <li class="ms-3">
+            <%= link_to "Contact", "#", class: "link-dark" %>
+          </li>
+          <li class="ms-3">
+            <a href="https://news.railstutorial.org/" class="link-dark">News</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+    © <%= Time.now.year %> cafe quest. All rights reserved.
+  </div>
 </footer>

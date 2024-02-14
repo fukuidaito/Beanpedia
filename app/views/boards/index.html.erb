@@ -1,17 +1,5 @@
 <% provide(:title, "QUEST一覧") %>
 <div class="container pt-3">
-  <div class="row">
-    <div class="col-lg-10 offset-lg-1 mb-4">
-      <!-- 検索フォーム -->
-      <form>
-      <div class="input-group mb-3">
-        <input type="search" class="form" placeholder="検索ワード" aria-label="検索ワード">
-        <button type="submit" class="btn btn-outline-secondary btn-sm">検索</button>
-      </div>
-    </form>
-    </div>
-  </div>
-  <br><br>
   <div class="col-12">
     <div class="row board-wrapper">
       <% if @boards.present? %>
