@@ -1,27 +1,36 @@
 <div class="sidebar-sticky">
   <ul class="nav flex-column">
-  <div class="row">
-  <div class="col-lg-10 offset-lg-1 mb-4">
-    <!-- 検索フォーム -->
-    <form>
-    <div class="input-group mb-3">
-      <input type="search" class="form" placeholder="検索ワード" aria-label="検索ワード">
-      <button type="submit" class="btn btn-outline-secondary btn-sm form">検索</button>
+    <div class="row">
+      <div class="col-lg-10 offset-lg-1 mb-4">
+        <!-- 検索フォーム -->
+        <form>
+          <div class="input-group mb-3">
+            <input type="search" class="form" placeholder="検索ワード" aria-label="検索ワード">
+            <button type="submit" class="btn btn-outline-secondary btn-sm form">検索</button>
+          </div>
+        </form>
+      </div>
     </div>
-  </form>
-  </div>
-</div>
     <li class="nav-item">
-      <a class="nav-link active" href="#">Dashboard <span class="sr-only">(current)</span></a>
+      <%= link_to profile_path do %>
+        <i class="fas fa-user"></i> プロフィール
+      <% end %>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="#">Orders</a>
+      <%= link_to new_board_path do %>
+        <i class="fas fa-list"></i> リスト
+      <% end %>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="#">Products</a>
+      <%= link_to new_board_path do %>
+        <i class="fas fa-star"></i> お気に入り
+      <% end %>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="#">Customers</a>
+      <%= link_to new_board_path do %>
+        <i class="fas fa-plus-square"></i> 新規投稿
+      <% end %>
     </li>
+    <li class="nav-item">
   </ul>
 </div>

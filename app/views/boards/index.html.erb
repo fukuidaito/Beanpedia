@@ -1,13 +1,11 @@
 <% provide(:title, "QUEST一覧") %>
 <div class="container pt-3">
   <div class="col-12">
-    <div class="row board-wrapper">
       <% if @boards.present? %>
         <%= render @boards %>
       <% else %>
         <p>掲示板がありません</p>
       <% end %>
-    <div>
   </div>
 </div>
 

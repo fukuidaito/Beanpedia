@@ -296,6 +296,12 @@ label {
   background-color: #8d4e2f; /* ここで好きな色を指定 */
 }
 
+@media (max-width: 576px) {
+  .progress {
+    height: 10px; /* 小さい画面でのゲージの高さを調整 */
+  }
+}
+
 /* サイドバーのスタイリング */
 .sidebar {
   position: fixed;
