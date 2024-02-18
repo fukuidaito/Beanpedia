@@ -1,0 +1,10 @@
+<h1>お気に入りランキング</h1>
+
+<ol>
+  <% @boards.each do |board| %>
+    <li>
+      <%= link_to board.title, board_path(board) %>
+      (お気に入り数: <%= board.bookmarks_count %>)
+    </li>
+  <% end %>
+</ol>
