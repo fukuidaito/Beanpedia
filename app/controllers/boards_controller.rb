@@ -47,6 +47,10 @@ class BoardsController < ApplicationController
     @bookmark_boards = current_user.bookmark_boards.includes(:user).order(created_at: :desc)
   end
 
+  def ranking
+    @boards = Board.ranking.limit(10)
+  end
+
   private
 
 	def set_board
