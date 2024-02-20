@@ -51,6 +51,7 @@ gem 'bootstrap'
 gem 'dotenv-rails'
 gem 'omniauth', '1.9.1'
 gem 'omniauth-google-oauth2' 
+gem 'devise'
 
 # Use Sass to process CSS
 # gem "sassc-rails"
