@@ -1,25 +1,26 @@
 Rails.application.routes.draw do
-  devise_for :users
-  get 'sessions/new'
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  devise_for :users, controllers: {
+    omniauth_callbacks: 'users/omniauth_callbacks'
+  }
 
-  # Defines the root path route ("/")
+  get 'sessions/new'
   root "top#index"
-  get  "/help",    to: "static_pages#help"
-  get  "/about",   to: "static_pages#about"
-  get  "/contact", to: "static_pages#contact"
-  get  "/signup",  to: "users#new"
-  get    "/login",   to: "sessions#new"
-  post   "/login",   to: "sessions#create"
-  delete "/logout",  to: "sessions#destroy"
+  get "/help", to: "static_pages#help"
+  get "/about", to: "static_pages#about"
+  get "/contact", to: "static_pages#contact"
+  get "/signup", to: "users#new"
+  get "/login", to: "sessions#new"
+  post "/login", to: "sessions#create"
+  delete "/logout", to: "sessions#destroy"
+
   resources :users
-  resource :profile, only: %i[show edit update]
+  resource :profile, only: [:show, :edit, :update]
   resources :boards do
-    resources :comments, only: %i[create], shallow: true
+    resources :comments, only: [:create], shallow: true
     collection do
-			get 'bookmarks'
+      get 'bookmarks'
       get 'ranking'
-		end
+    end
   end
-  resources :bookmarks, only: %i[create destroy]
+  resources :bookmarks, only: [:create, :destroy]
 end
