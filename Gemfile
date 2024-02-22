@@ -48,6 +48,10 @@ gem "bootstrap-sass",  "3.4.1"
 gem 'carrierwave', '~> 3.0'
 gem 'font-awesome-sass'
 gem 'bootstrap'
+gem 'dotenv-rails'
+gem 'omniauth', '1.9.1'
+gem 'omniauth-google-oauth2' 
+gem 'devise'
 
 # Use Sass to process CSS
 # gem "sassc-rails"
