@@ -24,23 +24,41 @@
       </article>
     </div>
   </div>
+  <!-- 住所表示エリア -->
+  <p><%= @board.address %></p>
+  
+  <!-- Googleマップ表示エリア(地図を表示) -->
+  <div id="map"></div>
 
-  <div id="map" style="height: 600px;"></div>
-
-<script>
-  // 地図を初期化する関数
-  function initMap() {
-    // 地図のオプション
-    const mapOptions = {
-      center: { lat: 35.6803997, lng: 139.7690174 }, // 地図の初期表示位置（東京）
-      zoom: 10 // ズームレベル
-    };
-
-    // 地図を指定した要素に表示
-    const map = new google.maps.Map(document.getElementById('map'), mapOptions);
-  }
-</script>
-<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV["GOOGLE_MAPS_API_KEY"] %>&callback=initMap"></script>
+  <script>
+    function initMap(){
+      // 地図の位置情報(緯度・経度)を取得
+      let mapPosition = {lat: <%= @board.latitude || 0 %> , lng: <%= @board.longitude || 0 %> };
+      let map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 15,
+        center: mapPosition
+      });
+      let transitLayer = new google.maps.TransitLayer();
+      transitLayer.setMap(map);
+  
+      let contentString = '【住所】<%= @board.address %>';
+      let infowindow = new google.maps.InfoWindow({
+        content: contentString
+      });
+  
+      let marker = new google.maps.Marker({
+        position: mapPosition,
+        map: map,
+        title: contentString
+      });
+  
+      marker.addListener('click', function(){
+        infowindow.open(map, marker);
+      });
+    }
+    </script>
+  
+    <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap" async defer></script>
 
   <!-- コメントフォーム -->
   <%= render 'comments/form', { board: @board, comment: @comment } %>

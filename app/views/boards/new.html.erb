@@ -10,6 +10,10 @@
           <%= f.text_field :title, class: 'form-control' %>
         </div>
         <div class="form-group">
+        <%= f.label :address, class: "form-label fw-bold"%>
+        <%= f.text_field :address, autofocus: true,placeholder: "住所を入力してください", class: "form-control" %>
+        </div>
+        <div class="form-group">
           <%= f.label :body %>
           <%= f.text_area :body, class: 'form-control', rows: 10 %>
         </div>
