@@ -15,4 +15,14 @@ class Board < ApplicationRecord
   def self.ranking
     Board.select('boards.*, COUNT(bookmarks.id) AS bookmarks_count').joins(:bookmarks).group('boards.id').order('bookmarks_count DESC')
   end
+
+  def self.ransackable_associations(auth_object = nil)
+    ["bookmarks", "comments", "user"]
+  end
+
+  def self.ransackable_attributes(auth_object = nil)
+    ["acidity", "address", "bitterness", "board_image", "body", "created_at", "id", "latitude", "longitude", "richness", "title", "updated_at", "user_id"]
+  end
+
+
 end
