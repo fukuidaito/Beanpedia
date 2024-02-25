@@ -133,7 +133,12 @@ GEM
     geocoder (1.8.2)
     globalid (1.2.1)
       activesupport (>= 6.1)
+    google_places (2.0.0)
+      httparty (>= 0.13.1)
     hashie (5.0.0)
+    httparty (0.21.0)
+      mini_mime (>= 1.0.0)
+      multi_xml (>= 0.5.2)
     i18n (1.14.1)
       concurrent-ruby (~> 1.0)
     image_processing (1.12.2)
@@ -393,6 +398,7 @@ DEPENDENCIES
   factory_bot_rails
   font-awesome-sass
   geocoder
+  google_places
   importmap-rails
   jbuilder
   kaminari
