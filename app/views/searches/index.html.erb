@@ -1,0 +1,42 @@
+<button onclick="getLocation()" id="get-button">現在地を取得する</button>
+
+<%= form_tag({controller:"searches",action:"index"}, method: :get) do %>
+<p>
+  <%= hidden_field_tag :lat, :value => "緯度", id: :lat %>
+  <%= hidden_field_tag :lng, :value => "軽度", id: :lng %>
+</p>
+<div id="response">未取得</div>
+<%= submit_tag "送信" %>
+<% end %>
+＃mapsコントローラーのresultアクションに対して、データを送ります
+
+<script>
+
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    } else { 
+        alert("Geolocation is not supported by this browser.");
+    }
+}
+
+function showPosition(position) {
+
+$.ajax({
+  type: 'GET',
+  url: `https://maps.googleapis.com/maps/api/geocode/json?latlng=${position.coords.latitude},${position.coords.longitude}&sensor=true&key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&language=en`,
+}).then(function(response){
+    dis1 = Number(response.results[0].geometry.location.lat)
+    dis2 = Number(response.results[0].geometry.location.lng)
+
+    document.getElementById('lat').value = dis1;
+    document.getElementById('lng').value = dis2;
+    document.getElementById('get-button').textContent = "取得済";
+    ＃hidden_fieldに、取得した現在地の緯度経度を反映させます
+})
+
+}
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAPS_API_KEY'] %>&callback=initMap" async defer></script>
+
