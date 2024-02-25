@@ -54,6 +54,7 @@ gem 'omniauth-google-oauth2'
 gem 'devise'
 gem "geocoder"
 gem 'ransack'
+gem 'kaminari'
 
 # Use Sass to process CSS
 # gem "sassc-rails"

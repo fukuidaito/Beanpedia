@@ -1,5 +1,6 @@
 <% provide(:title, "QUEST一覧") %>
 <div class="container pt-3">
+<%= render 'search_form', q: @q, url: boards_path %>
   <div class="col-12">
       <% if @boards.present? %>
         <%= render @boards %>
