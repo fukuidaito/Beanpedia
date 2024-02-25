@@ -317,3 +317,8 @@ label {
   overflow-x: hidden;
   overflow-y: auto; /* コンテンツが多い時にスクロール可能に */
 }
+
+#map {
+  height: 400px; /* 例えば400pxの高さを設定 */
+  width: 100%;
+}
