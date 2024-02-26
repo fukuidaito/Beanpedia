@@ -1,35 +1,39 @@
 <% unless board.nil? %>
-  <div class="col-md-4">
-    <div id="board-id-<%= board.id %>" class="card mb-4">
-      <%= image_tag board.board_image.url, class: 'card-img-top', size: '300x200' %>
-      <div class="card-body">
-        <h3><%= link_to board.title, board_path(board), class: "card-title" %></h3>
-        
-        <!-- 編集と削除のアイコンは投稿者にのみ表示 -->
-        <% if current_user.own?(board) %>
-        <%= render 'crud_menus', board: board %>
-        <% else %>
-          <%= render 'boards/bookmark_button', board: board %>
-        <% end %>
-        <!-- すべてのユーザーに表示される情報 -->
-        <ul class="list-inline">
-          <li class="list-inline-item">
-            <%= image_tag board.user.avatar_url, alt: 'User avatar', class: 'rounded-circle', size: '30x30' %>
-            <%= board.user.name %>
-          </li>
-          <li class="list-inline-item">
-            <%= icon 'far', 'calendar' %>
-            <%= l board.created_at, format: :long %>
-          </li>
-        </ul>
-        <p class="card-text"><%= board.body %></p>
-        <div class='ms-auto'>
+  <div id="board-id-<%= board.id %>" class="card mb-4">
+    <div class="row no-gutters">
+      <!-- 画像部分 -->
+      <div class="col-md-4 d-flex align-items-start flex-column">
+        <%= image_tag board.board_image.url, class: 'card-img', size: '300x200' %>
+        <div class="mt-auto">
+          <%= link_to board.title, board_path(board), class: "card-title h5" %>
+          <ul class="list-inline">
+            <li class="list-inline-item">
+              <%= image_tag board.user.avatar_url, alt: 'User avatar', class: 'rounded-circle', size: '30x30' %>
+              <%= board.user.name %>
+            </li>
+            <li class="list-inline-item">
+              <%= icon 'far', 'calendar' %>
+              <%= l board.created_at, format: :long %>
+            </li>
+          </ul>
+          <% if current_user.own?(board) %>
+            <%= render 'crud_menus', board: board %>
+          <% else %>
+            <%= render 'boards/bookmark_button', board: board %>
+          <% end %>
+        </div>
       </div>
-        
-        <!-- ゲージの表示 -->
-        <%= render_progress_bar(board, :acidity) %>
-        <%= render_progress_bar(board, :bitterness) %>
-        <%= render_progress_bar(board, :richness) %>
+      <!-- 内容部分 -->
+      <div class="col-md-8">
+        <div class="card-body d-flex flex-column">
+
+          <div class="mt-auto">
+            <!-- ゲージの表示 -->
+            <%= render_progress_bar(board, :acidity) %>
+            <%= render_progress_bar(board, :bitterness) %>
+            <%= render_progress_bar(board, :richness) %>
+          </div>
+        </div>
       </div>
     </div>
   </div>
