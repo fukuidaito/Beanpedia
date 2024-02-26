@@ -9,64 +9,16 @@ body {
     overflow: auto;
   }
   
-  .center {
-    text-align: center;
-  }
-  
-  .center h1 {
-    margin-bottom: 10px;
-  }
-  
   section {
     overflow: auto;
   }
-
   
-  .center {
-    text-align: center;
-  }
-  
-  .center h1 {
-    margin-bottom: 10px;
-  }
-
-  /* typography */
-
-  h1, h2, h3, h4, h5, h6 {
-    line-height: 1;
-  }
-  
-  .left-half-content {
-    width: 50%; /* 幅を画面の半分に設定 */
-    text-align: center;
-  } 
-  
-  h1 {
-    font-size: 3em;
-    letter-spacing: -2px;
-    margin-bottom: 30px;
-    text-align: left; /* 'light'ではなく、'left' に修正 */
-  }
-  
-  h2 {
-    font-size: 1.2em;
-    letter-spacing: -1px;
-    margin-bottom: 30px;
-    text-align: center;
-    font-weight: normal;
-    color: #654040;
-  }
-  
-  p {
-    font-size: 1.1em;
-    line-height: 1.7em;
-  }
 
   #logo {
     float: left;
     margin-right: 10px;
     font-size: 1.7em;
-    color: #492510;
+    color: #ceb3a3;
     text-transform: uppercase;
     letter-spacing: -1px;
     padding-top: 9px;
@@ -74,12 +26,12 @@ body {
   }
   
   #logo:hover {
-    color: #4e2106;
+    color: #e85f0a;
     text-decoration: none;
   }
   .navbar-inverse {
-    background-color: #642d0b; /* 背景色の変更 */
-    border-color: #9a745e; /* ボーダー色の変更（必要に応じて） */
+    background-color: #59321a; /* 背景色の変更 */
+    border-color: #0f0600; /* ボーダー色の変更（必要に応じて） */
 }
 
 .right-half-content {
@@ -155,14 +107,6 @@ footer ul li {
   margin-top: 45px;
 }
 
-#error_explanation {
-  color: red;
-  ul {
-    color: red;
-    margin: 0 0 30px 0;
-  }
-}
-
 /* Dropdown menu */
 
 .dropdown-menu.active {
@@ -183,29 +127,6 @@ footer ul li {
 .navbar-nav > li > a, .navbar-nav > li > button {
   padding-top: 15px;
   padding-bottom: 15px;
-}
-
-/* ドロップダウンメニューのボタンスタイリング */
-#dropdownMenu {
-  background: transparent;
-  border: none;
-  color: #fff; /* ナビゲーションバーの色に合わせて調整してください */
-  padding: 15px;
-  margin: 0;
-  line-height: 20px; /* アイコンとテキストの高さを揃える */
-}
-
-/* アクティブまたはホバー状態のスタイル変更 */
-#dropdownMenu:focus, #dropdownMenu:hover {
-  background: rgba(255, 255, 255, 0.1); /* 軽いホバーエフェクト */
-}
-
-.board-wrapper {
-  border: 3px solid #cccccc; /* 枠線の色と太さ */
-  border-radius: 5px; /* 角丸 */
-  padding: 20px; /* 内側の余白 */
-  margin-bottom: 20px; /* 下の余白 */
-  background-color: #f9f9f9; /* 背景色 */
 }
 
 /* 黒板 */
@@ -233,40 +154,6 @@ footer ul li {
 
 .blackboard p:last-of-type {
  margin-bottom: 0;
-}
-/* 回り込み */
-.float-r {
- float: right;
-}
-/* 回り込み解除 */
-.clearfix {
- zoom: 1;
-}
-.clearfix:after {
- clear: both;
- content: "";
- display: block;
-}
-/* 点滅 */
-@keyframes blink {
- 50% { opacity: 0; }
-}
-@-webkit-keyframes blink {
- 50% { opacity: 0; }
-}
-@keyframes moveArrow {
-  0% { transform: translateX(0); }
-  50% { transform: translateX(10px); }
-  100% { transform: translateX(0); }
-}
-
-.arrow {
-  opacity: 0; /* デフォルトでは非表示 */
-  transition: opacity 0.3s ease; /* 透明度の変化にアニメーションを適用 */
-}
-
-#start-link .arrow {
-  opacity: 1; /* STARTにはデフォルトで表示 */
 }
 
 .coffee-rating {
@@ -297,21 +184,10 @@ label {
   }
 }
 
-/* サイドバーのスタイリング */
-.sidebar {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  z-index: 100; /* ナビゲーションバーの後ろに隠れないように */
-  padding: 48px 0 0; /* トップにスペースを作る */
-  box-shadow: inset 1px 0 0 rgba(0, 0, 0, .1); /* 影の方向を調整 */
-}
-
 .sidebar-sticky {
   position: -webkit-sticky;
   position: sticky;
-  top: 48px; /* ナビゲーションバーの高さに合わせる */
+  top: 48px;
   height: calc(100vh - 48px);
   padding-top: .5rem;
   overflow-x: hidden;
