@@ -1,16 +1,7 @@
+<nav class="col-md-2 d-none d-md-block bg-light sidebar">
 <div class="sidebar-sticky">
   <ul class="nav flex-column">
-    <div class="row">
-      <div class="col-lg-10 offset-lg-1 mb-4">
-        <!-- 検索フォーム -->
-        <form>
-          <div class="input-group mb-3">
-            <input type="search" class="form" placeholder="検索ワード" aria-label="検索ワード">
-            <button type="submit" class="btn btn-outline-secondary btn-sm form">検索</button>
-          </div>
-        </form>
-      </div>
-    </div>
+    <li class="nav-item">
     <li class="nav-item">
     <%= link_to search_path do %>
       <i class="fas fa-search"></i> 検索
@@ -41,4 +32,5 @@
       <% end %>
     </li>
   </ul>
-</div>
+  </div>
+</nav>
