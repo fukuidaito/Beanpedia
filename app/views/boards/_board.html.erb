@@ -1,40 +1,33 @@
 <% unless board.nil? %>
-  <div id="board-id-<%= board.id %>" class="card mb-4">
-    <div class="row no-gutters">
-      <!-- 画像部分 -->
-      <div class="col-md-4 d-flex align-items-start flex-column">
-        <%= image_tag board.board_image.url, class: 'card-img', size: '300x200' %>
-        <div class="mt-auto">
-          <%= link_to board.title, board_path(board), class: "card-title h5" %>
-          <ul class="list-inline">
-            <li class="list-inline-item">
-              <%= image_tag board.user.avatar_url, alt: 'User avatar', class: 'rounded-circle', size: '30x30' %>
-              <%= board.user.name %>
-            </li>
-            <li class="list-inline-item">
-              <%= icon 'far', 'calendar' %>
-              <%= l board.created_at, format: :long %>
-            </li>
-          </ul>
-          <% if current_user.own?(board) %>
-            <%= render 'crud_menus', board: board %>
-          <% else %>
-            <%= render 'boards/bookmark_button', board: board %>
-          <% end %>
-        </div>
-      </div>
-      <!-- 内容部分 -->
-      <div class="col-md-8">
-        <div class="card-body d-flex flex-column">
-
-          <div class="mt-auto">
-            <!-- ゲージの表示 -->
-            <%= render_progress_bar(board, :acidity) %>
-            <%= render_progress_bar(board, :bitterness) %>
-            <%= render_progress_bar(board, :richness) %>
-          </div>
-        </div>
-      </div>
+  <div id="board-id-<%= board.id %>" class=" ">
+<div class="col-md-6">
+  <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+    <div class="col p-4 d-flex flex-column position-static">
+      <strong class="d-inline-block mb-2 text-primary-emphasis">
+      ⚫︎⚫︎⚫︎⚫︎⚫︎⚫︎
+      </strong>
+      <h3 class="mb-0"><%= board.title %></h3>
+      <div class="mb-1 text-body-secondary"><%= l board.created_at, format: :long %></div>
+      <p class="card-text mb-auto"><%= board.body %></p>
+        <% if current_user.own?(board) %>
+      <%= render 'crud_menus', board: board %>
+        <% else %>
+      <%= render 'boards/bookmark_button', board: board %>
+    <% end %>
+    </div>
+    <div class="col p-4 d-flex flex-column position-static">
+    <li class="list-inline-item">
+    <%= image_tag board.user.avatar_url, alt: 'User avatar', class: 'rounded-circle', size: '30x30' %>
+    <%= board.user.name %>
+    <div class="mt-2">
+    <%= render_progress_bar(board, :acidity) %>
+    <%= render_progress_bar(board, :bitterness) %>
+    <%= render_progress_bar(board, :richness) %>
     </div>
   </div>
+    <div class="col-auto d-none d-lg-block">
+    <%= image_tag board.board_image.url, class: 'bd-placeholder-img', size: '250x250' %>
+    </div>
+  </div>
+</div>
 <% end %>
