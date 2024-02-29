@@ -2,6 +2,9 @@
   <div id="board-id-<%= board.id %>" class=" ">
 <div class="col-md-6">
   <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+  <div class="col-auto d-none d-lg-block">
+  <%= image_tag board.board_image.url, class: 'bd-placeholder-img', size: '250x250' %>
+  </div>
     <div class="col p-4 d-flex flex-column position-static">
       <strong class="d-inline-block mb-2 text-primary-emphasis">
       ⚫︎⚫︎⚫︎⚫︎⚫︎⚫︎
@@ -25,9 +28,6 @@
     <%= render_progress_bar(board, :richness) %>
     </div>
   </div>
-    <div class="col-auto d-none d-lg-block">
-    <%= image_tag board.board_image.url, class: 'bd-placeholder-img', size: '250x250' %>
-    </div>
   </div>
 </div>
 <% end %>
