@@ -1,43 +1,51 @@
-<header class="navbar navbar-fixed-top navbar-inverse">
-  <div class="container">
-    <%= link_to "cafequest", root_path, id: "logo" %>
-      <div class="navbar-header">
-        <button id="hamburger" type="button" class="navbar-toggle collapsed">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-      </div>
-    
-      <%= link_to profile_path, id: 'header-profile', class: "nav navbar-nav navbar-right collapse navbar-collapse", data: { bs_toggle: 'dropdown' }, aria: { expanded: 'false', haspopup: 'true' } do %>
-        <% if current_user %>
-          <%= image_tag current_user.avatar_url, alt: 'sample', class: 'navbar-img rounded-circle', size: '40x40' %>
-        <% else %>
-        <% end %>
-      <% end %>
-
-
-      <ul id="navbar-menu" class="nav navbar-nav navbar-right collapse navbar-collapse">
-        <li><%= link_to "posts", boards_path %></li>
-        <li><%= link_to "Home", root_path %></li>
+<header class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top ">
+  <div class="container-fluid">
+    <%= link_to "cafequest", root_path, id: "logo", class: "navbar-brand" %>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse nabar-light" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item"><%= link_to "Home", root_path, class: "nav-link" %></li>
+        <li class="nav-item"><%= link_to "Posts", boards_path, class: "nav-link" %></li>
+        <!-- Dropdown Menu -->
         <li class="nav-item dropdown">
-        <button type="button" id="dropdownMenu" class="btn btn-link nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-          メニュー▼
-        </button>
-        <ul class="dropdown-menu">
-        <% if logged_in? %>
-        <li><%= link_to "posts", boards_path %></li>
-        <li><%= link_to "Home", root_path %></li>
-        <li><%= link_to "Users", '#' %></li>
-        <li><%= link_to "Profile", current_user %></li>
-        <li><%= link_to "Settings", '#' %></li>
-        <li><%= link_to "Log out", logout_path, data: { turbo_method: :delete }  %></li>
-        <% else %>
-        <li><%= link_to "Log in", login_path %></li>
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            メニュー
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <% if logged_in? %>
+            <li><%= link_to "Posts", boards_path %></li>
+            <li><%= link_to "Home", root_path %></li>
+            <li><%= link_to "Users", '#' %></li>
+            <li><%= link_to "Profile", current_user %></li>
+            <li><%= link_to "Settings", '#' %></li>
+            <li><%= link_to "Log out", logout_path, data: { turbo_method: :delete } %></li>
+            <% else %>
+            <li><%= link_to "Log in", login_path %></li>
+            <% end %>
+          </ul>
+        </li>
+        <% if current_user %>
+        <li class="nav-item">
+          <%= link_to profile_path do %>
+            <%= image_tag current_user.avatar_url, alt: 'Avatar', class: 'rounded-circle', width: 40 %>
+          <% end %>
+        </li>
         <% end %>
-        </ul>
       </ul>
-    </nav>
+    </div>
   </div>
 </header>
+      
+      <!-- ここにページのコンテンツ -->
+      
+      <!-- BootstrapのJavaScriptファイルと依存関係 -->
+      <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+      </body>
+      </html>
+  </div>
+</header>
+
