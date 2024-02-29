@@ -1,7 +1,9 @@
 <% provide(:title, "QUEST一覧") %>
-<%= render 'search_form', q: @q, url: boards_path %>
+<div class="mt-4 mb-4">
+  <%= render 'search_form', q: @q, url: boards_path %>
+</div>
   <% if @boards.present? %>
-  <div class="row mb-2">
+  <div class="row mb-2 mt-6">
     <%= render @boards %>
   </div>
   <% else %>

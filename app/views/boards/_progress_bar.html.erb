@@ -1,9 +1,11 @@
 <div class="row">
-  <div class="col-12 col-md-8 col-lg-6"> <!-- 異なる画面サイズでの幅を調整 -->
+  <div class="col-md-4 col-lg-8">
+    <div class="listline-item">
     <%= label %>: <%= percentage %>
     <div class="progress" role="progressbar" aria-label="<%= label %> level" aria-valuenow="<%= percentage %>" aria-valuemin="0" aria-valuemax="100">
-      <div class="progress-bar custom-progress-bar progress-bar-striped progress-bar-animated" style="width: <%= percentage %>%;">
+      <div class="custom-progress-bar progress-bar-striped progress-bar-animated" style="width: <%= percentage %>%;">
       </div>
     </div>
+  </div> 
   </div>
 </div>
