@@ -1,4 +1,5 @@
 export function previewImage(event) {
+    console.log(event)
     const input = event.target;
     const preview = document.getElementById('preview');
 
