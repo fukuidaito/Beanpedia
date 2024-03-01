@@ -20,22 +20,22 @@
             </div>
           </div>
           <p><%= simple_format(@board.body) %></p>
+          <p><%= @board.address %></p>
+  
+          <!-- Googleマップ表示エリア(地図を表示) -->
+          <div id="map"></div>
         </div>
       </article>
     </div>
   </div>
   <!-- 住所表示エリア -->
-  <p><%= @board.address %></p>
-  
-  <!-- Googleマップ表示エリア(地図を表示) -->
-  <div id="map"></div>
 
   <script>
     function initMap(){
       // 地図の位置情報(緯度・経度)を取得
       let mapPosition = {lat: <%= @board.latitude || 0 %> , lng: <%= @board.longitude || 0 %> };
       let map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 15,
+        zoom: 30,
         center: mapPosition
       });
       let transitLayer = new google.maps.TransitLayer();
