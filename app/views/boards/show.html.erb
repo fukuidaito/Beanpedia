@@ -6,8 +6,8 @@
       <article class="card">
         <div class="card-body">
           <div class='row'>
-            <div class='col-md-3'>
-              <%= image_tag @board.board_image.url, class: 'card-img-top img-fluid', size: '300x200' %>
+            <div class='ms-auto'>
+              <%= image_tag @board.board_image.url, class: 'card-img-top img-fluid' %>
               <%= render_progress_bar(@board, :acidity) %>
               <%= render_progress_bar(@board, :bitterness) %>
               <%= render_progress_bar(@board, :richness) %>
@@ -24,6 +24,11 @@
   
           <!-- Googleマップ表示エリア(地図を表示) -->
           <div id="map"></div>
+          <!-- コメントエリア -->
+          <%= render @comments%>
+      
+        <!-- コメントフォーム -->
+        <%= render 'comments/form', { board: @board, comment: @comment } %>
         </div>
       </article>
     </div>
@@ -59,10 +64,4 @@
     </script>
   
     <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAPS_API_KEY'] %>&callback=initMap" async defer></script>
-
-  <!-- コメントフォーム -->
-  <%= render 'comments/form', { board: @board, comment: @comment } %>
-
-  <!-- コメントエリア -->
-  <%= render @comments%>
 </div>

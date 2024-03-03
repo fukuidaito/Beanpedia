@@ -1,10 +1,17 @@
-<h1>お気に入りランキング</h1>
+<h1 class="text-center mb-4">お気に入りランキング</h1>
 
-<ol>
-  <% @boards.each do |board| %>
-    <li>
-      <%= link_to board.title, board_path(board) %>
-      (お気に入り数: <%= board.bookmarks_count %>)
-    </li>
-  <% end %>
-</ol>
+<div class="container">
+  <div class="row justify-content-center">
+    <ol class="list-group list-group-numbered w-auto">
+      <% @boards.each do |board| %>
+        <li class="list-group-item d-flex align-items-center py-2 border-4">
+          <%= image_tag board.board_image.url, class: 'rounded-circle me-3', width: '60', height: '60' %>
+          <div class="flex-grow-1">
+            <%= link_to board.title, board_path(board), class: "h5 mb-0" %>
+            <p class="mb-0 small">(お気に入り数: <%= board.bookmarks_count %>)</p>
+          </div>
+        </li>
+      <% end %>
+    </ol>
+  </div>
+</div>

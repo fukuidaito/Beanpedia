@@ -9,7 +9,7 @@
     <strong class="d-inline-block mb-2 text-primary-emphasis">
       ⚫︎⚫︎⚫︎⚫︎⚫︎⚫︎
       </strong>
-        <h3 class="mb-0"><%= board.title %></h3>
+       <h3><%= link_to board.title, board_path(board), class: "mb-0" %></h3>
       <div class="mb-1 text-body-secondary"><%= l board.created_at, format: :long %></div>
       <p class="card-text mb-auto"><%= board.body %></p>
         <% if current_user.own?(board) %>
