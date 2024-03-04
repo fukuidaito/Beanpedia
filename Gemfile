@@ -56,7 +56,6 @@ gem "geocoder"
 gem 'ransack'
 gem 'kaminari'
 gem 'google_places'
-
 # Use Sass to process CSS
 # gem "sassc-rails"
 
