@@ -1,4 +1,4 @@
-FROM ruby:3.1
+FROM --platform=linux/amd64 ruby:3.1
 
 WORKDIR /app
 ENV LANG C.UTF-8
@@ -17,4 +17,6 @@ COPY Gemfile.lock /app/Gemfile.lock
 RUN bundle install
 RUN yarn install
 
-CMD ["rails", "server", "-b", "0.0.0.0"]
+COPY ./start.sh /start.sh
+RUN chmod 744 /start.sh
+CMD ["sh", "/start.sh"]
