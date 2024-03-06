@@ -1,4 +1,4 @@
-FROM --platform=linux/amd64 ruby:3.1
+FROM --platform=linux/amd64 ruby:3.1.4
 
 WORKDIR /app
 ENV LANG C.UTF-8
@@ -13,7 +13,7 @@ RUN curl -sL https://deb.nodesource.com/setup_${NODE_VERSION}.x | bash - \
 
 COPY Gemfile /app/Gemfile
 COPY Gemfile.lock /app/Gemfile.lock
-
+EXPOSE 3000
 
 RUN bundle install
 RUN yarn install
