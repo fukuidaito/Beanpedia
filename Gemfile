@@ -43,7 +43,6 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 gem "bcrypt",          "3.1.18"
 gem "bootsnap",        "1.16.0", require: false
 gem "sassc-rails",     "2.1.2"
-gem "sqlite3",         "1.6.1"
 gem "bootstrap-sass",  "3.4.1"
 gem 'carrierwave', '~> 3.0'
 gem 'font-awesome-sass'
@@ -63,7 +62,6 @@ gem 'google_places'
 # gem "image_processing", "~> 1.2"
 
 group :development, :test do
-  gem 'mysql2', '~> 0.5'
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'debug', platforms: %i[mri mingw x64_mingw]
   gem 'factory_bot_rails'
@@ -92,6 +90,3 @@ group :test do
   gem 'selenium-webdriver'
 end
 
-group :production do
-   gem "pg", "~> 1.4"
-end
