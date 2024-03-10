@@ -1,41 +1,37 @@
-<header class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top ">
+<header class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+  <%= link_to "cafequest", root_path, id: "logo", class: "navbar-brand" %>
   <div class="container-fluid">
-    <%= link_to "cafequest", root_path, id: "logo", class: "navbar-brand" %>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarResponsive">
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item"><%= link_to "Home", root_path, class: "nav-link" %></li>
-        <li class="nav-item"><%= link_to "Posts", boards_path, class: "nav-link" %></li>
-        <!-- Dropdown Menu -->
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            メニュー
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <% if logged_in? %>
-            <li><%= link_to "Posts", boards_path %></li>
-            <li><%= link_to "Home", root_path %></li>
-            <li><%= link_to "Users", '#' %></li>
-            <li><%= link_to "Profile", current_user %></li>
-            <li><%= link_to "Settings", '#' %></li>
-            <li><%= link_to "Log out", logout_path, data: { turbo_method: :delete } %></li>
-            <% else %>
-            <li><%= link_to "Log in", login_path %></li>
-            <% end %>
-          </ul>
-        </li>
-        <% if current_user %>
-        <li class="nav-item">
-          <%= link_to profile_path do %>
-            <%= image_tag current_user.avatar_url, alt: 'Avatar', class: 'rounded-circle', width: 40 %>
-          <% end %>
-        </li>
-        <% end %>
-      </ul>
-    </div>
   </div>
+  <ul class="navbar-nav me-4">
+  <li class="nav-item"><%= link_to "Home", root_path, class: "nav-link" %></li>
+  <li class="nav-item"><%= link_to "Posts", boards_path, class: "nav-link" %></li>
+  <!-- Dropdown Menu -->
+  <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown">
+      メニュー
+    </a>
+    <ul class="dropdown-menu ms-4" aria-labelledby="navbarDropdownMenuLink">
+      <% if logged_in? %>
+      <li><%= link_to "Posts", boards_path %></li>
+      <li><%= link_to "Home", root_path %></li>
+      <li><%= link_to "Users", '#' %></li>
+      <li><%= link_to "Profile", current_user %></li>
+      <li><%= link_to "Settings", '#' %></li>
+      <li><%= link_to "Log out", logout_path, data: { turbo_method: :delete } %></li>
+      <% else %>
+      <li><%= link_to "Log in", login_path %></li>
+      <% end %>
+    </ul>
+  </li>
+  <% if current_user %>
+  <li class="nav-item">
+    <%= link_to profile_path do %>
+      <%= image_tag current_user.avatar_url, alt: 'Avatar', class: 'rounded-circle', width: 40 %>
+    <% end %>
+  </li>
+  <% end %>
+</ul>
+  
 </header>
       
       <!-- ここにページのコンテンツ -->

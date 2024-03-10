@@ -2,17 +2,9 @@
 @import "bootstrap";
 
 body {
-    padding-top: 60px;
+    padding-top: 100px;
   }
-  
-  section {
-    overflow: auto;
-  }
-  
-  section {
-    overflow: auto;
-  }
-  
+    
 
   #logo {
     float: left;
@@ -29,21 +21,10 @@ body {
     color: #e85f0a;
     text-decoration: none;
   }
+
   .navbar-inverse {
     background-color: #59321a; /* 背景色の変更 */
     border-color: #0f0600; /* ボーダー色の変更（必要に応じて） */
-}
-
-.right-half-content {
-  width: 50%; /* 幅を画面の半分に設定 */
-  /* 必要に応じて他のスタイルを追加 */
-}
-
-.container-flex {
-  display: flex;
-  justify-content: space-between; /* 要素を画面の両端に配置 */
-  align-items: center; /* 要素を垂直方向の中心に配置 */
-  height: 100vh; /* ビューポートの高さに合わせる */
 }
 
 .left-half-image img {
@@ -67,9 +48,6 @@ footer a:hover {
   color: #e9dcdc;
 }
 
-footer small {
-  float: left;
-}
 
 footer ul {
   float: right;
@@ -109,25 +87,11 @@ footer ul li {
 
 /* Dropdown menu */
 
-.dropdown-menu.active {
-  display: block;
-}
 
 /* login form */
 
-.navbar-img {
-  float: right; /* 右寄せ */
-  margin-right: 15px; /* 右側の余白 */
-  margin-top: 5px; /* 上側の余白 */
-  border-radius: 50%;
-}
-
 
 /* ナビゲーションバーのアイテムのスタイリング */
-.navbar-nav > li > a, .navbar-nav > li > button {
-  padding-top: 15px;
-  padding-bottom: 15px;
-}
 
 /* 黒板 */
 .blackboard {
@@ -183,16 +147,6 @@ label {
   .progress {
     height: 10px; /* 小さい画面でのゲージの高さを調整 */
   }
-}
-
-.sidebar-sticky {
-  position: -webkit-sticky;
-  position: sticky;
-  top: 48px;
-  height: calc(100vh - 48px);
-  padding-top: .5rem;
-  overflow-x: hidden;
-  overflow-y: auto; /* コンテンツが多い時にスクロール可能に */
 }
 
 #map {
