@@ -1,5 +1,6 @@
 FROM --platform=linux/amd64 ruby:3.1.4
 
+ENV RAILS_ENV=production
 WORKDIR /app
 ENV LANG C.UTF-8
 ENV TZ Asia/Tokyo
