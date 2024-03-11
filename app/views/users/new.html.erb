@@ -1,31 +1,39 @@
 <h1>Sign up</h1>
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
+
+<div class="row justify-content-center">
+  <div class="col-lg-6 col-md-8 col-sm-10">
     <% provide(:title, "Signup") %>
     <%= form_with(model: @user) do |f| %>
       <%= render 'shared/error_messages' %>
-      <%= f.label :name %>
-      <%= f.text_field :name, class: 'form-control' %>
-      <%= f.label :email %>
-      <%= f.text_field :email, class: 'form-control' %>
-      <%= f.label :password %>
-      <%= f.password_field :password, class: 'form-control' %>
-      <%= f.label :password_confirmation, "Confirmation" %>
-      <%= f.password_field :password_confirmation, class: 'form-control' %>
-      <%= f.submit "登録", class: "btn-outline-primary" %>
+      <div class="form-group">
+        <%= f.label :name %>
+        <%= f.text_field :name, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= f.label :email %>
+        <%= f.text_field :email, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= f.label :password %>
+        <%= f.password_field :password, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= f.label :password_confirmation, "Confirmation" %>
+        <%= f.password_field :password_confirmation, class: 'form-control' %>
+      </div>
+      <%= f.submit "登録", class: "btn btn-primary btn-block" %>
     <% end %>
-  </div>
-  <div id="g_id_onload"
-       data-client_id="997051928699-qkchc1k1n5m1hhg6ipmr99lh8d8e29j7.apps.googleusercontent.com"
-       data-login_uri="http://localhost:3000/boards/index"
-       data-auto_prompt="false">
-  </div>
-  <div class="g_id_signin"
-  data-type="standard"
-  data-size="large"
-  data-theme="outline"
-  data-text="sign_in_with"
-  data-shape="rectangular"
-  data-logo_alignment="left">
+  </div> 
 </div>
-<%= button_to 'Sign in with Google', user_google_oauth2_omniauth_authorize_path, method: :post, data: { turbo: false } %>
+<div class="text-center my-3">
+  <span class="text-muted">--------------------- or -------------------------</span>
+</div>
+
+<div class="d-flex justify-content-center align-items-center my-3">
+  <%= form_tag(user_google_oauth2_omniauth_authorize_path, method: :post, data: { turbo: false }) do %>
+    <button type="submit" class="btn btn-google btn-lg btn-block border" style="max-width: 300px;">
+      <i class="fa-brands fa-google"></i>
+      <span style="font-size: 1.2rem;">Googleアカウントでサインインする</span>
+    </button>
+  <% end %> 
+</div>
