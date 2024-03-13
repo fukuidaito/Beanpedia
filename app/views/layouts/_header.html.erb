@@ -3,15 +3,13 @@
   <div class="container-fluid">
   </div>
   <ul class="navbar-nav me-4">
-  <li class="nav-item"><%= link_to "Home", root_path, class: "nav-link" %></li>
-  <li class="nav-item"><%= link_to "Posts", boards_path, class: "nav-link" %></li>
+   <% if logged_in? %>
   <!-- Dropdown Menu -->
   <li class="nav-item dropdown">
     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown">
       メニュー
     </a>
     <ul class="dropdown-menu ms-4" aria-labelledby="navbarDropdownMenuLink">
-      <% if logged_in? %>
       <li><%= link_to "Posts", boards_path %></li>
       <li><%= link_to "Home", root_path %></li>
       <li><%= link_to "Users", '#' %></li>
@@ -19,7 +17,6 @@
       <li><%= link_to "Settings", '#' %></li>
       <li><%= link_to "Log out", logout_path, data: { turbo_method: :delete } %></li>
       <% else %>
-      <li><%= link_to "Log in", login_path %></li>
       <% end %>
     </ul>
   </li>

@@ -94,8 +94,11 @@ footer ul li {
 /* ナビゲーションバーのアイテムのスタイリング */
 
 /* 黒板 */
+.center-container {
+  text-align: center;
+}
+
 .blackboard {
- position: relative;
  margin: 0 auto 1.5rem;
  padding: 1.6rem 1rem;
  font-size: 1.2rem;
@@ -104,6 +107,7 @@ footer ul li {
  border-radius: 5px;
  box-shadow: 0 0 0 4px #fff inset;
  background-color: rgba(0,0,0,0.9);
+ display: inline-block;
 }
 .blackboard.answer p {
  margin-left: 1.7rem;
