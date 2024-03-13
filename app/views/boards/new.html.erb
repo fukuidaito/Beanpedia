@@ -42,11 +42,10 @@
     </div>
   </div>
 </div>
-
 <script type="module">
   import { previewImage } from "preview"
   
-  document.addEventListener("turbo:load", () => {
+  document.addEventListener("turbo:render", () => {
     document.getElementById("board_board_image").addEventListener("change", previewImage);
   });
 </script>
