@@ -1,13 +1,13 @@
 <% provide(:title, "CAFE QUEST") %>
 
    <div class="center-container">
-     <h1>CAFE QUEST</h1>
-    <div class="blackboard mt-4">
+       <h1 class="title">CAFE QUEST</h1>
+      <div class="blackboard mt-4 mb-4">
       <p>コーヒー探求の冒険へ出かけますか？</p>
       <p id="start-link" class="menu-item"><span class="arrow">▶</span> <%= link_to 'START（ユーザー登録）', new_user_path, class: "blink-before" %></p>
       <p id="continue-link" class="menu-item"><span class="arrow" style="opacity: 0;">▶</span> <%= link_to 'CONTINUE（ログイン）', login_path, class: "blink-before" %></p>
     </div>
-   </div> 
+  </div> 
 
  <div class="container px-4" id="works">
  <h2>QUEST一覧（投稿をランダムで表示）</h2>
