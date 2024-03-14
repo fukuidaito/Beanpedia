@@ -40,22 +40,22 @@ gem 'jbuilder'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 # Reduces boot times through caching; required in config/boot.rb
-gem "bcrypt",          "3.1.18"
-gem "bootsnap",        "1.16.0", require: false
-gem "sassc-rails",     "2.1.2"
-gem "bootstrap-sass",  "3.4.1"
-gem 'carrierwave', '~> 3.0'
-gem 'font-awesome-sass'
+gem 'bcrypt',          '3.1.18'
+gem 'bootsnap',        '1.16.0', require: false
 gem 'bootstrap'
-gem 'dotenv-rails'
-gem 'omniauth', '1.9.1'
-gem 'omniauth-google-oauth2' 
+gem 'bootstrap-sass',  '3.4.1'
+gem 'carrierwave', '~> 3.0'
 gem 'devise'
-gem "geocoder"
-gem 'ransack'
-gem 'kaminari'
+gem 'dotenv-rails'
+gem 'font-awesome-sass'
+gem 'geocoder'
 gem 'google_places'
+gem 'kaminari'
+gem 'omniauth', '1.9.1'
+gem 'omniauth-google-oauth2'
 gem 'pg'
+gem 'ransack'
+gem 'sassc-rails', '2.1.2'
 # Use Sass to process CSS
 # gem "sassc-rails"
 
@@ -90,4 +90,3 @@ group :test do
   gem 'capybara'
   gem 'selenium-webdriver'
 end
-

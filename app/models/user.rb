@@ -4,17 +4,18 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          :omniauthable, omniauth_providers: %i[google_oauth2]
-  
+
   attr_accessor :remember_token
+
   mount_uploader :avatar, AvatarUploader
   has_many :boards, dependent: :destroy
   has_many :comments, dependent: :destroy
-  has_many :bookmarks, dependent: :destroy 
+  has_many :bookmarks, dependent: :destroy
   has_many :bookmark_boards, through: :bookmarks, source: :board
   before_save { self.email = email.downcase }
   validates :name,  presence: true, length: { maximum: 50 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-  validates :email, presence: true, length: { maximum: 255 },format: { with: VALID_EMAIL_REGEX },uniqueness: true
+  validates :email, presence: true, length: { maximum: 255 }, format: { with: VALID_EMAIL_REGEX }, uniqueness: true
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
@@ -22,13 +23,13 @@ class User < ApplicationRecord
 
       user.name = auth.info.name
       user.email = auth.info.email
-      user.password = Devise.friendly_token[0,20]
+      user.password = Devise.friendly_token[0, 20]
     end
   end
 
   def self.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST : BCrypt::Engine.cost
-    BCrypt::Password.create(string, cost: cost)
+    BCrypt::Password.create(string, cost:)
   end
 
   def self.new_token
@@ -47,6 +48,7 @@ class User < ApplicationRecord
 
   def authenticated?(remember_token)
     return false if remember_digest.nil?
+
     BCrypt::Password.new(remember_digest).is_password?(remember_token)
   end
 
@@ -55,19 +57,19 @@ class User < ApplicationRecord
   end
 
   def own?(resource)
-    self.id == resource.user_id
+    id == resource.user_id
   end
 
   # ブックマークに追加する
   def bookmark(board)
     bookmark_boards << board
   end
-  
+
   # ブックマークを外す
   def unbookmark(board)
     bookmark_boards.destroy(board)
   end
-  
+
   # ブックマークをしているか判定する
   def bookmark?(board)
     bookmark_boards.include?(board)

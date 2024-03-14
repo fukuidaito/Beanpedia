@@ -1,5 +1,4 @@
 class BookmarksController < ApplicationController
-
   def create
     @board = Board.find(params[:board_id])
     current_user.bookmark(@board)
