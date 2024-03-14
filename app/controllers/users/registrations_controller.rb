@@ -4,9 +4,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   protected
 
   def after_sign_up_path_for(resource)
-    user_path(resource) 
+    user_path(resource)
   end
-  
+
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
@@ -43,8 +43,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def cancel
   #   super
   # end
-
-  protected
 
   def update_resource(resource, params)
     resource.update_without_password(params)
