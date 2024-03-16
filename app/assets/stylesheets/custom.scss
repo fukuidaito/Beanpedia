@@ -154,6 +154,30 @@ label {
   width: 100%;
 }
 
-.title{
-  font-size:150px; 
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.title {
+  font-size: 150px;
+  animation: fadeIn 2s ease-out; /* 2秒かけてフェードイン */
+  color: #FFFFE0;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+
+.backgroundimage {
+  background-image: image-url('background.png');
+  background-size: cover;
+  background-position: center;
+}
+
+.container-fluid {
+  padding-top: 0;
 }
