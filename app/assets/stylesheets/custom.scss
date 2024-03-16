@@ -1,10 +1,6 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-body {
-    padding-top: 100px;
-  }
-    
 
   #logo {
     float: left;
@@ -160,7 +156,4 @@ label {
 
 .title{
   font-size:150px; 
-}
-.fixed-height {
-  height: 250px; /* 固定したい高さを指定 */
 }
