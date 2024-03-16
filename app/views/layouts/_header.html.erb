@@ -1,44 +1,34 @@
-<header class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-  <%= link_to "cafequest", root_path, id: "logo", class: "navbar-brand" %>
-  <div class="container-fluid">
-  </div>
-  <ul class="navbar-nav me-4">
-   <% if logged_in? %>
-  <!-- Dropdown Menu -->
-  <li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown">
-      メニュー
-    </a>
-    <ul class="dropdown-menu ms-4" aria-labelledby="navbarDropdownMenuLink">
-      <li><%= link_to "Posts", boards_path %></li>
-      <li><%= link_to "Home", root_path %></li>
-      <li><%= link_to "Users", '#' %></li>
-      <li><%= link_to "Profile", current_user %></li>
-      <li><%= link_to "Settings", '#' %></li>
-      <li><%= link_to "Log out", logout_path, data: { turbo_method: :delete } %></li>
-      <% else %>
-      <% end %>
-    </ul>
-  </li>
-  <% if current_user %>
-  <li class="nav-item">
-    <%= link_to profile_path do %>
-      <%= image_tag current_user.avatar_url, alt: 'Avatar', class: 'rounded-circle', width: 40 %>
-    <% end %>
-  </li>
-  <% end %>
-</ul>
-  
-</header>
-      
-      <!-- ここにページのコンテンツ -->
-      
-      <!-- BootstrapのJavaScriptファイルと依存関係 -->
-      <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
-      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-      </body>
-      </html>
-  </div>
-</header>
+<header>
+  <nav class='navbar navbar-expand-lg navigation navbar-light bg-light'>
+    <button class='navbar-toggler' data-bs-toggle='collapse' data-bs-target='#navbarSupportedContent'
+      aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation'>
+      <span class='navbar-toggler-icon'></span>
+    </button>
+    <div class='collapse navbar-collapse' id='navbarSupportedContent'>
+      <ul class='navbar-nav ms-auto main-nav align-items-center'>
+        <li class='nav-item dropdown dropdown-slide'>
+          <%= link_to ' 掲示板 ', '', class: 'nav-link dropdown-toggle', 'data-bs-toggle': 'dropdown', 'aria-haspopup': 'true', 'aria-expanded': 'false' %>
+          <div class='dropdown-menu dropdown-menu-end'>
+            <%= link_to '掲示板一覧', boards_path, class: 'dropdown-item' %>
+            <%= link_to '掲示板作成', new_board_path, class: 'dropdown-item' %>
+          </div>
+        </li>
 
+        <li class='nav-link'>
+          <%= link_to 'ブックマーク一覧', bookmarks_boards_path, class: 'nav-link' %>
+        </li>
+
+        <li class='nav-item dropdown dropdown-slide'>
+          <%= link_to '#', id: 'header-profile', class: "nav-link", data: { bs_toggle: 'dropdown' }, aria: { expanded: 'false', haspopup: 'true' }  do %>
+            <%= image_tag current_user.avatar_url, class: 'rounded-circle mr15', size: '40x40'%>
+          <% end %>
+          <div class='dropdown-menu dropdown-menu-end'>
+            <div class='dropdown-item'><%= current_user.name %></div>
+            <div class='dropdown-divider'></div>
+            <%= link_to 'プロフィール', '/profile', class: 'dropdown-item' %>
+            <%= link_to 'ログアウト', logout_path, class: 'dropdown-item', data: { turbo_method: :delete } %>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </header>
