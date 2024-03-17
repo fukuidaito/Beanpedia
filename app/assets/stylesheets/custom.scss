@@ -1,4 +1,3 @@
-@import "bootstrap-sprockets";
 @import "bootstrap";
 
 
@@ -180,4 +179,15 @@ label {
 
 .container-fluid {
   padding-top: 0;
+}
+
+.fixed-height {
+  height: 250px; /* 例として350pxを設定 */
+  overflow: auto; /* コンテンツがオーバーフローした場合にスクロールバーを表示 */
+  min-height: 250px;
+}
+
+.text-container {
+  max-height: 200px; /* 適切な最大高さに設定 */
+  overflow-y: auto; /* 縦方向のスクロールバーを表示 */
 }
