@@ -191,3 +191,8 @@ label {
   max-height: 200px; /* 適切な最大高さに設定 */
   overflow-y: auto; /* 縦方向のスクロールバーを表示 */
 }
+.subtop{
+  font-size: 100px;
+  color: #FFFFE0;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
