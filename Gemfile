@@ -56,6 +56,7 @@ gem 'omniauth-google-oauth2'
 gem 'pg'
 gem 'ransack'
 gem 'sassc-rails', '2.1.2'
+gem 'jquery-rails'
 # Use Sass to process CSS
 # gem "sassc-rails"
 
