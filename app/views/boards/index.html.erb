@@ -1,15 +1,28 @@
 <% provide(:title, "QUEST一覧") %>
-<main class="col-md-9 col-lg-10 px-md-4">
-<div class="mt-4 mb-4">
-  <%= render 'search_form', q: @q, url: boards_path %>
-</div>
-  <% if @boards.present? %>
-  <div class="row mb-2 mt-6">
-    <%= render @boards %>
+
+<div class="container-fluid">
+  <div class="row">
+    <main class="col-md-9 col-lg-10 px-md-4">
+      <div class="mt-4 mb-4">
+        <%= render 'search_form', q: @q, url: boards_path %>
+      </div>
+      <% if @boards.present? %>
+        <div class="container-fluid">
+          <div class="row">
+            <div class="row mb-2 mt-6">
+              <%= render @boards %>
+            </div>
+          </div>
+        </div>
+      <% else %>
+        <p>掲示板がありません</p>
+      <% end %>
+    </main>
+
+    <div class="col-md-3 col-lg-2 bg-light sidebar sticky-top">
+      <div class="d-flex flex-column flex-shrink-0 p-3 bg-body-tertiary" style="width: 280px;">
+      <%= render 'layouts/sidebar' if logged_in? %>
+      </div>
+    </div>
   </div>
-  <% else %>
-    <p>掲示板がありません</p>
-  <% end %>
-  </div> 
-</main>
-<%= render 'layouts/sidebar', class: "col-md-3 col-lg-2 d-md-block bg-light sidebar sticky-top" if logged_in? %>
+</div>

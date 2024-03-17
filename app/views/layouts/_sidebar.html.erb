@@ -1,38 +1,36 @@
-    <nav class="col-md-2 d-none d-md-block bg-light sidebar">
-      <div class="sidebar-sticky">
-        <ul class="nav flex-column">
-          <li class="nav-item">
+<div class="d-flex flex-column p-3 bg-body-tertiary" style="width: 200px;">
+
+  <ul class="nav flex-column mb-auto">
     <li class="nav-item">
-    <%= link_to search_path do %>
-      <i class="fas fa-search"></i> 検索
-    <% end %>
-    <li class="nav-item">
-      <%= link_to profile_path do %>
+      <%= link_to profile_path, class: "nav-link link-body-emphasis" do %>
         <i class="fas fa-user"></i> プロフィール
       <% end %>
     </li>
     <li class="nav-item">
-      <%= link_to new_board_path do %>
+      <%= link_to new_board_path, class: "nav-link link-body-emphasis" do %>
         <i class="fas fa-list"></i> リスト
       <% end %>
     </li>
     <li class="nav-item">
-      <%= link_to bookmarks_boards_path do %>
+      <%= link_to bookmarks_boards_path, class: "nav-link link-body-emphasis" do %>
         <i class="fas fa-star"></i> お気に入り
       <% end %>
     </li>
     <li class="nav-item">
-      <%= link_to ranking_boards_path do %>
+      <%= link_to ranking_boards_path, class: "nav-link link-body-emphasis" do %>
         <i class="fas fa-trophy"></i> ランキング
       <% end %>
     </li>
     <li class="nav-item">
-      <%= link_to new_board_path do %>
-        <i class="fas fa-plus-square"></i> 新規投稿
+      <%= link_to new_board_path, class: "nav-link link-body-emphasis" do %>
+        <i class="fas fa-plus-square"></i> カフェクエスト作成
       <% end %>
     </li>
-    <li>
+    <li class='nav-item dropdown'>
+      <%= image_tag current_user.avatar_url, class: 'rounded-circle mr-2', size: '40x40'%>
+      <%= current_user.name %>
+    </div>
   </li>
   </ul>
-
+  </div>
 </div>
