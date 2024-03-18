@@ -1,0 +1,26 @@
+ja:
+  users:
+    new:
+      title: 'ユーザー登録'
+      to_login_page: 'ログインページへ'
+    create:
+      success: 'ユーザー登録が完了しました'
+      fail: 'ユーザー登録に失敗しました'
+  devise:
+    omniauth_callbacks:
+      success: "%{kind} アカウントでのログインに成功しました"
+      user:
+        success: "%{kind} アカウントでのログインに成功しました"
+  user_sessions:
+    new:
+      title: 'ログイン'
+      to_register_page: '登録ページへ'
+      password_forget: 'パスワードをお忘れの方はこちら'
+  boards:
+    index:
+      title: 'クエスト一覧'
+    bookmarks:
+      title: 'お気に入り一覧'
+  profiles:
+    show:
+      title: 'プロフィール'
