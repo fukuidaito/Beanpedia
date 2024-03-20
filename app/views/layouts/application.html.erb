@@ -15,15 +15,15 @@
 </head>
 <body>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
-    <% if current_user %>
-  <%= render 'layouts/header' %>
+  <% if current_user %>
+   <%= render 'layouts/header' %>
   <% else %>
     <%= render 'layouts/beforlogin_header' %>
   <% end %>
   <div class="container-fluid">
     <div class="row">
       <!-- メインコンテンツ -->
-        <% flash.each do |message_type, message| %>
+        <v% flash.each do |message_type, message| %>
           <div class="alert alert-<%= message_type %>"><%= message %></div>
         <% end %>
         <%= yield %>

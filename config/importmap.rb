@@ -6,4 +6,4 @@ pin "custom", to: "custom.js", preload: true
 pin "bootstrap" # @5.3.3
 pin "top", to: "top.js"
 pin "preview", to: "preview.js"
-pin "@popperjs/core", to: "@popperjs--core.js" # @2.11.8
+pin "@popperjs/core", to: "@popperjs--core.js"
