@@ -31,3 +31,6 @@
 /config/master.key
 /public/uploads
 .env
+
+/app/assets/builds/*
+!/app/assets/builds/.keep

@@ -43,7 +43,6 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 gem 'bcrypt',          '3.1.18'
 gem 'bootsnap',        '1.16.0', require: false
 gem 'bootstrap'
-gem 'bootstrap-sass',  '3.4.1'
 gem 'carrierwave', '~> 3.0'
 gem 'devise'
 gem 'dotenv-rails'
@@ -57,6 +56,7 @@ gem 'pg'
 gem 'ransack'
 gem 'sassc-rails', '2.1.2'
 gem 'rails-i18n', '~> 7.0.0'
+gem 'tailwindcss-rails'
 # Use Sass to process CSS
 # gem "sassc-rails"
 
