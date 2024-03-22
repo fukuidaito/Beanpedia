@@ -1,0 +1,24 @@
+
+<h1>コーヒー好みアンケート</h1>
+
+<%= form_with(model: @survey, local: true) do |form| %>
+  <div>
+    <%= form.label :bitterness, "苦味" %>
+    <%= form.number_field :bitterness %>
+  </div>
+  <div>
+    <%= form.label :acidity, "酸味" %>
+    <%= form.number_field :acidity %>
+  </div>
+  <div>
+    <%= form.label :body, "コク" %>
+    <%= form.number_field :body %>
+  </div>
+  <div>
+    <%= form.label :origin, "産地" %>
+    <%= form.text_field :origin %>
+  </div>
+  <div>
+    <%= form.submit "回答する" %>
+  </div>
+<% end %>

@@ -25,4 +25,5 @@ Rails.application.routes.draw do
     end
   end
   resources :bookmarks, only: [:create, :destroy]
+  resources :surveys, only: [:new, :create]
 end
