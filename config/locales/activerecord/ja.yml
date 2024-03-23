@@ -3,9 +3,17 @@ ja:
      models:
        user: 'ユーザー'
        board: '掲示板'
+       richness: 'コク'
      attributes:
        user:
          email: 'メールアドレス'
          password: 'パスワード'
          password_confirmation: 'パスワード確認'
          name: '名前'
+       boards:
+         address: '住所'
+         acidity: '酸味'
+         bitterness: '苦味'
+         richness: 'コク'
+
+

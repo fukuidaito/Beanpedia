@@ -1,11 +1,11 @@
 <div class="row">
   <div class="col-md-4 col-lg-8">
     <div class="listline-item">
-    <%= label %>: <%= percentage %>
-    <div class="progress" role="progressbar" aria-label="<%= label %> level" aria-valuenow="<%= percentage %>" aria-valuemin="0" aria-valuemax="100">
-      <div class="custom-progress-bar progress-bar-striped progress-bar-animated" style="width: <%= percentage %>%;">
+      <%= label %>: <%= percentage %>
+      <div class="progress" role="progressbar" aria-label="<%= label %> level" aria-valuenow="<%= percentage %>" aria-valuemin="1" aria-valuemax="5">
+        <div class="custom-progress-bar progress-bar-striped progress-bar-animated" style="width: <%= percentage * 20 %>%;">
+        </div>
       </div>
-    </div>
-  </div> 
+    </div> 
   </div>
 </div>
