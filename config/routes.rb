@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   resource :profile, only: [:show, :edit, :update]
   resources :boards do
     resources :comments, only: [:create], shallow: true
+    post 'rate', on: :member
     collection do
       get 'bookmarks'
       get 'ranking'

@@ -21,4 +21,12 @@ module BoardsHelper
     percentage = enum_to_percentage(board.send(attribute))
     render partial: 'boards/progress_bar', locals: { label:, percentage: }
   end
+
+  def display_stars(rating)
+    stars = ''
+    rating = rating || 0
+    rating.times { stars += '★' }
+    (5 - rating).times { stars += '☆' }
+    stars
+  end
 end

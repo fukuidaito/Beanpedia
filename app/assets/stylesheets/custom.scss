@@ -202,3 +202,25 @@ label {
   height: 100%;
   border: 1px solid #ccc;
 }
+
+.star-rating {
+  font-size: 0;
+}
+
+.star-rating input {
+  display: none;
+}
+
+.star-rating label {
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.star-rating label:before {
+  content: '★';
+}
+
+.star-rating input:checked ~ label:before {
+  content: '★';
+  color: gold;
+}
