@@ -1,4 +1,5 @@
 class BoardsController < ApplicationController
+  include BoardsHelper
   before_action :set_board, only: %i[edit update destroy]
 
   # def index
@@ -70,6 +71,12 @@ class BoardsController < ApplicationController
 
   def board_params
     params.require(:board).permit(:title, :body, :board_image, :board_image_cache, :acidity, :bitterness, :richness, :address,
-                                  :latitude, :longitude)
+                                  :latitude, :longitude, :rating)
+  end
+
+  def rate
+    board = Board.find(params[:id])
+    board.rating = params[:rating]
+    board.save
   end
 end

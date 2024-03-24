@@ -20,6 +20,13 @@
           <%= board.user.name %>
         </li>
         <div class="mt-2">
+          <div class="board">
+            <h3><%= link_to board.title, board_path(board) %></h3>
+            <p><%= board.body %></p>
+            <div class="rating">
+              <%= display_stars(board.rating) %>
+            </div>
+          </div>
           <%= render_progress_bar(board, :acidity) %>
           <%= render_progress_bar(board, :bitterness) %>
           <%= render_progress_bar(board, :richness) %>
