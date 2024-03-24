@@ -196,3 +196,9 @@ label {
   color: #FFFFE0;
   text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
+
+.border-full {
+  width: 100%;
+  height: 100%;
+  border: 1px solid #ccc;
+}
