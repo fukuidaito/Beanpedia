@@ -1,10 +1,8 @@
 import "@hotwired/turbo-rails";
-import $ from "jquery";
-import "jquery-raty-js";
+import jquery from "jquery"
+window.$ = jquery
 
-document.addEventListener("DOMContentLoaded", () => {
-    $('#star').raty({
-      path: '/assets/images', // Raty が使用する画像ファイルのパスを指定
-      scoreName: 'board[star]'
-    });
-  });
+
+$(function(){
+    alert("jQuery 動いた！")
+  })
