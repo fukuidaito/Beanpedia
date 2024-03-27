@@ -1,8 +1,11 @@
 import "@hotwired/turbo-rails";
 import jquery from "jquery"
 window.$ = jquery
+import "jquery-raty";
 
-
-$(function(){
-    alert("jQuery 動いた！")
-  })
+document.addEventListener("DOMContentLoaded", () => {
+  $('#star').raty({
+    path: '/assets/images',
+    scoreName: 'board[star]'
+  });
+});

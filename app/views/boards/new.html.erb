@@ -4,20 +4,36 @@
     <div class="col-lg-8 offset-lg-2">
       <h1>新規投稿</h1>
       <%= form_with model: @board, class: "new_board", multipart: true do |f| %>
-        <div class="form-group row" id="star">
-        <%= f.label :star,'評価', class:'col-md-3 col-form-label' %>
-        <%= f.hidden_field :star, id: :review_star %>
+        <% if @board.id.nil? %>
+          <div class="form-group" id="star">
+            <%= f.label :star, '評価', class: 'col-md-3 col-form-label' %>
+            <%= f.hidden_field :star, id: :board_star, class: 'form-control' %>
+            <div id="post_raty"></div>
           </div>
-          <script>
-          $('#star').empty();
-          $('#star').raty({
-            size     : 36,
-            starOff:  '<%= asset_path('star-off.png') %>',
-            starOn : '<%= asset_path('star-on.png') %>',
-            scoreName: 'board[star]',
-            half: false,
+          <script type="module">
+          import $ from "jquery";
+          import "jquery-raty";
+        
+          $(document).on('turbolinks:load', function() {
+            let elem = document.querySelector('#post_raty');
+            if (elem == null) return;
+        
+            elem.innerHTML = "";
+            let opt = {  
+              starOn: "/assets/star-on.png",
+              starOff: "/assets/star-off.png",
+              starHalf: "/assets/star-half.png",
+              scoreName: 'board[star]',
+            };
+            $(elem).raty(opt);
           });
-          </script>
+        </script>
+        
+        <% else %>
+          <div class="form-group">
+            <%= render "static_rate", board: @board %>
+          </div>
+        <% end %>
         <div class="form-group">
           <%= f.label :title, 'コーヒー名' %>
           <%= f.text_field :title, class: 'form-control' %>
@@ -55,5 +71,6 @@
     </div>
   </div>
 </div>
+
 
 <script type="module">import "raty";</script>
