@@ -7,4 +7,4 @@ pin "bootstrap" # @5.3.3
 pin "top", to: "top.js"
 pin "stars", to: "stars.js"
 pin "jquery" # @3.7.1
-pin "jquery-raty", to: "jquery.raty.js", preload: true
+pin "raty", to: "raty.js", preload: true
