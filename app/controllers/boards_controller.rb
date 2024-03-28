@@ -70,8 +70,9 @@ class BoardsController < ApplicationController
   end
 
   def board_params
-    params.require(:board).permit(:title, :body, :board_image, :board_image_cache, :acidity, :bitterness, :richness, :address,
-                                  :latitude, :longitude, :rating)
+    params.require(:board).permit(:title, :body, :board_image, :board_image_cache, :acidity, :bitterness, :richness, :address, :latitude, :longitude, :rating).tap do |whitelisted|
+      whitelisted[:rating] = whitelisted[:rating].to_i if whitelisted[:rating]
+    end
   end
 
   def rate

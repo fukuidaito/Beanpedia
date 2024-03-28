@@ -22,11 +22,18 @@ module BoardsHelper
     render partial: 'boards/progress_bar', locals: { label:, percentage: }
   end
 
-  def display_stars(rating)
-    stars = ''
-    rating = rating || 0
-    rating.times { stars += '★' }
-    (5 - rating).times { stars += '☆' }
-    stars
+  def display_rating(rating)
+    case rating
+    when 'good'
+      '⭐️'
+    when 'very_good'
+      '⭐️⭐️'
+    when 'excellent'
+      '⭐️⭐️⭐️'
+    when 'outstanding'
+      '⭐️⭐️⭐️⭐️'
+    when 'exceptional'
+      '⭐️⭐️⭐️⭐️⭐️'
+    end
   end
 end

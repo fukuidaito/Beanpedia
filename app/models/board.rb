@@ -6,6 +6,18 @@ class Board < ApplicationRecord
 
   validates :title, presence: true, length: { maximum: 255 }
   validates :body, presence: true, length: { maximum: 65_535 }
+
+  enum rating: { good: 1, very_good: 2, excellent: 3, outstanding: 4, exceptional: 5 }
+
+  def self.rating_options
+    {
+      '⭐️': :good,
+      '⭐️⭐️': :very_good,
+      '⭐️⭐️⭐️': :excellent,
+      '⭐️⭐️⭐️⭐️': :outstanding,
+      '⭐️⭐️⭐️⭐️⭐️': :exceptional
+    }
+  end
   enum acidity: { very_low: 1, low: 2, medium: 3, high: 4, very_high: 5 }, _prefix: true
   enum bitterness: { very_low: 1, low: 2, medium: 3, high: 4, very_high: 5 }, _prefix: true
   enum richness: { very_low: 1, low: 2, medium: 3, high: 4, very_high: 5 }, _prefix: true
