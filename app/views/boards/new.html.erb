@@ -4,6 +4,7 @@
     <div class="col-lg-8 offset-lg-2">
       <h1>新規投稿</h1>
       <%= form_with model: @board, class: "new_board", multipart: true do |f| %>
+        <%= f.label :title, '総合評価' %>
         <%= f.select :rating, Board.rating_options.map { |k, v| [k, Board.ratings[v]] }, {}, class: "form-select" %>
         <div class="form-group">
           <%= f.label :title, 'コーヒー名' %>
