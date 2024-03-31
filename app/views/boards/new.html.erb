@@ -43,3 +43,15 @@
     </div>
   </div>
 </div>
+
+<%= javascript_importmap_tags %>
+<script type="module">
+  import { previewImage } from "preview";
+  // ここでイベントリスナーを設定
+  document.addEventListener('DOMContentLoaded', () => {
+    const fileInput = document.getElementById('board_board_image');
+    if (fileInput) {
+      fileInput.addEventListener('change', previewImage);
+    }
+  });
+</script>
