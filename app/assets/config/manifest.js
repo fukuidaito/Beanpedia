@@ -4,3 +4,4 @@
 //= link_tree ../../javascript .js
 //= link bootstrap.js
 //= link jquery.js
+//= link @rails--ujs.js

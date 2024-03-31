@@ -4,6 +4,7 @@
     <div class="col-lg-8 offset-lg-2">
       <h1>新規投稿</h1>
       <%= form_with model: @board, class: "new_board", multipart: true do |f| %>
+        <%= f.label :title, '総合評価' %>
         <%= f.select :rating, Board.rating_options.map { |k, v| [k, Board.ratings[v]] }, {}, class: "form-select" %>
         <div class="form-group">
           <%= f.label :title, 'コーヒー名' %>
@@ -42,3 +43,15 @@
     </div>
   </div>
 </div>
+
+<%= javascript_importmap_tags %>
+<script type="module">
+  import { previewImage } from "preview";
+  // ここでイベントリスナーを設定
+  document.addEventListener('DOMContentLoaded', () => {
+    const fileInput = document.getElementById('board_board_image');
+    if (fileInput) {
+      fileInput.addEventListener('change', previewImage);
+    }
+  });
+</script>
