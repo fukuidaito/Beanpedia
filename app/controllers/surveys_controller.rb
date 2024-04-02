@@ -6,23 +6,16 @@ class SurveysController < ApplicationController
   def create
     @survey = Survey.new(survey_params)
     if @survey.save
-      openai_client = OpenaiClient.new
-      @suggestion = openai_client.suggest_coffee(@survey)
-      redirect_to survey_path(@survey, suggestion: @suggestion)
+      redirect_to survey_path(@survey)
     else
-        render :new
+      render :new
     end
-  end
-
-  def show
-  @survey = Survey.find(params[:id])
-  @suggestion = params[:suggestion]
   end
 
   private
 
   def survey_params
-  params.require(:survey).permit(:bitterness, :acidity, :body, :origin)
+    params.require(:survey).permit(:acidity, :bitterness, :body, :flavor)
   end
 end
   

@@ -1,24 +1,21 @@
-
-<h1>コーヒー好みアンケート</h1>
-
-<%= form_with(model: @survey, local: true) do |form| %>
+<%= form_with model: @survey, url: surveys_path do |form| %>
   <div>
-    <%= form.label :bitterness, "苦味" %>
-    <%= form.number_field :bitterness %>
+    <%= form.label :acidity, "コーヒーの酸味が好きですか？" %>
+    <%= form.check_box :acidity %>
   </div>
   <div>
-    <%= form.label :acidity, "酸味" %>
-    <%= form.number_field :acidity %>
+    <%= form.label :bitterness, "コーヒーの苦味が好きですか？" %>
+    <%= form.check_box :bitterness %>
   </div>
   <div>
-    <%= form.label :body, "コク" %>
-    <%= form.number_field :body %>
+    <%= form.label :body, "コーヒーのボディ（コク）はどのくらいが好きですか？" %>
+    <%= form.number_field :body, in: 1..5 %>
   </div>
   <div>
-    <%= form.label :origin, "産地" %>
-    <%= form.text_field :origin %>
+    <%= form.label :flavor, "どのような風味が好きですか？" %>
+    <%= form.select :flavor, ["フルーティー", "ナッティー", "チョコレート"] %>
   </div>
   <div>
-    <%= form.submit "回答する" %>
+    <%= form.submit "送信" %>
   </div>
 <% end %>
