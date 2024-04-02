@@ -1,11 +1,11 @@
 <%= form_with model: @survey, url: surveys_path do |form| %>
   <div>
     <%= form.label :acidity, "コーヒーの酸味が好きですか？" %>
-    <%= form.check_box :acidity %>
-  </div>
+    <%= form.select :acidity, [['弱めが好き', 1], ['普通', 2], ['強めが好き', 3]] %>
+    </div>
   <div>
     <%= form.label :bitterness, "コーヒーの苦味が好きですか？" %>
-    <%= form.check_box :bitterness %>
+    <%= form.select :bitterness, [['弱めが好き', 1], ['普通', 2], ['強めが好き', 3]] %>
   </div>
   <div>
     <%= form.label :body, "コーヒーのボディ（コク）はどのくらいが好きですか？" %>

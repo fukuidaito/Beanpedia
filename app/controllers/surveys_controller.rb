@@ -12,6 +12,10 @@ class SurveysController < ApplicationController
     end
   end
 
+  def show
+    @survey = Survey.find(params[:id])
+  end
+
   private
 
   def survey_params
