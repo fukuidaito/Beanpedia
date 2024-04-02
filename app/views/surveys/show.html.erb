@@ -1,0 +1,17 @@
+<% if @survey.acidity == 1 && @survey.bitterness == 1 && @survey.body <= 2 && @survey.flavor == "ナッティー" %>
+  <p>マイルドな味わいでナッティーな風味が特徴のハワイのコナコーヒーをお試しください。</p>
+<% elsif @survey.acidity == 1 && @survey.bitterness == 1 && @survey.body == 1 && @survey.flavor == "フルーティー" %>
+  <p>フルーティーな風味がありながらも軽いボディで飲みやすい、深煎りでないタイプのコーヒーをお試しください。例えば、軽やかな風味が特徴の中米や一部のアフリカ産のコーヒーがおすすめです。</p>
+<% elsif @survey.acidity == 3 && @survey.bitterness == 3 && @survey.body >= 3 && @survey.flavor == "フルーティー" %>
+  <p>フルーティな酸味としっかりした苦味が特徴のエチオピア産のコーヒーをお試しください。</p>
+<% elsif @survey.acidity == 2 && @survey.bitterness == 2 && @survey.body == 2 && @survey.flavor == "フルーティー" %>
+  <p>バランスの良い味わいでフルーティーな風味が特徴のグアテマラ産のコーヒーをお試しください。</p>
+<% elsif @survey.bitterness == 3 && @survey.body >= 3 && @survey.flavor == "ナッティー" %>
+  <p>苦味が強くナッティーな風味が特徴のインドネシア産のコーヒーをお試しください。</p>
+<% elsif @survey.bitterness == 2 && @survey.body <= 2 && @survey.flavor == "チョコレート" %>
+  <p>しっかりとした味わいでチョコレートの風味が特徴のブラジル産のコーヒーをお試しください。</p>
+<% elsif @survey.acidity == 2 && @survey.bitterness == 2 && @survey.body == 1 && @survey.flavor == "フルーティー" %>
+  <p>バランスの良い酸味と苦味が特徴で、軽いボディのフルーティーな風味のコーヒーをお試しください。中米やアフリカ産の浅煎りのコーヒーがおすすめです。</p>
+<% else %>
+  <p>あなたの好みに合わせたコーヒーを選ぶために、さらに詳しい嗜好を教えてください。</p>
+<% end %>
