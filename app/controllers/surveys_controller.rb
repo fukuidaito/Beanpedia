@@ -6,7 +6,7 @@ class SurveysController < ApplicationController
   def create
     @survey = Survey.new(survey_params)
     if @survey.save
-      input = "ユーザーが好むコーヒーの特徴: 酸味=#{@survey.acidity}, 苦味=#{@survey.bitterness}, ボディ=#{@survey.body}, 風味=#{@survey.flavor}"
+      input = "あなたは親しみやすい話し方をするコーヒーの専門家です。ユーザーが好むコーヒーの特徴: 酸味=#{@survey.acidity}, 苦味=#{@survey.bitterness}, ボディ=#{@survey.body}, 風味=#{@survey.flavor}。おすすめのコーヒー豆の名前を提供してください？"
       @survey.suggestion = OpenAiService.generate_coffee_suggestion(input)
       @survey.save
       redirect_to survey_path(@survey)
