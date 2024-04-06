@@ -1,8 +1,12 @@
-
-<p><strong>酸味:</strong> <%= @survey.acidity %></p>
-<p><strong>苦味:</strong> <%= @survey.bitterness %></p>
-<p><strong>ボディ:</strong> <%= @survey.body %></p>
-<p><strong>風味:</strong> <%= @survey.flavor %></p>
-<% if @survey.suggestion.present? %>
-  <p><strong>提案:</strong> <%= @survey.suggestion %></p>
-<% end %>
+<div class="card mb-5" style="background-color: #f8f8f8; border: 2px solid #333;">
+  <div class="card-body">
+    <h5 class="card-title text-center mb-4" style="font-family: 'Press Start 2P', cursive; color: #333;">コーヒーの好み</h5>
+    <p class="card-text" style="font-family: 'Press Start 2P', cursive; color: #333;"><strong>酸味:</strong> <%= @survey.acidity %></p>
+    <p class="card-text" style="font-family: 'Press Start 2P', cursive; color: #333;"><strong>苦味:</strong> <%= @survey.bitterness %></p>
+    <p class="card-text" style="font-family: 'Press Start 2P', cursive; color: #333;"><strong>ボディ:</strong> <%= @survey.body %></p>
+    <p class="card-text" style="font-family: 'Press Start 2P', cursive; color: #333;"><strong>風味:</strong> <%= @survey.flavor %></p>
+    <% if @survey.suggestion.present? %>
+      <p class="card-text mt-3" style="font-family: 'Press Start 2P', cursive; color: #333;"><strong>提案:</strong> <%= @survey.suggestion %></p>
+    <% end %>
+  </div>
+</div>
