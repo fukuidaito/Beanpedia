@@ -1,3 +1,45 @@
+<%= form_with model: @survey, url: surveys_path, html: { class: "quest-form" } do |form| %>
+  <fieldset class="quest-fieldset">
+    <legend>コーヒー探求の冒険</legend>
+
+    <div class="form-group">
+      <%= form.label :acidity, "コーヒーの酸味が好きですか？" %>
+      <%= form.radio_button :acidity, 1, class: "quest-radio" %>
+      <%= form.label :acidity, "弱めが好き", value: 1 %>
+      <%= form.radio_button :acidity, 2, class: "quest-radio" %>
+      <%= form.label :acidity, "普通", value: 2 %>
+      <%= form.radio_button :acidity, 3, class: "quest-radio" %>
+      <%= form.label :acidity, "強めが好き", value: 3 %>
+    </div>
+  <div>
+    <%= form.label :bitterness, "コーヒーの苦味が好きですか？" %>
+    <%= form.radio_button :bitterness, 1 %>
+    <%= form.label :bitterness, "弱めが好き", value: 1 %>
+    <%= form.radio_button :bitterness, 2 %>
+    <%= form.label :bitterness, "普通", value: 2 %>
+    <%= form.radio_button :bitterness, 3 %>
+    <%= form.label :bitterness, "強めが好き", value: 3 %>
+  </div>
+  <div>
+    <%= form.label :body, "コーヒーのボディ（コク）はどのくらいが好きですか？" %>
+    <%= form.number_field :body, in: 1..5 %>
+  </div>
+  <div>
+    <%= form.label :flavor, "どのような風味が好きですか？" %>
+    <%= form.radio_button :flavor, "フルーティー" %>
+    <%= form.label :flavor, "フルーティー", value: "フルーティー" %>
+    <%= form.radio_button :flavor, "ナッティー" %>
+    <%= form.label :flavor, "ナッティー", value: "ナッティー" %>
+    <%= form.radio_button :flavor, "チョコレート" %>
+    <%= form.label :flavor, "チョコレート", value: "チョコレート" %>
+  </div>
+  <div class="form-group">
+  <%= form.submit "送信", class: "quest-submit" %>
+</div>
+</fieldset>
+<% end %>
+
+
 
 <%= form_with model: @survey, url: surveys_path do |form| %>
   <div>
