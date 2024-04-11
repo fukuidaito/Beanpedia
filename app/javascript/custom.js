@@ -22,3 +22,4 @@ document.addEventListener("DOMContentLoaded", function() {
       continueArrow.style.opacity = '0';
     });
   });
+  

@@ -12,7 +12,7 @@
               <%= render_progress_bar(@board, :bitterness) %>
               <%= render_progress_bar(@board, :richness) %>
               <h3 class="d-inline"><%= @board.title %></h3>
-              <%= render 'crud_menus', board: @board if current_user.own?(@board) %>
+              <%= render 'crud_menus', board: @board if current_user&.own?(@board) %>
               <ul class="list-inline">
                 <li class="list-inline-item">by <%= @board.user.name %></li>
                 <li class="list-inline-item"><%= l @board.created_at, format: :long  %></li>
