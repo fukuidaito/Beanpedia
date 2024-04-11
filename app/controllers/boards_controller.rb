@@ -1,6 +1,8 @@
 class BoardsController < ApplicationController
   include BoardsHelper
   before_action :set_board, only: %i[edit update destroy]
+  before_action :authenticate_user!, except: [:show]
+  skip_before_action :authenticate_user!, only: [:show]
 
   # def index
   # 	@boards = Board.all.includes(:user).order(created_at: :desc)
