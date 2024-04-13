@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   resources :boards do
     resources :comments, only: [:create], shallow: true
     post 'rate', on: :member
+    get :search, on: :collection
     collection do
       get 'bookmarks'
       get 'ranking'

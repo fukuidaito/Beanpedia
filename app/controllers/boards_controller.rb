@@ -64,6 +64,13 @@ class BoardsController < ApplicationController
     @boards = Board.ranking.limit(10)
   end
 
+  def search
+    @boards = Board.where("title like ?", "%#{params[:q]}%")
+    respond_to do |format|
+      format.js
+    end
+  end
+
   private
 
   def set_board

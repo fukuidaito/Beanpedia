@@ -26,3 +26,6 @@ ja:
   profiles:
     show:
       title: 'プロフィール'
+  sessions:
+    destroy:
+      success: 'ログアウトしました'
