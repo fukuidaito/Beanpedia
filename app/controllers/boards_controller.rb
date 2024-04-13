@@ -31,8 +31,7 @@ class BoardsController < ApplicationController
     if @board.save
       redirect_to boards_path, success: t('.success')
     else
-      flash.now[:danger] = t('.board_failure')
-      render :new, status: :unprocessable_entity
+      flash.now[:danger] = t('.board_failure') and render :new, status: :unprocessable_entity
     end
   end
 

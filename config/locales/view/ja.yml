@@ -17,6 +17,8 @@ ja:
       to_register_page: '登録ページへ'
       password_forget: 'パスワードをお忘れの方はこちら'
   boards:
+    success: '投稿に成功しました'
+    board_failure: '投稿に失敗しました'
     index:
       title: 'クエスト一覧'
     bookmarks:
