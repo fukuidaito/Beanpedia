@@ -1,4 +1,9 @@
 ja:
+  defaults:
+    message:
+      updated: '更新に成功しました'
+    flash_message:
+      deleted: '削除に成功しました'
     activerecord:
      models:
        user: 'ユーザー'
@@ -15,5 +20,9 @@ ja:
          acidity: '酸味'
          bitterness: '苦味'
          richness: 'コク'
+  errors:
+    messages:
+      not_saved: 'ユーザー登録に失敗しました'
+
 
 

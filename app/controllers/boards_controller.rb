@@ -31,8 +31,7 @@ class BoardsController < ApplicationController
     if @board.save
       redirect_to boards_path, success: t('.success')
     else
-      flash.now[:danger] = t('.board_failure')
-      render :new, status: :unprocessable_entity
+      flash.now[:danger] = t('.board_failure') and render :new, status: :unprocessable_entity
     end
   end
 
@@ -63,6 +62,13 @@ class BoardsController < ApplicationController
 
   def ranking
     @boards = Board.ranking.limit(10)
+  end
+
+  def search
+    @boards = Board.where("title like ?", "%#{params[:q]}%")
+    respond_to do |format|
+      format.js
+    end
   end
 
   private

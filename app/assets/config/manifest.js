@@ -5,3 +5,5 @@
 //= link bootstrap.js
 //= link jquery.js
 //= link @rails--ujs.js
+//= link stimulus-autocomplete.js
+//= link @hotwired--stimulus.js
