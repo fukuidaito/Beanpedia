@@ -6,4 +6,4 @@ Rails.start();
 
 import jquery from "jquery";
 
-window.$ = jquery;
+window.$ = jquery;import "controllers"
