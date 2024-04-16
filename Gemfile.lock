@@ -255,6 +255,8 @@ GEM
       activesupport (= 7.0.8)
       bundler (>= 1.15.0)
       railties (= 7.0.8)
+    rails-autocomplete (2.0.1)
+      rails (>= 4.0)
     rails-dom-testing (2.2.0)
       activesupport (>= 5.0.0)
       minitest
@@ -421,6 +423,7 @@ DEPENDENCIES
   pg
   puma (~> 5.0)
   rails (~> 7.0.8)
+  rails-autocomplete
   rails-i18n (~> 7.0.0)
   ransack
   rspec-rails

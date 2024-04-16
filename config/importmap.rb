@@ -1,5 +1,5 @@
 pin "application", preload: true
-pin "@hotwired/turbo-rails", to: "turbo.min.js", preload: true
+pin "@hotwired/turbo-rails", to: "@hotwired--turbo-rails.js" # @8.0.4
 
 pin "custom/menu", to: "menu.js", preload: true
 pin "custom", to: "custom.js", preload: true
@@ -15,3 +15,8 @@ pin "@hotwired/stimulus", to: "@hotwired--stimulus.js" # @3.2.2
 pin "@hotwired/stimulus-loading", to: "stimulus-loading.js"
 pin_all_from "app/javascript/controllers", under: "controllers"
 pin "stimulus-autocomplete"
+pin "@hotwired/turbo", to: "@hotwired--turbo.js" # @8.0.4
+pin "@rails/actioncable/src", to: "@rails--actioncable--src.js" # @7.1.3
+pin "@rails/activestorage", to: "@rails--activestorage.js" # @7.1.3
+pin "@rails/actioncable", to: "@rails--actioncable.js" # @7.1.3
+pin "all" # @0.0.0
