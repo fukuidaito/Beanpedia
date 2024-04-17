@@ -57,6 +57,7 @@ gem 'ransack'
 gem 'sassc-rails', '2.1.2'
 gem 'rails-i18n', '~> 7.0.0'
 gem 'ruby-openai'
+gem 'line-bot-api'
 
 # Use Sass to process CSS
 # gem "sassc-rails"
