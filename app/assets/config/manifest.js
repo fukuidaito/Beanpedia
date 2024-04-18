@@ -5,3 +5,11 @@
 //= link bootstrap.js
 //= link jquery.js
 //= link @rails--ujs.js
+//= link stimulus-autocomplete.js
+//= link @hotwired--stimulus.js
+//= link @hotwired--turbo-rails.js
+//= link @hotwired--turbo.js
+//= link @rails--actioncable--src.js
+//= link @rails--activestorage.js
+//= link @rails--actioncable.js
+//= link all.js

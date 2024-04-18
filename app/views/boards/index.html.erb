@@ -4,8 +4,13 @@
   <div class="row">
     <main class="col-md-9 col-lg-10 px-md-4">
       <div class="mt-4 mb-4">
-        <%= render 'search_form', q: @q, url: boards_path %>
+      <%= search_form_for @q, url: boards_path, method: :get do |f| %>
+        <div data-controller="autocomplete" data-autocomplete-url-value="/boards/search" role="combobox">
+          <%= f.search_field :title_cont, placeholder: "検索", class: "form-control", data: { action: "input->autocomplete#search", autocomplete_target: "input" } %>
+          <%= f.hidden_field :title, data: { autocomplete_target: "hidden" } %>
+          <ul class="list-group" data-autocomplete-target="results"></ul>
       </div>
+      <% end %>
       <% if @boards.present? %>
         <div class="container-fluid">
           <div class="row">
@@ -26,3 +31,4 @@
     </div>
   </div>
 </div>
+

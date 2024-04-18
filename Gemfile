@@ -60,6 +60,7 @@ gem 'ruby-openai'
 gem 'line-bot-api'
 gem 'omniauth-line'
 gem 'omniauth-rails_csrf_protection'
+gem 'rails-autocomplete'
 
 # Use Sass to process CSS
 # gem "sassc-rails"
