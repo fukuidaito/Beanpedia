@@ -57,6 +57,9 @@ gem 'ransack'
 gem 'sassc-rails', '2.1.2'
 gem 'rails-i18n', '~> 7.0.0'
 gem 'ruby-openai'
+gem 'line-bot-api'
+gem 'omniauth-line'
+gem 'omniauth-rails_csrf_protection'
 gem 'rails-autocomplete'
 
 # Use Sass to process CSS
