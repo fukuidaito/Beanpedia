@@ -6,6 +6,9 @@ Rails.application.routes.draw do
     registrations: "users/registrations"
   }
 
+  get 'users/auth/google_oauth2/callback', to: 'users/omniauth_callbacks#google_oauth2'
+  get 'users/auth/line/callback', to: 'users/omniauth_callbacks#line'
+
   get 'sessions/new'
   root "top#index"
   get "/help", to: "static_pages#help"
