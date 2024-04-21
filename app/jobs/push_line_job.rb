@@ -1,23 +1,22 @@
-require 'line/bot'
-
 class PushLineJob < ApplicationJob
-    queue_as :default
+require 'line/bot'
+queue_as :default
 
-  def perform(user)
-      message = {
-      type: 'text',
-      text: 'ログインありがとう！'
-      }
-      response = line_client.push_message(user.uid, message)
-      logger.info "LINE API Response: #{response.body}"
+  def perform(user_uid)
+    message = {
+        type: 'text',
+        text: 'ログインありがとう！'
+    }
+    response = line_client.push_message(user_uid, message)
+    logger.info "PushLineSuccess: #{response}" if response
   end
 
-  private
+    private
 
-  def line_client
-      Line::Bot::Client.new { |config|
-      config.channel_secret = ENV["LINE_CHANNEL_SECRET"]
-      config.channel_token = ENV["LINE_CHANNEL_TOKEN"]
-      }
-  end
+    def line_client
+    Line::Bot::Client.new { |config|
+        config.channel_secret = ENV["LINE_CHANNEL_SECRET"]
+        config.channel_token = ENV["LINE_CHANNEL_TOKEN"]
+    }
+    end
 end
