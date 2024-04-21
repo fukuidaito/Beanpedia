@@ -1,4 +1,5 @@
 require 'line/bot'
+
 class PushLineJob < ApplicationJob
     queue_as :default
 
@@ -8,11 +9,7 @@ class PushLineJob < ApplicationJob
       text: 'ログインありがとう！'
       }
       response = line_client.push_message(user.uid, message)
-      if response.code == '200'
-      logger.info "PushLine Success: #{response.body}"
-      else
-      logger.error "PushLine Error: #{response.code} #{response.body}"
-      end
+      logger.info "LINE API Response: #{response.body}"
   end
 
   private
