@@ -13,7 +13,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     if @user.persisted?
       sign_in_and_redirect @user, event: :authentication
       set_flash_message(:success, :success, kind: "#{provider}".capitalize) if is_navigational_format?
-      PushLineJob.perform_later(@user)
+      PushLineJob.perform_later(@user.uid)
     else
       session["devise.#{provider}_data"] = request.env['omniauth.auth']
       redirect_to new_user_registration_url
