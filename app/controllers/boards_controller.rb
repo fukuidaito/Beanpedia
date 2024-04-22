@@ -29,6 +29,7 @@ class BoardsController < ApplicationController
   def create
     @board = current_user.boards.build(board_params)
     if @board.save
+      PushLineJob.perform_later(current_user, @board)
       redirect_to boards_path, success: t('.success')
     else
       flash.now[:danger] = t('.board_failure') and render :new, status: :unprocessable_entity
@@ -87,5 +88,12 @@ class BoardsController < ApplicationController
     board = Board.find(params[:id])
     board.rating = params[:rating]
     board.save
+  end
+
+  def line_client
+    @line_client ||= Line::Bot::Client.new { |config|
+      config.channel_secret = ENV['LINE_CHANNEL_SECRET']
+      config.channel_token = ENV['LINE_CHANNEL_TOKEN']
+    }
   end
 end
