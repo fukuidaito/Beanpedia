@@ -29,7 +29,6 @@ class BoardsController < ApplicationController
   def create
     @board = current_user.boards.build(board_params)
     if @board.save
-      PushLineJob.perform_later(current_user, @board)
       redirect_to boards_path, success: t('.success')
     else
       flash.now[:danger] = t('.board_failure') and render :new, status: :unprocessable_entity
