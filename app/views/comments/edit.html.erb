@@ -1,0 +1,7 @@
+<%= form_with(model: @comment, local: true) do |form| %>
+<div class="field">
+    <%= form.label :body %>
+    <%= form.text_area :body %>
+  </div>
+    <%= form.submit "更新" %>
+  <% end %>
