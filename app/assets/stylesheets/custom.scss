@@ -278,3 +278,9 @@ label {
   transition: opacity 0.3s ease;
   text-decoration: none;
 }
+
+.avatar-image {
+  width: 50px;  /* 幅を50ピクセルに設定 */
+  height: 50px; /* 高さを50ピクセルに設定 */
+  object-fit: cover; /* 画像のアスペクト比を保持しつつ、枠に合わせて表示 */
+}
