@@ -4,10 +4,6 @@ class BoardsController < ApplicationController
   before_action :authenticate_user!, except: [:show]
   skip_before_action :authenticate_user!, only: [:show]
 
-  # def index
-  # 	@boards = Board.all.includes(:user).order(created_at: :desc)
-  # end
-
   def index
     @q = Board.ransack(params[:q])
     @boards = @q.result(distinct: true).includes(:user).order(created_at: :desc).page(params[:page])
