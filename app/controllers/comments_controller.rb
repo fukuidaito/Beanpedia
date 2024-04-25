@@ -1,5 +1,7 @@
 class CommentsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_comment, only: [:update, :destroy]
+  before_action :set_board, only: [:index, :create]
 
   def update
     if @comment.update(comment_params)
@@ -9,7 +11,7 @@ class CommentsController < ApplicationController
     end
   end
 
-  # 削除アクション
+
   def destroy
     board = @comment.board
     @comment.destroy
@@ -28,6 +30,10 @@ class CommentsController < ApplicationController
 
   def set_comment
     @comment = Comment.find(params[:id])
+  end
+
+  def set_board
+    @board = Board.find(params[:board_id])
   end
 
   def comment_params

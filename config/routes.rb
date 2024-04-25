@@ -33,5 +33,5 @@ Rails.application.routes.draw do
   end
   resources :bookmarks, only: [:create, :destroy]
   resources :surveys, only: [:new, :create, :show]
-  resources :comments, only: [:update, :destroy]
+  resources :comments, only: [:update, :destroy, :edit]
 end
