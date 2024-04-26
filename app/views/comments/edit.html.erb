@@ -1,8 +1,14 @@
-<%= form_with(model: @comment, local: true) do |form| %>
+<%= turbo_frame_tag dom_id(@comment) do %>
+<%= form_with model:[@board, @comment],local:true, remote: true do |f|%>
 <div class="field">
     <%= form.label :body %>
     <%= form.text_area :body %>
   </div>
+    <%= @comment.user.name %>
+    <%= l @comment.updated_at %>
+    <%= link_to 'キャンセル', board_comments_path(@board) %>
+    <%= f.submit "更新" %>
     <%= form.submit "更新" %>
+  <% end %>
   <% end %>
   

@@ -16,7 +16,7 @@
           <div class="ms-2">
 
           <%= link_to '削除', comment_path(comment), data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？' }, class: 'btn btn-outline-danger btn-sm' %>
-          <%= link_to '編集', edit_comment_path, class: 'btn btn-outline-secondary btn-sm', data: { toggle: 'modal', target: "#editCommentModal#{comment.id}" } %>
+          <%= link_to '編集', edit_comment_path(comment.board, comment), class:'btn btn-outline-secondary btn-sm' %>
           </div>
         </div>
       </div>

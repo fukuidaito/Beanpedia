@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   resources :users
   resource :profile, only: [:show, :edit, :update]
   resources :boards do
-    resources :comments, only: [:create], shallow: true
+    resources :comments, only: [:index, :create, :edit, :destroy], shallow: true
     post 'rate', on: :member
     get :search, on: :collection
     collection do
@@ -33,5 +33,4 @@ Rails.application.routes.draw do
   end
   resources :bookmarks, only: [:create, :destroy]
   resources :surveys, only: [:new, :create, :show]
-  resources :comments, only: [:update, :destroy, :edit]
 end
