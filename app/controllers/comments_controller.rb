@@ -11,13 +11,13 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
     respond_to do |format|
       if @comment.update(comment_params)
-        @comment = Comment.new
         format.html { redirect_to board_path(@comment.board), notice: 'コメントが更新されました。' }
         format.turbo_stream
       else
         format.html { render :edit, status: :unprocessable_entity }
       end
     end
+    @comments = Comment.all 
   end
 
   def destroy
