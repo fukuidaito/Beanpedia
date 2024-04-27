@@ -8,7 +8,14 @@
         <h3><%= link_to truncate(board.title, length: 15), board_path(board), class: "mb-0" %></h3>
         <div class="mb-1 text-body-secondary"><%= l board.created_at, format: :long %></div>
         <p class="card-text mb-auto truncate-text text-container border-full"><%= truncate(board.body, length: 30) %></p>
-        <%= render 'boards/twitter', board: board %>
+        <div class="social-buttons d-flex align-items-center">
+          <div class="me-2">
+            <%= render 'boards/twitter', board: board %>
+          </div>
+          <div>
+            <%= render 'boards/line', board: board %>
+          </div>
+        </div>
         <% if current_user.own?(board) %>
           <%= render 'crud_menus', board: board %>
         <% else %>
