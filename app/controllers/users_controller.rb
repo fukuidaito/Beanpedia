@@ -13,7 +13,6 @@ class UsersController < ApplicationController
       reset_session
       log_in @user
       flash[:success] = '成功'
-      redirect_to @user
     else
       render 'new', status: :unprocessable_entity
     end
