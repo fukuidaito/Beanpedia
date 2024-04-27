@@ -1,7 +1,7 @@
+<%= turbo_stream.replace "new_comment" do %>
+  <%= render partial:"form", locals: {board: @board, comment: @comment} %>
+<% end %>
+  
 <%= turbo_stream.update "comments" do %>
   <%= render @comments %>
 <% end %>
-
-<%= turbo_stream.replace "new_comment" do %>
-  <%= render partial:"form", locals: {board: @board, comment: @comment} %>
-<% end %> 
