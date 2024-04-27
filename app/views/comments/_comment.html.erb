@@ -14,9 +14,11 @@
           </div>
           <!-- 編集・削除ボタン -->
           <div class="ms-2">
-
+          <% if current_user.own?(comment) %>
           <%= link_to '削除', comment_path(comment), data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？' }, class: 'btn btn-outline-danger btn-sm' %>
-          <%= link_to '編集', edit_comment_path(comment.board, comment), class:'btn btn-outline-secondary btn-sm' %>
+          <%= link_to '編集', edit_comment_path(comment), class:'btn btn-outline-secondary btn-sm' %>
+          <% else %>
+          <% end %>
           </div>
         </div>
       </div>

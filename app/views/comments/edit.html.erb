@@ -1,14 +1,18 @@
 <%= turbo_frame_tag dom_id(@comment) do %>
-<%= form_with model:[@board, @comment],local:true, remote: true do |f|%>
-<div class="field">
-    <%= form.label :body %>
-    <%= form.text_area :body %>
+  <div class="comment">
+    <%= form_with model:[@board, @comment],local:true, remote: true do |f|%>
+      <div class="chat chat-start">
+        <div class="chat-header">
+          <%= @comment.user.name %>
+          <time class="text-xs opacity-50"><%= l @comment.updated_at %></time>
+        </div>
+        <div class="chat-bubble">
+          <%= f.text_area :body, class:"input input-bordered w-full bg-gray-600" %>
+          <div class="flex justify-end text-xs mt-1">
+            <%= f.submit "更新", class:"ml-2" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
   </div>
-    <%= @comment.user.name %>
-    <%= l @comment.updated_at %>
-    <%= link_to 'キャンセル', board_comments_path(@board) %>
-    <%= f.submit "更新" %>
-    <%= form.submit "更新" %>
-  <% end %>
-  <% end %>
-  
+<% end %>

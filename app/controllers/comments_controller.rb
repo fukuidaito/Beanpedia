@@ -3,21 +3,21 @@ class CommentsController < ApplicationController
   before_action :set_comment, only: [:update, :destroy]
   before_action :set_board, only: [:index, :create]
 
+  def edit
+    @comment = Comment.find(params[:id])
+  end
 
   def update
     @comment = Comment.find(params[:id])
     respond_to do |format|
       if @comment.update(comment_params)
         @comment = Comment.new
-        format.html { redirect_to plan_comments_path }
+        format.html { redirect_to board_path(@comment.board), notice: 'コメントが更新されました。' }
         format.turbo_stream
       else
-        format.html { render :index, status: :unprocessable_entity }
+        format.html { render :edit, status: :unprocessable_entity }
       end
     end
-  end
-
-  def edit
   end
 
   def destroy
@@ -25,6 +25,7 @@ class CommentsController < ApplicationController
     @comment.destroy
     redirect_to board, alert: 'コメントが削除されました。'
   end
+
   def create
     comment = current_user.comments.build(comment_params)
     if comment.save
