@@ -1,35 +1,31 @@
 <% provide(:title, "Beanpedia") %>
 <div class="backgroundimage">
   <div class="center-container">
-    <h1 class="title" style="font-family: 'Press Start 2P', cursive;">Beanpedia</h1>
     <div class="blackboard mt-4 mb-4" style="font-family: 'Press Start 2P', cursive;">
-      <p>コーヒー探求の冒険へ</p>
-      <p>お気に入りのコーヒーを投稿してください</p>
-      <p>豆の種類・焙煎度・器具こだわりは無限大</p>
-      <p>お気に入りのコーヒーを探すクエストにでかけましょう</p>
+      <p>あなたのこだわりのコーヒーを記録する場所</p>
       <p id="start-link" class="menu-item"><span class="arrow">▶</span> <%= link_to 'START（ユーザー登録）', new_user_path, class: "blink-before" %></p>
       <p id="continue-link" class="menu-item"><span class="arrow" style="opacity: 0;">▶</span> <%= link_to 'CONTINUE（ログイン）', login_path, class: "blink-before" %></p>
     </div>
   </div>
-</div>
-
- <div class="container px-4" id="works">
- <h1 class"subtop">QUEST一覧（投稿をランダムで表示）</h1>
- <div class="row">
-   <% @random_boards.each do |board| %>
-    <div class="col-md-4">
-    <div class="card">
-      <%= image_tag(board.board_image.url, class: 'card-img-top', alt: board.title, width: "150", height: "300") if board.board_image.present? %>
-      <div class="card-body">
-        <h5 class="card-title"><%= board.title %></h5>
-        <p class="card-text"><%= board.body %></p>
-        <p class="card-text"><small class="text-muted">Last updated <%= time_ago_in_words(board.updated_at) %> ago</small></p>
-      </div>
-    </div>
+  <div class="container px-4" id="works">
+  <h1 class"subtop">QUEST一覧（投稿をランダムで表示）</h1>
+  <div class="row">
+    <% @random_boards.each do |board| %>
+     <div class="col-md-4">
+     <div class="card">
+       <%= image_tag(board.board_image.url, class: 'card-img-top', alt: board.title, width: "150", height: "300") if board.board_image.present? %>
+       <div class="card-body">
+         <h5 class="card-title"><%= board.title %></h5>
+         <p class="card-text"><%= board.body %></p>
+         <p class="card-text"><small class="text-muted">Last updated <%= time_ago_in_words(board.updated_at) %> ago</small></p>
+       </div>
+     </div>
+   </div>
+    <% end %>
   </div>
-   <% end %>
  </div>
 </div>
+
 
 
 
