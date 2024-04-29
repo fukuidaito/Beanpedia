@@ -2,31 +2,89 @@
 <div class="backgroundimage">
   <div class="center-container">
     <div class="blackboard mt-4 mb-4" style="font-family: 'Press Start 2P', cursive;">
-      <p>あなたのこだわりのコーヒーを記録する場所</p>
+      <p>あなたのこだわりのコーヒーを記録しましょう</p>
       <p id="start-link" class="menu-item"><span class="arrow">▶</span> <%= link_to 'START（ユーザー登録）', new_user_path, class: "blink-before" %></p>
       <p id="continue-link" class="menu-item"><span class="arrow" style="opacity: 0;">▶</span> <%= link_to 'CONTINUE（ログイン）', login_path, class: "blink-before" %></p>
     </div>
   </div>
-  <div class="container px-4" id="works">
-  <h1 class"subtop">QUEST一覧（投稿をランダムで表示）</h1>
-  <div class="row">
-    <% @random_boards.each do |board| %>
-     <div class="col-md-4">
-     <div class="card">
-       <%= image_tag(board.board_image.url, class: 'card-img-top', alt: board.title, width: "150", height: "300") if board.board_image.present? %>
-       <div class="card-body">
-         <h5 class="card-title"><%= board.title %></h5>
-         <p class="card-text"><%= board.body %></p>
-         <p class="card-text"><small class="text-muted">Last updated <%= time_ago_in_words(board.updated_at) %> ago</small></p>
-       </div>
-     </div>
-   </div>
-    <% end %>
+</div>
+
+<div class="row">
+  <div class="col-12 text-center mt-4 mb-4">
+    <h2>コーヒーのフレーバー共有</h2>
   </div>
- </div>
 </div>
 
 
+<div class="row g-0 bg-body-secondary position-relative mx-auto p-4">
+  <div class="col-md-4 mb-md-0 p-md-4 border border-dark">
+    <img src="/assets/home.png" class="w-100" alt="画像">
+    <div class="mt-4">
+      <h5 class="mt-0 text-center ">コク（Body）</h5>
+      <p>コーヒーが口の中でどれだけ重く、または軽く感じられるかを表します。コーヒーを飲んだ時に口の中に残る感触や粘度によって感じられます。コクのあるコーヒーはしっかりとしていて、口の中で滑らかな感じがあり、水っぽさが少なく感じられます。豆の種類、焙煎の度合い、抽出方法によってコクの強さが異なります。</p>
+      <a href="#" class="stretched-link">Go somewhere</a>
+    </div>
+  </div>
+  <div class="col-md-4 p-md-4 border border-dark">
+    <img src="/assets/topbody.png" class="w-100" alt="画像">
+    <div class="mt-4">
+      <h5 class="mt-0">苦味（Bitterness）</h5>
+      <p>コーヒーの基本的な味覚の一つで、コーヒーの深い味わいを形成します。苦味は主に焙煎度によって左右され、焙煎が進むにつれて苦味が強くなります。また、コーヒーの抽出時間が長いほど、または粉が細かすぎると、過抽出により苦味が強くなることがあります。苦味はバランスが取れていると心地よく感じられ、コーヒーの味わいを豊かにします。</p>
+      <a href="#" class="stretched-link">Go somewhere</a>
+    </div>
+  </div>
+  <div class="col-md-4 p-md-4 border border-dark">
+    <img src="/assets/acutyuary.png" class="w-100" alt="画像">
+    <div class="mt-4">
+      <h5 class="mt-0">酸味（Acidity）</h5>
+      <p>コーヒーのフレッシュさや活力を感じさせる要素で、味の明瞭さや爽やかさをもたらします。酸味が強いコーヒーはしばしばフルーティーで明るい味わいが特徴です。コーヒーの酸味は、豆の品種、生産地の気候や高度、土壌の種類、そして処理方法によって変わります。例えば、高地で栽培されたアラビカ種は酸味が強い傾向があります。</p>
+      <a href="#" class="stretched-link">Go somewhere</a>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-12 text-center mt-4 mb-4">
+    <h2>あなたにあったコーヒ豆を提案します</h2>
+  </div>
+</div>
+
+<div class="card-group">
+  <div class="card">
+    <img src="/assets/AI.png" class="card-img-top" alt="画像">
+    <div class="card-body">
+      <h5 class="card-title">あなたの好みのコーヒーを教えてください</h5>
+      <p class="card-text">アンケート答えるとあなたの好みに合った豆を提案します。</p>
+    </div>
+  </div>
+  <div class="card">
+  <img src="/assets/an.png" class="card-img-top" alt="画像">
+  <div class="card-body">
+    <h5 class="card-title">コーヒー豆の名前</h5>
+    <p class="card-text">提案を受けたら、ネットや近くの販売所でコーヒ豆を購入してみましょう。</p>
+  </div>
+</div>
+</div>
+
+<div class="container px-4" id="works">
+<h1 class"subtop">投稿一覧（投稿をランダムで表示）</h1>
+<div class="row">
+  <% @random_boards.each do |board| %>
+   <div class="col-md-4">
+   <div class="card">
+     <%= image_tag(board.board_image.url, class: 'card-img-top', alt: board.title, width: "150", height: "300") if board.board_image.present? %>
+     <div class="card-body">
+       <h5 class="card-title"><%= board.title %></h5>
+       <p class="card-text"><%= board.body %></p>
+       <p class="card-text"><small class="text-muted">Last updated <%= time_ago_in_words(board.updated_at) %> ago</small></p>
+     </div>
+   </div>
+ </div>
+  <% end %>
+</div>
+</div>
 
 
   <script type="module">import "top";</script>
+
+
