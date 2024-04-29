@@ -2,28 +2,11 @@
 <div class="backgroundimage">
   <div class="center-container">
     <div class="blackboard mt-4 mb-4" style="font-family: 'Press Start 2P', cursive;">
-      <p>あなたのこだわりのコーヒーを記録する場所</p>
+      <p>あなたのこだわりのコーヒーを記録しましょう</p>
       <p id="start-link" class="menu-item"><span class="arrow">▶</span> <%= link_to 'START（ユーザー登録）', new_user_path, class: "blink-before" %></p>
       <p id="continue-link" class="menu-item"><span class="arrow" style="opacity: 0;">▶</span> <%= link_to 'CONTINUE（ログイン）', login_path, class: "blink-before" %></p>
     </div>
   </div>
-  <div class="container px-4" id="works">
-  <h1 class"subtop">QUEST一覧（投稿をランダムで表示）</h1>
-  <div class="row">
-    <% @random_boards.each do |board| %>
-     <div class="col-md-4">
-     <div class="card">
-       <%= image_tag(board.board_image.url, class: 'card-img-top', alt: board.title, width: "150", height: "300") if board.board_image.present? %>
-       <div class="card-body">
-         <h5 class="card-title"><%= board.title %></h5>
-         <p class="card-text"><%= board.body %></p>
-         <p class="card-text"><small class="text-muted">Last updated <%= time_ago_in_words(board.updated_at) %> ago</small></p>
-       </div>
-     </div>
-   </div>
-    <% end %>
-  </div>
- </div>
 </div>
 
 <div class="row">
@@ -60,5 +43,48 @@
   </div>
 </div>
 
+<div class="row">
+  <div class="col-12 text-center mt-4 mb-4">
+    <h2>あなたにあったコーヒ豆を提案します</h2>
+  </div>
+</div>
+
+<div class="card-group">
+  <div class="card">
+    <img src="/assets/AI.png" class="card-img-top" alt="画像">
+    <div class="card-body">
+      <h5 class="card-title">あなたの好みのコーヒーを教えてください</h5>
+      <p class="card-text">アンケート答えるとあなたの好みに合った豆を提案します。</p>
+    </div>
+  </div>
+  <div class="card">
+  <img src="/assets/an.png" class="card-img-top" alt="画像">
+  <div class="card-body">
+    <h5 class="card-title">コーヒー豆の名前</h5>
+    <p class="card-text">提案を受けたら、ネットや近くの販売所でコーヒ豆を購入してみましょう。</p>
+  </div>
+</div>
+</div>
+
+<div class="container px-4" id="works">
+<h1 class"subtop">投稿一覧（投稿をランダムで表示）</h1>
+<div class="row">
+  <% @random_boards.each do |board| %>
+   <div class="col-md-4">
+   <div class="card">
+     <%= image_tag(board.board_image.url, class: 'card-img-top', alt: board.title, width: "150", height: "300") if board.board_image.present? %>
+     <div class="card-body">
+       <h5 class="card-title"><%= board.title %></h5>
+       <p class="card-text"><%= board.body %></p>
+       <p class="card-text"><small class="text-muted">Last updated <%= time_ago_in_words(board.updated_at) %> ago</small></p>
+     </div>
+   </div>
+ </div>
+  <% end %>
+</div>
+</div>
+
 
   <script type="module">import "top";</script>
+
+

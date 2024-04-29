@@ -283,3 +283,47 @@ label {
   height: 50px; /* 高さを50ピクセルに設定 */
   object-fit: cover; /* 画像のアスペクト比を保持しつつ、枠に合わせて表示 */
 }
+
+.card-img-top {
+  height: 200px;  /* 画像の高さを200pxに設定 */
+  object-fit: cover;  /* 画像がコンテナを覆うように調整 */
+}
+
+input[type=range] {
+  width: 100%;
+  margin: 10px 0;
+}
+
+input[type=range]:focus {
+  outline: none;
+}
+
+/* Adjust the colors based on attribute */
+input#acidity::-webkit-slider-runnable-track {
+  background: linear-gradient(to right, rgba(255, 241, 118, 0.3), rgba(255, 235, 59, 1)); /* Yellow */
+}
+
+input#bitterness::-webkit-slider-runnable-track {
+  background: linear-gradient(to right, rgba(215, 204, 200, 0.3), rgba(121, 85, 72, 1)); /* Brown */
+}
+
+input#body::-webkit-slider-runnable-track {
+  background: linear-gradient(to right, rgba(141, 110, 99, 0.3), rgba(93, 64, 55, 1)); /* Brown */
+}
+
+input[type=range]::-webkit-slider-thumb {
+  border: 1px solid #aaa;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background: white;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -6px;
+}
+
+.range-label {
+  display: inline-block;
+  font-size: 12px;
+  margin-top: -15px;
+}
