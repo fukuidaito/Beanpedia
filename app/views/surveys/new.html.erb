@@ -1,46 +1,85 @@
+<style>
+  /* Custom CSS for range sliders */
+  input[type=range] {
+    -webkit-appearance: none;
+    width: 100%;
+    margin: 10px 0;
+  }
+
+  input[type=range]:focus {
+    outline: none;
+  }
+
+  /* Adjust the colors based on attribute */
+  input#acidity::-webkit-slider-runnable-track {
+    background: linear-gradient(to right, rgba(255, 241, 118, 0.3), rgba(255, 235, 59, 1)); /* Yellow */
+  }
+
+  input#bitterness::-webkit-slider-runnable-track {
+    background: linear-gradient(to right, rgba(215, 204, 200, 0.3), rgba(121, 85, 72, 1)); /* Brown */
+  }
+
+  input#body::-webkit-slider-runnable-track {
+    background: linear-gradient(to right, rgba(141, 110, 99, 0.3), rgba(93, 64, 55, 1)); /* Brown */
+  }
+
+  input[type=range]::-webkit-slider-thumb {
+    border: 1px solid #aaa;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background: white;
+    cursor: pointer;
+    -webkit-appearance: none;
+    margin-top: -6px;
+  }
+
+  .range-label {
+    display: inline-block;
+    font-size: 12px;
+    margin-top: -15px;
+  }
+</style>
+
 <div class="container">
   <div class="row justify-content-center">
-    <div class="col-md-6"> <!-- Adjust the column width based on your layout -->
+    <div class="col-md-6">
       <%= form_with model: @survey, url: surveys_path, html: { class: "quest-form" } do |form| %>
         <fieldset class="quest-fieldset">
-          <legend class="text-center">自分にあったコーヒーを聞いてみる</legend>
+          <legend class="text-center">コーヒー探求の冒険</legend>
 
           <div class="form-group text-center">
-            <%= form.label :acidity, "コーヒーの酸味が好きですか？" %>
-            <%= form.radio_button :acidity, 1, class: "quest-radio" %>
-            <%= form.label :acidity, "弱めが好き", value: 1 %>
-            <%= form.radio_button :acidity, 2, class: "quest-radio" %>
-            <%= form.label :acidity, "普通", value: 2 %>
-            <%= form.radio_button :acidity, 3, class: "quest-radio" %>
-            <%= form.label :acidity, "強めが好き", value: 3 %>
+            <%= form.label :acidity, "コーヒーの酸味が好きですか？" %><br>
+            <%= form.range_field :acidity, min: 1, max: 5, class: "form-range", id: "acidity" %>
+            <div class="range-label">←←←←←←←←←←そんな</div>
+            <div class="range-label">普通</div>
+            <div class="range-label">好き→→→→→→→→→→→</div>
           </div>
           <div class="form-group text-center">
-            <%= form.label :bitterness, "コーヒーの苦味が好きですか？" %>
-            <%= form.radio_button :bitterness, 1 %>
-            <%= form.label :bitterness, "弱めが好き", value: 1 %>
-            <%= form.radio_button :bitterness, 2 %>
-            <%= form.label :bitterness, "普通", value: 2 %>
-            <%= form.radio_button :bitterness, 3 %>
-            <%= form.label :bitterness, "強めが好き", value: 3 %>
+            <%= form.label :bitterness, "コーヒーの苦味が好きですか？" %><br>
+            <%= form.range_field :bitterness, min: 1, max: 5, class: "form-range", id: "bitterness" %>
+            <div class="range-label">←←←←←←←←←←そんな</div>
+            <div class="range-label">普通</div>
+            <div class="range-label">好き→→→→→→→→→→→</div>
           </div>
           <div class="form-group text-center">
-            <%= form.label :body, "コーヒーのボディ（コク）はどのくらいが好きですか？" %>
-            <%= form.number_field :body, in: 1..5 %>
+            <%= form.label :body, "コーヒーのボディ（コク）はどのくらいが好きですか？" %><br>
+            <%= form.range_field :body, min: 1, max: 5, class: "form-range", id: "body" %>
+            <div class="range-label">←←←←←←←←←←そんな</div>
+            <div class="range-label">普通</div>
+            <div class="range-label">好き→→→→→→→→→→→</div>
           </div>
           <div class="form-group text-center">
-            <%= form.label :flavor, "どのような風味が好きですか？" %>
-            <%= form.radio_button :flavor, "フルーティー" %>
-            <%= form.label :flavor, "フルーティー", value: "フルーティー" %>
-            <%= form.radio_button :flavor, "ナッティー" %>
-            <%= form.label :flavor, "ナッティー", value: "ナッティー" %>
-            <%= form.radio_button :flavor, "チョコレート" %>
-            <%= form.label :flavor, "チョコレート", value: "チョコレート" %>
+            <%= form.label :flavor, "どのような風味が好きですか？" %><br>
+            <%= form.select :flavor, ["フルーティー", "ナッティー", "チョコレート"], { prompt: "選択してください" }, class: "form-select" %>
           </div>
           <div class="form-group text-center">
-            <%= form.submit "送信", class: "quest-submit" %>
+            <%= form.submit "送信", class: "btn btn-primary" %>
           </div>
         </fieldset>
       <% end %>
     </div>
   </div>
 </div>
+
+
