@@ -9,46 +9,56 @@
       <span class='navbar-toggler-icon'></span>
     </button>
     <div class='collapse navbar-collapse' id='navbarSupportedContent'>
-      <ul class='navbar-nav ms-auto main-nav align-items-center'>
-
-        <li class='nav-link btn btn-info'>
-          <%= link_to new_survey_path, class: "nav-link link-body-emphasis" do %>
-            <i class="fa-solid fa-gift"></i> コーヒー豆の提案を受ける
-          <% end %>
-        </li>
-
-        <li class='nav-link btn btn-info'>
-          <%= link_to '投稿一覧', boards_path, class: 'nav-link' %>
-        </li>
-
-        <li class='nav-link btn btn-info'>
-          <%= link_to 'ランキング', ranking_boards_path, class: 'nav-link' %>
-        </li>
-
-        <li class='nav-link btn btn-info'>
-          <%= link_to 'お気に入り', bookmarks_boards_path, class: 'nav-link fas fa-trophy' %>
-        </li>
-
-        <li class='nav-link btn btn-info'>
-        <%= link_to 'ブックマーク一覧', bookmarks_boards_path, class: 'nav-link' %>
-        </li>
-
-        <li class='nav-link btn btn-info'>
-        <%= link_to new_board_path, class: "nav-link link-body-emphasis" do %>
-          <i class="fas fa-plus-square"></i> 新規投稿
-        <% end %>
-        </li>
-
-        <li class='nav-link'>
-        <%= link_to 'ログアウト', logout_path, class: 'nav-link btn btn-info', data: { turbo_method: :delete } %>
-        </li>
-        <li class='nav-item border border-success'>
-        <%= link_to profile_path do %>
-          <%= current_user.name %>
-          <%= image_tag current_user.avatar_url, class: 'rounded-circle mr-2', size: '40x40'%>
-        </li>
-        <% end %>
-      </ul>
+    <ul class='navbar-nav ms-auto main-nav align-items-center'>
+    <li class='nav-link btn btn-info'>
+      <%= link_to new_survey_path, class: "nav-link link-body-emphasis" do %>
+        <i class="fa-solid fa-gift"></i> コーヒー豆の提案を受ける
+      <% end %>
+    </li>
+  
+    <li class='nav-link btn btn-info'>
+      <%= link_to boards_path, class: 'nav-link' do %>
+        <i class="fas fa-list-ul"></i> 投稿一覧
+      <% end %>
+    </li>
+  
+    <li class='nav-link btn btn-info'>
+      <%= link_to ranking_boards_path, class: 'nav-link' do %>
+        <i class="fas fa-medal"></i> ランキング
+      <% end %>
+    </li>
+  
+    <li class='nav-link btn btn-info'>
+      <%= link_to bookmarks_boards_path, class: 'nav-link' do %>
+        <i class="fas fa-trophy"></i> お気に入り
+      <% end %>
+    </li>
+  
+    <li class='nav-link btn btn-info'>
+      <%= link_to bookmarks_boards_path, class: 'nav-link' do %>
+        <i class="fas fa-bookmark"></i> ブックマーク一覧
+      <% end %>
+    </li>
+  
+    <li class='nav-link btn btn-info'>
+      <%= link_to new_board_path, class: "nav-link link-body-emphasis" do %>
+        <i class="fas fa-plus-square"></i> 新規投稿
+      <% end %>
+    </li>
+  
+    <li class='nav-link'>
+      <%= link_to logout_path, class: 'nav-link btn btn-info', data: { turbo_method: :delete } do %>
+        <i class="fas fa-sign-out-alt"></i> ログアウト
+      <% end %>
+    </li>
+  
+    <li class='nav-item border border-success'>
+      <%= link_to profile_path do %>
+        <i class="fas fa-user-circle"></i> <%= current_user.name %>
+        <%= image_tag current_user.avatar_url, class: 'rounded-circle mr-2', size: '40x40' %>
+      <% end %>
+    </li>
+  </ul>
     </div>
   </header>
 
