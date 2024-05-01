@@ -1,28 +1,27 @@
 <% content_for(:title, @board.title) %> 
-<div class="container pt-5">
-  <div class="row mb-3">
-    <div class="col-lg-8 offset-lg-2">
+<div class="container pt-5 mb-4">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-8 col-lg-4">
       <article class="card border-primary rounded-4">
         <div class="card-body">
           <div class='row'>
-            <div class='ms-auto'>
+            <div class='col-12 ms-auto'>
               <h1>タイトル:<%= t(@board.title) %></h1>
               <ul class="list-inline">
-              <li class="list-inline-item">
-              投稿者:
-              </li>
-              <li class="list-inline-item">
-              <%= image_tag(@board.user.avatar.url || 'default-avatar.png', class: "img-fluid", alt: "アバター", style: "width: 30px; height: 30px; border-radius: 50%;") %>
-              <%= @board.user.name %>
-              </li>
-              <li class="list-inline-item">投稿日時：<%= l @board.created_at, format: :long  %></li>
+                <li class="list-inline-item">
+                  投稿者:
+                </li>
+                <li class="list-inline-item">
+                  <%= image_tag(@board.user.avatar.url || 'default-avatar.png', class: "img-fluid rounded-circle", alt: "アバター", style: "width: 30px; height: 30px;") %>
+                  <%= @board.user.name %>
+                </li>
+                <li class="list-inline-item">投稿日時：<%= l @board.created_at, format: :long  %></li>
               </ul>
               <%= image_tag @board.board_image.url, class: 'card-img-top img-fluid' %>
               <h4 class="mt-3 mb-2 ">【テイスト】</h4>
               <%= render_progress_bar(@board, :acidity) %>
               <%= render_progress_bar(@board, :bitterness) %>
               <%= render_progress_bar(@board, :richness) %>
-  
               <%= render 'crud_menus', board: @board if current_user.own?(@board) %>
             </div>
           </div>
@@ -33,16 +32,17 @@
           <!-- Googleマップ表示エリア(地図を表示) -->
           <div id="map"></div>
           <!-- コメントエリア -->
-          <div class ="border-primary">
-          <%= render @comments%>
+          <div class="border-primary">
+            <%= render @comments%>
           </div>
-      
-        <!-- コメントフォーム -->
-        <%= render 'comments/form', { board: @board, comment: @comment } %>
+          <!-- コメントフォーム -->
+          <%= render 'comments/form', { board: @board, comment: @comment } %>
         </div>
       </article>
     </div>
   </div>
+</div>
+
   <!-- 住所表示エリア -->
 
   <script>
