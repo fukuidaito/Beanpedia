@@ -2,4 +2,10 @@
   <%= form.search_field :title_search, value: params[:title_search], oninput: "this.form.requestSubmit()" %>
 <% end %>
 
+<%= search_form_for @q, url: search_boards_path, method: :get, html: { id: "search-form", 'data-controller': 'search' } do |f| %>
+  <%= f.search_field :title_cont, placeholder: "検索", value: params.dig(:q, :title_cont), class: "form-control", 'data-action': "input->search#perform", autocomplete: "off" %>
+  <%= f.submit "検索", class: "btn btn-primary", 'data-action': "click->search#submit" %> <!-- 検索ボタンを追加 -->
+<% end %>
+
+
 <div id="search_results"></div>

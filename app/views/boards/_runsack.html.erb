@@ -1,0 +1,5 @@
+<%= search_form_for @q, url: boards_path, method: :get do |f| %>
+    <%= f.search_field :title_cont, placeholder: "検索", data: { action: "input->autocomplete#search", autocomplete_target: "input" } %>
+    <%= f.hidden_field :title, data: { autocomplete_target: "hidden" } %>
+    <%= f.submit "検索", class: "btn btn-primary" %>  <!-- 検索ボタンを追加 -->
+<% end %>

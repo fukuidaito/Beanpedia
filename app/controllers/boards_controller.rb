@@ -16,7 +16,6 @@ class BoardsController < ApplicationController
     else
       @boards = []  # クエリが空の場合は空の配列を返す
     end
-  
     respond_to do |format|
       format.turbo_stream do
         render turbo_stream: turbo_stream.update("search_results",
