@@ -2,14 +2,7 @@
 
 <div class="container-fluid">
   <div class="row">
-      <div class="mt-4 mb-4">
-      <%= search_form_for @q, url: boards_path, method: :get do |f| %>
-        <div data-controller="autocomplete" data-autocomplete-url-value="/boards/search" role="combobox">
-          <%= f.search_field :title_cont, placeholder: "検索", class: "form-control", data: { action: "input->autocomplete#search", autocomplete_target: "input" } %>
-          <%= f.hidden_field :title, data: { autocomplete_target: "hidden" } %>
-          <ul class="list-group" data-autocomplete-target="results"></ul>
-      </div>
-      <% end %>
+  <%= render "boards/search_form" %>
       <% if @boards.present? %>
         <div class="container-fluid">
           <div class="row">

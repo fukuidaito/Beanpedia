@@ -23,14 +23,15 @@ Rails.application.routes.draw do
   resources :users
   resource :profile, only: [:show, :edit, :update]
   resources :boards do
-    resources :comments, only: [:index, :create, :update, :edit, :destroy], shallow: true
-    post 'rate', on: :member
-    get :search, on: :collection
     collection do
+      post 'search'
       get 'bookmarks'
       get 'ranking'
     end
+    resources :comments, only: [:index, :create, :update, :edit, :destroy], shallow: true
+    post 'rate', on: :member
   end
+
   resources :bookmarks, only: [:create, :destroy]
   resources :surveys, only: [:new, :create, :show]
 end

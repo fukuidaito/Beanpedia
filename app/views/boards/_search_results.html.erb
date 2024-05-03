@@ -1,0 +1,7 @@
+<%= boards.count %>
+<% boards.each do |board| %>
+  <br>
+  <%= link_to board do %>
+    <%= highlight(board.title, params.dig(:title_search)) %>
+  <% end %>
+<% end %>
