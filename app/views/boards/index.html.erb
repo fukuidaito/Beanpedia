@@ -1,11 +1,19 @@
 <% provide(:title, "QUEST一覧") %>
 
+
 <div class="container-fluid">
-  <div class="row">
-      <%= render "boards/runsack" %>
-      <%= render "boards/search_form" %>
+<div class="container">
+  <div class="row justify-content-center mt-4">
+    <div class="col-sm-4 border border-success">
+      <p>クイック検索 <%= render "boards/search_form", mode: "quick" %></p>
+    </div>   
+    <div class="col-sm-4 border border-success">
+      <p>通常検索 <%= render "boards/runsack", mode: "normal" %></p>
+    </div> 
+  </div>
+</div>
       <% if @boards.present? %>
-        <div class="container-fluid">
+        <div class="container-fluid mt-4">
           <div class="row">
             <div class="row mb-2 mt-6">
               <%= render @boards %>
