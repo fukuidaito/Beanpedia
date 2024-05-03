@@ -1,3 +1,6 @@
-<%= search_form_for q, url: url do |f| %>
-  <%= f.search_field :title_or_body_cont %><%= f.submit  class: 'btn-primariy' %>
+<%= form_with url: search_boards_path, method: :board do |form| %>
+  <%= form.search_field :title_search, value: params[:title_search], oninput: "this.form.requestSubmit()" %>
 <% end %>
+
+<div id="search_results"></div>
+

@@ -1,0 +1,16 @@
+<div style="position: relative;">
+<div id="autocomplete-results" style="position: absolute; z-index: 1050; width: 100%; background: white;">
+<% boards.each do |board| %>
+    <div class="card">
+      <div class="card-body">
+        <%= link_to board_path(board) do %>
+          <p class="card-title">
+            <%= highlight(board.title, params.dig(:title_search)) %>
+          </p>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>
+</div> 
+

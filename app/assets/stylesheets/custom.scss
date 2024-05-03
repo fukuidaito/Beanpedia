@@ -327,3 +327,9 @@ input[type=range]::-webkit-slider-thumb {
   font-size: 12px;
   margin-top: -15px;
 }
+
+#autocomplete-results {
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* 影を追加し、ドロップダウン感を強調 */
+  max-height: 300px; /* 必要に応じてスクロールバーを表示 */
+  overflow-y: auto;
+}
