@@ -182,9 +182,9 @@ label {
 }
 
 .fixed-height {
-  height: 250px; /* 例として350pxを設定 */
-  overflow: auto; /* コンテンツがオーバーフローした場合にスクロールバーを表示 */
-  min-height: 250px;
+  min-height: 250px; /* 最小高さを保証 */
+  height: auto; /* コンテンツに応じて高さが拡張 */
+  overflow: visible; /* 内容を切り取らない */
 }
 
 .text-container {
