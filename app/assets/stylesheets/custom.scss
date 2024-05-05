@@ -333,3 +333,17 @@ input[type=range]::-webkit-slider-thumb {
   max-height: 300px; /* 必要に応じてスクロールバーを表示 */
   overflow-y: auto;
 }
+
+.hero-section {
+  background: url('/assets/center.png') no-repeat center center/cover;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+}
+
+.img-fluid {
+  max-height: 100vh;
+  object-fit: cover;
+}
