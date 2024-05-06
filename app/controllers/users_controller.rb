@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
+    redirect_to boards_path
   end
 
   def new
@@ -13,6 +14,7 @@ class UsersController < ApplicationController
       reset_session
       log_in @user
       flash[:success] = '成功'
+      redirect_to boards_path
     else
       render 'new', status: :unprocessable_entity
     end
