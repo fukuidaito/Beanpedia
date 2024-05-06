@@ -20,7 +20,7 @@ ja:
     success: '投稿に成功しました'
     board_failure: '投稿に失敗しました'
     index:
-      title: 'クエスト一覧'
+      title: '投稿一覧'
     bookmarks:
       title: 'お気に入り一覧'
   profiles:
