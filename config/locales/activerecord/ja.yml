@@ -23,5 +23,8 @@ ja:
   errors:
     messages:
       not_saved: 'ユーザー登録に失敗しました'
+  devise:
+    registrations:
+      signed_up: 'ユーザー登録に成功しました'
 
 
