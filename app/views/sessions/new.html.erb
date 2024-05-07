@@ -3,6 +3,11 @@
 
 <div class="row justify-content-center">
   <div class="col-md-6">
+  <% if flash[:danger] %>
+  <div class="alert alert-danger">
+    <%= flash[:danger] %>
+  </div>
+<% end %>
     <%= form_with(url: login_path, scope: :session) do |f| %>
 
       <%= f.label :email %>
