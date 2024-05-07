@@ -26,6 +26,8 @@ ja:
   profiles:
     show:
       title: 'プロフィール'
+    edit: 
+      title: 'プロフィール編集'
   defaults:
     flash_message:
       deleted: '投稿を削除しました'
