@@ -1,42 +1,43 @@
-<div class="container">
+<div class="container my-5">
   <div class="row justify-content-center">
-    <div class="col-md-6">
-      <%= form_with model: @survey, url: surveys_path, html: { class: "quest-form" } do |form| %>
-        <fieldset class="quest-fieldset">
-          <legend class="text-center">コーヒ豆の提案を受ける</legend>
-
-          <div class="form-group text-center">
-            <%= form.label :acidity, "コーヒーの酸味が好きですか？" %><br>
-            <%= form.range_field :acidity, min: 1, max: 5, class: "form-range", id: "acidity" %>
-            <div class="range-label">←←←←←←←←←←そんな</div>
-            <div class="range-label">普通</div>
-            <div class="range-label">好き→→→→→→→→→→→</div>
+    <div class="col-lg-8">
+      <%= form_with model: @survey, url: surveys_path, html: { class: "form-needs-validation" }, local: true do |form| %>
+        <div class="card shadow">
+          <div class="card-header p-4">
+            <h2 class="text-center">コーヒー豆の提案を受ける</h2>
           </div>
-          <div class="form-group text-center">
-            <%= form.label :bitterness, "コーヒーの苦味が好きですか？" %><br>
-            <%= form.range_field :bitterness, min: 1, max: 5, class: "form-range", id: "bitterness" %>
-            <div class="range-label">←←←←←←←←←←そんな</div>
-            <div class="range-label">普通</div>
-            <div class="range-label">好き→→→→→→→→→→→</div>
+          <div class="card-body p-4">
+            <div class="mb-4">
+              <%= form.label :acidity, "コーヒーの酸味が好きですか？", class: "form-label" %>
+              <%= form.range_field :acidity, min: 1, max: 5, class: "form-range custom-range", id: "acidity" %>
+              <div class="d-flex justify-content-between">
+                <span>全く</span><span>普通</span><span>非常に</span>
+              </div>
+            </div>
+            <div class="mb-4">
+              <%= form.label :bitterness, "コーヒーの苦味が好きですか？", class: "form-label" %>
+              <%= form.range_field :bitterness, min: 1, max: 5, class: "form-range custom-range", id: "bitterness" %>
+              <div class="d-flex justify-content-between">
+                <span>全く</span><span>普通</span><span>非常に</span>
+              </div>
+            </div>
+            <div class="mb-4">
+              <%= form.label :body, "コーヒーのボディ（コク）はどのくらいが好きですか？", class: "form-label" %>
+              <%= form.range_field :body, min: 1, max: 5, class: "form-range custom-range", id: "body" %>
+              <div class="d-flex justify-content-between">
+                <span>軽い</span><span>普通</span><span>重い</span>
+              </div>
+            </div>
+            <div class="mb-4">
+              <%= form.label :flavor, "どのような風味が好きですか？", class: "form-label" %>
+              <%= form.select :flavor, ["フルーティー", "ナッティー", "チョコレート"], { prompt: "選択してください" }, { class: "form-select" } %>
+            </div>
+            <div class="text-center">
+              <%= form.submit "送信", class: "btn btn-primary btn-lg" %>
+            </div>
           </div>
-          <div class="form-group text-center">
-            <%= form.label :body, "コーヒーのボディ（コク）はどのくらいが好きですか？" %><br>
-            <%= form.range_field :body, min: 1, max: 5, class: "form-range", id: "body" %>
-            <div class="range-label">←←←←←←←←←←そんな</div>
-            <div class="range-label">普通</div>
-            <div class="range-label">好き→→→→→→→→→→→</div>
-          </div>
-          <div class="form-group text-center">
-            <%= form.label :flavor, "どのような風味が好きですか？" %><br>
-            <%= form.select :flavor, ["フルーティー", "ナッティー", "チョコレート"], { prompt: "選択してください" }, class: "form-select" %>
-          </div>
-          <div class="form-group text-center">
-            <%= form.submit "送信", class: "btn btn-primary" %>
-          </div>
-        </fieldset>
+        </div>
       <% end %>
     </div>
   </div>
 </div>
-
-
