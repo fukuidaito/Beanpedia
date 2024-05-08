@@ -1,27 +1,22 @@
 class Board < ApplicationRecord
-  # Associations
+
   belongs_to :user
   has_many :comments, dependent: :destroy
   has_many :bookmarks, dependent: :destroy
 
-  # Enumerations
   enum rating: { good: 1, very_good: 2, excellent: 3, outstanding: 4, exceptional: 5 }
   enum acidity: { very_low: 1, low: 2, medium: 3, high: 4, very_high: 5 }, _prefix: true
   enum bitterness: { very_low: 1, low: 2, medium: 3, high: 4, very_high: 5 }, _prefix: true
   enum richness: { very_low: 1, low: 2, medium: 3, high: 4, very_high: 5 }, _prefix: true
 
-  # Image uploader
   mount_uploader :board_image, BoardImageUploader
 
-  # Validations
   validates :title, presence: true, length: { maximum: 255 }
   validates :body, presence: true, length: { maximum: 65_535 }
 
-  # Geocoding
   geocoded_by :address
   after_validation :geocode
 
-  # Class Methods
   def self.rating_options
     {
       '⭐️': :good,
