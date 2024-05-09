@@ -17,7 +17,7 @@ RUN bundle install
 RUN yarn install
 
 COPY . . 
-COPY ./Rakefile /Ralefile
+COPY ./Rakefile /Rakefile
 COPY ./start.sh /start.sh
 RUN chmod 744 /start.sh
 CMD ["sh", "/start.sh"]

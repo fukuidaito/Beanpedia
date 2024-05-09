@@ -52,10 +52,10 @@
       <% end %>
     </li>
   
-    <li class='nav-item border border-success'>
+    <li class='nav-item'>
       <%= link_to profile_path do %>
-        <i class="fas fa-user-circle"></i> <%= current_user.name %>
         <%= image_tag current_user.avatar_url, class: 'rounded-circle mr-2', size: '40x40' %>
+        <i class="fas fa-user-circle"></i> <%= current_user.name %>
       <% end %>
     </li>
   </ul>

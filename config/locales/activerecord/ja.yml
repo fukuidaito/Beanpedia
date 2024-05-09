@@ -1,5 +1,7 @@
 ja:
   defaults:
+    edit: '編集'
+    updata: '更新'
     message:
       updated: '更新に成功しました'
     flash_message:
@@ -26,5 +28,3 @@ ja:
   devise:
     registrations:
       signed_up: 'ユーザー登録に成功しました'
-
-

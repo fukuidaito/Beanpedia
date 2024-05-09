@@ -5,7 +5,7 @@ class OpenAiService
       request["Content-Type"] = "application/json"
       request["Authorization"] = "Bearer #{ENV['OPENAI_ACCESS_TOKEN']}"
       request.body = {
-      model: "gpt-3.5-turbo", # または "gpt-4" など、使用するモデル名を指定
+      model: "gpt-3.5-turbo",
       messages: [
           { role: "system", content: "You are a helpful assistant." },
           { role: "user", content: input }
