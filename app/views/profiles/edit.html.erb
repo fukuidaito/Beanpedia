@@ -1,7 +1,7 @@
 <% content_for(:title, t('.title')) %>
-<div class="container mt-5">
+<div class="container mt-5 bg-white">
   <div class="row justify-content-center">
-    <div class="col-md-8">
+    <div class="col-md-8 mt-4 mb-4">
       <h1 class="mb-4"><%= t('.title') %></h1>
       <%= form_with model: @user, url: profile_path, local: true, class: "needs-validation", novalidate: true do |f| %>
         <%= render "shared/flash_message", object: f.object %>
