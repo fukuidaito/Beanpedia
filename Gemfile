@@ -61,6 +61,7 @@ gem 'line-bot-api'
 gem 'omniauth-line'
 gem 'omniauth-rails_csrf_protection'
 gem 'rails-autocomplete'
+gem 'pagy'
 
 # Use Sass to process CSS
 # gem "sassc-rails"
