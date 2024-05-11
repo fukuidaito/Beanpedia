@@ -51,3 +51,5 @@ jobs:
 
     - name: Run RuboCop
       run: bundle exec rubocop
+      env:
+        OPENAI_ACCESS_TOKEN: ${{ secrets.OPENAI_ACCESS_TOKEN }}
