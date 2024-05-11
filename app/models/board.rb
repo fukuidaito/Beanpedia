@@ -1,7 +1,7 @@
 class Board < ApplicationRecord
 
   belongs_to :user
-  has_many :comments, dependent: :destroy
+  has_many :comments, -> { order(created_at: :desc) }, dependent: :destroy
   has_many :bookmarks, dependent: :destroy
 
   enum rating: { good: 1, very_good: 2, excellent: 3, outstanding: 4, exceptional: 5 }

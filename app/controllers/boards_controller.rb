@@ -7,6 +7,7 @@ class BoardsController < ApplicationController
   def index
     @q = Board.ransack(params[:q])
     @boards = @q.result(distinct: true).includes(:user).order(created_at: :desc).page(params[:page])
+    @pagy, @boards = pagy(Board.all, items: 10)
   end
 
   def search
