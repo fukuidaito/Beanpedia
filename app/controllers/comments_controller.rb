@@ -3,6 +3,10 @@ class CommentsController < ApplicationController
   before_action :set_comment, only: [:update, :destroy]
   before_action :set_board, only: [:index, :create]
 
+  def index
+    @comments = @board.comments.order(created_at: :desc)
+  end
+
   def edit
     @comment = Comment.find(params[:id])
   end
