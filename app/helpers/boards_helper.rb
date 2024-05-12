@@ -23,17 +23,13 @@ module BoardsHelper
   end
 
   def display_rating(rating)
-    case rating
-    when 'good'
-      '⭐️'
-    when 'very_good'
-      '⭐️⭐️'
-    when 'excellent'
-      '⭐️⭐️⭐️'
-    when 'outstanding'
-      '⭐️⭐️⭐️⭐️'
-    when 'exceptional'
-      '⭐️⭐️⭐️⭐️⭐️'
-    end
+    ratings = {
+      'good' => '⭐️',
+      'very_good' => '⭐️⭐️',
+      'excellent' => '⭐️⭐️⭐️',
+      'outstanding' => '⭐️⭐️⭐️⭐️',
+      'exceptional' => '⭐️⭐️⭐️⭐️⭐️'
+    }
+    ratings[rating]
   end
 end

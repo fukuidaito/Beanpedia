@@ -13,7 +13,7 @@ class UsersController < ApplicationController
     if @user.save
       reset_session
       log_in @user
-      flash[:success] = '成功'
+      flash[:success] = t('users.success')
       redirect_to boards_path
     else
       render 'new', status: :unprocessable_entity
