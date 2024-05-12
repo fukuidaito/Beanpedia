@@ -44,3 +44,7 @@ ja:
       success: 'コメントが更新されました。'
     destroy:
       success: 'コメントが削除されました。'
+  sessions:
+    destroy:
+      success: 'ログアウトしました'
+    invalid_combination: 'emailかpasswordが間違っています'
