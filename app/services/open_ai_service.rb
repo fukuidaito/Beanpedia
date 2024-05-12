@@ -1,15 +1,14 @@
 class OpenAiService
   def self.generate_coffee_suggestion(input)
-      uri = URI.parse("https://api.openai.com/v1/chat/completions")
+    uri = URI.parse("https://api.openai.com/v1/chat/completions")
       request = Net::HTTP::Post.new(uri)
       request["Content-Type"] = "application/json"
       request["Authorization"] = "Bearer #{ENV['OPENAI_ACCESS_TOKEN']}"
       request.body = {
-      model: "gpt-3.5-turbo",
+      model: 'gpt-3.5-turbo',
       messages: [
           { role: "system", content: "You are a helpful assistant." },
-          { role: "user", content: input }
-      ]
+          { role: "user", content: input } ]
       }.to_json
 
       response = Net::HTTP.start(uri.hostname, uri.port, use_ssl: uri.scheme == "https") do |http|

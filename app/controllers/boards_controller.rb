@@ -12,15 +12,15 @@ class BoardsController < ApplicationController
 
   def search
     if params[:title_search].present?
-      search_term = params[:title_search].downcase  # パラメータを小文字に変換
+      search_term = params[:title_search].downcase
       @boards = Board.where('LOWER(title) LIKE ?', "%#{search_term}%").order(created_at: :desc)
     else
-      @boards = []  # クエリが空の場合は空の配列を返す
+      @boards = []
     end
     respond_to do |format|
       format.turbo_stream do
-        render turbo_stream: turbo_stream.update("search_results",
-          partial: "boards/search_results",
+        render turbo_stream: turbo_stream.update('search_results',
+          partial: 'boards/search_results',
           locals: { boards: @boards })
       end
     end

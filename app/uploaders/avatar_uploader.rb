@@ -18,7 +18,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
     'sample.jpg'
   end
 
-  def extension_whitelist # 拡張子の制限
+  def extension_whitelist
     %w[jpg jpeg gif png]
   end
 
