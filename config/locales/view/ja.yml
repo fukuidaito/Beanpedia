@@ -36,3 +36,11 @@ ja:
   sessions:
     destroy:
       success: 'ログアウトしました'
+  comments:
+    create:
+      success: 'コメントが投稿されました。'
+      failure: 'コメントの投稿に失敗しました。'
+    update:
+      success: 'コメントが更新されました。'
+    destroy:
+      success: 'コメントが削除されました。'
