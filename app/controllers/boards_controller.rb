@@ -7,21 +7,21 @@ class BoardsController < ApplicationController
   def index
     @q = Board.ransack(params[:q])
     @boards = @q.result(distinct: true).includes(:user).order(created_at: :desc).page(params[:page])
-    @pagy, @boards = pagy(Board.all, items: 10)
+    @pagy, @boards = pagy(Board.order(created_at: :desc), items: 10)
   end
 
   def search
     if params[:title_search].present?
-      search_term = params[:title_search].downcase  # パラメータを小文字に変換
+      search_term = params[:title_search].downcase
       @boards = Board.where('LOWER(title) LIKE ?', "%#{search_term}%").order(created_at: :desc)
     else
-      @boards = []  # クエリが空の場合は空の配列を返す
+      @boards = []
     end
     respond_to do |format|
       format.turbo_stream do
-        render turbo_stream: turbo_stream.update("search_results",
-          partial: "boards/search_results",
-          locals: { boards: @boards })
+        render turbo_stream: turbo_stream.update('search_results',
+                                                 partial: 'boards/search_results',
+                                                 locals: { boards: @boards })
       end
     end
   end
@@ -60,8 +60,7 @@ class BoardsController < ApplicationController
   def destroy
     board = current_user.boards.find(params[:id])
     board.destroy!
-    redirect_to boards_path, status: :see_other, success: t('defaults.flash_message.deleted', item: Board.model_name.human),
-                             status: :see_other
+    redirect_to boards_path, status: :see_other, success: t('defaults.flash_message.deleted', item: Board.model_name.human)
   end
 
   # def bookmarks
@@ -77,8 +76,6 @@ class BoardsController < ApplicationController
     @boards = Board.ranking.limit(10)
   end
 
-
-
   private
 
   def set_board
@@ -86,7 +83,8 @@ class BoardsController < ApplicationController
   end
 
   def board_params
-    params.require(:board).permit(:title, :body, :board_image, :board_image_cache, :acidity, :bitterness, :richness, :address, :latitude, :longitude, :rating).tap do |whitelisted|
+    params.require(:board).permit(:title, :body, :board_image, :board_image_cache, :acidity, :bitterness, :richness, :address,
+                                  :latitude, :longitude, :rating).tap do |whitelisted|
       whitelisted[:rating] = whitelisted[:rating].to_i if whitelisted[:rating]
     end
   end
@@ -98,9 +96,9 @@ class BoardsController < ApplicationController
   end
 
   def line_client
-    @line_client ||= Line::Bot::Client.new { |config|
-      config.channel_secret = ENV['LINE_CHANNEL_SECRET']
-      config.channel_token = ENV['LINE_CHANNEL_TOKEN']
-    }
+    @line_client ||= Line::Bot::Client.new do |config|
+      config.channel_secret = ENV.fetch('LINE_CHANNEL_SECRET', nil)
+      config.channel_token = ENV.fetch('LINE_CHANNEL_TOKEN', nil)
+    end
   end
 end

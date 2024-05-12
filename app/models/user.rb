@@ -29,12 +29,12 @@ class User < ApplicationRecord
     access_token = credentials["refresh_token"]
     access_secret = credentials["secret"]
     credentials = credentials.to_json
-    name = info["name"]
+    name = info['name']
   end
 
-  def set_values_by_raw_info(raw_info)
+  def values_by_raw_info(raw_info)
     self.raw_info = raw_info.to_json
-    self.save!
+    save!
   end
 
   def self.from_omniauth(auth)
@@ -58,7 +58,7 @@ class User < ApplicationRecord
 
   def remember
     self.remember_token = User.new_token
-    update_attribute(:remember_digest, User.digest(remember_token))
+    update(remember_digest: User.digest(remember_token))
     remember_digest
   end
 
