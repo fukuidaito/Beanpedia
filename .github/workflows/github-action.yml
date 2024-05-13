@@ -1,4 +1,4 @@
-name: Run rubocop
+name: CI
 
 on:
   pull_request:
@@ -13,7 +13,7 @@ jobs:
         ports:
           - 3306:3306
         env:
-          MYSQL_ALLOW_EMPTY_PASSWORD: yes
+          MYSQL_ROOT_PASSWORD: yourpassword
         options: --health-cmd "mysqladmin ping" --health-interval 10s --health-timeout 5s --health-retries 10
 
     steps:
@@ -34,17 +34,15 @@ jobs:
             ${{ runner.os }}-node-
 
       - name: Bundler and gem install
-        run: |
-          gem install bundler
-          bundle install --jobs 4 --retry 3 --path vendor/bundle
+        run: bundle install --jobs 4 --retry 3
 
       - name: Yarn install
         run: yarn install --check-files
 
       - name: Database create and migrate
-        run:
-          cp config/database.yml.ci config/database.yml && \
-          bundle exec rails db:create RAILS_ENV=test && \
+        run: |
+          cp config/database.yml.ci config/database.yml
+          bundle exec rails db:create RAILS_ENV=test
           bundle exec rails db:migrate RAILS_ENV=test
 
   rubocop:
