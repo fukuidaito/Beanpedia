@@ -22,9 +22,7 @@ class User < ApplicationRecord
   end
 
   def update_values(omniauth)
-    return if provider.to_s != omniauth['provider'].to_s || uid != omniauth['uid']
-
-    credentials = omniauth['credentials']
+    nil if provider.to_s != omniauth['provider'].to_s || uid != omniauth['uid']
   end
 
   def values_by_raw_info(raw_info)
