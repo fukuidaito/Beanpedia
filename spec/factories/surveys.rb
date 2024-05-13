@@ -3,6 +3,6 @@ FactoryBot.define do
     bitterness { 1 }
     acidity { 1 }
     body { 1 }
-    origin { "MyString" }
+    origin { 'MyString' }
   end
 end

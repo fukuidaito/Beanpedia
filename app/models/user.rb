@@ -21,15 +21,8 @@ class User < ApplicationRecord
     social_profiles.select { |sp| sp.provider == provider.to_s }.first
   end
 
-  def set_values(omniauth)
-    return if provider.to_s != omniauth["provider"].to_s || uid != omniauth["uid"]
-    credentials = omniauth["credentials"]
-    info = omniauth["info"]
-
-    access_token = credentials["refresh_token"]
-    access_secret = credentials["secret"]
-    credentials = credentials.to_json
-    name = info['name']
+  def update_values(omniauth)
+    nil if provider.to_s != omniauth['provider'].to_s || uid != omniauth['uid']
   end
 
   def values_by_raw_info(raw_info)
@@ -39,8 +32,6 @@ class User < ApplicationRecord
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
-      # ※deviseのuserカラムに nameやprofile を追加している場合は下のコメントアウトを外して使用
-
       user.name = auth.info.name
       user.email = auth.info.email
       user.password = Devise.friendly_token[0, 20]
@@ -49,7 +40,7 @@ class User < ApplicationRecord
 
   def self.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST : BCrypt::Engine.cost
-    BCrypt::Password.create(string, cost:)
+    BCrypt::Password.create(string, cost)
   end
 
   def self.new_token
@@ -73,24 +64,21 @@ class User < ApplicationRecord
   end
 
   def forget
-    update_attribute(:remember_digest, nil)
+    update(remember_digest: nil)
   end
 
   def own?(resource)
     id == resource.user_id
   end
 
-  # ブックマークに追加する
   def bookmark(board)
     bookmark_boards << board
   end
 
-  # ブックマークを外す
   def unbookmark(board)
     bookmark_boards.destroy(board)
   end
 
-  # ブックマークをしているか判定する
   def bookmark?(board)
     bookmark_boards.include?(board)
   end
