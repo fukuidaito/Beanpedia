@@ -25,8 +25,6 @@ class User < ApplicationRecord
     return if provider.to_s != omniauth['provider'].to_s || uid != omniauth['uid']
 
     credentials = omniauth['credentials']
-    info = omniauth['info']
-    credentials = credentials.to_json
   end
 
   def values_by_raw_info(raw_info)
