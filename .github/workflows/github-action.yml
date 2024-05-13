@@ -43,8 +43,8 @@ jobs:
 
       - name: Database create and migrate
         run:
-          cp config/database.yml.ci config/database.yml
-          bundle exec rails db:create RAILS_ENV=test
+          cp config/database.yml.ci config/database.yml && \
+          bundle exec rails db:create RAILS_ENV=test && \
           bundle exec rails db:migrate RAILS_ENV=test
 
   rubocop:
