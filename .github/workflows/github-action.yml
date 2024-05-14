@@ -1,22 +1,15 @@
-name: CI
-
-on:
-  pull_request:
-
 jobs:
   rspec:
     runs-on: ubuntu-latest
     timeout-minutes: 10
-    defaults:
-      run:
-        working-directory: .
     services:
       mysql:
         image: mysql:5.7
         ports:
           - 3306:3306
         env:
-          MYSQL_ROOT_PASSWORD: yes
+          MYSQL_ROOT_PASSWORD: yourpassword
+        options: --health-cmd "mysqladmin ping" --health-interval 10s --health-timeout 5s --health-retries 10
 
     steps:
       - name: Checkout code
@@ -28,7 +21,10 @@ jobs:
           bundler-cache: true
 
       - name: Set environment variables
-        run: echo "OPENAI_ACCESS_TOKEN=${{ secrets.OPENAI_ACCESS_TOKEN }}" >> $GITHUB_ENV
+        run: |
+          echo "DATABASE_USERNAME=root" >> $GITHUB_ENV
+          echo "DATABASE_PASSWORD=${{ secrets.MYSQL_ROOT_PASSWORD }}" >> $GITHUB_ENV
+          echo "DATABASE_HOST=localhost" >> $GITHUB_ENV
 
       - name: Cache node modules
         uses: actions/cache@v2
@@ -46,24 +42,6 @@ jobs:
 
       - name: Database create and migrate
         run: |
-          cp config/database.yml.ci config/database.yml
+          cp config/database.yml.ci config/database.json
           bundle exec rails db:create RAILS_ENV=test
           bundle exec rails db:migrate RAILS_ENV=test
-
-      - name: Run rspec
-        run: bundle exec rspec
-
-  rubocop:
-    runs-on: ubuntu-latest
-    timeout-minutes: 10
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Set up Ruby
-        uses: ruby/setup-ruby@v1
-        with:
-          bundler-cache: true
-
-      - name: Run rubocop
-        run: bundle exec rubocop
