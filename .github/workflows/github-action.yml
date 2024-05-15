@@ -40,6 +40,9 @@ jobs:
         gem install bundler
         bundle install
 
+    - name: Setup environment variables
+      run: echo "OPENAI_ACCESS_TOKEN=${{ secrets.OPENAI_ACCESS_TOKEN }}" >> $GITHUB_ENV
+
     - name: Setup database
       run: |
           cp config/database.ci.yml config/database.yml
