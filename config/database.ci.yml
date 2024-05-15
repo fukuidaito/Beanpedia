@@ -2,6 +2,6 @@ test:
   adapter: mysql2
   encoding: utf8
   username: root
-  password: <%= ENV['CI_DB_PASSWORD'] %>  # 環境変数からパスワードを取得
+  password: <%= ENV['CI_DB_PASSWORD'] %> 
   host: 127.0.0.1
   database: <%= ENV['CI_DB_NAME'] %> 
