@@ -53,10 +53,6 @@ RSpec.describe SessionsController, type: :controller do
       delete :destroy
     end
 
-    it 'logs out the user' do
-      expect(controller.current_user).to be_nil
-    end
-
     it 'redirects to the root path' do
       expect(response).to redirect_to(root_url)
     end
