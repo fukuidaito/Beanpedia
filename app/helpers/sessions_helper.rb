@@ -22,13 +22,12 @@ module SessionsHelper
 
   def log_out
     forget(current_user)
-    reset_session
-    clear_current_user
+    reset_session_method
   end
 
   private
 
-  def clear_current_user
-    session[:user_id] = nil
+  def reset_session_method
+    reset_session
   end
 end
