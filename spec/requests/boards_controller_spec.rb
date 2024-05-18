@@ -4,7 +4,7 @@ RSpec.describe BoardsController, type: :request do
   include Devise::Test::IntegrationHelpers
 
   let(:user) { create(:user) }
-  let(:board) { create(:board, user: user, acidity: 1, bitterness: 1, richness: 1) }
+  let(:board) { create(:board, user:, acidity: 1, bitterness: 1, richness: 1) }
 
   describe 'GET #index' do
     context 'when user is logged in' do
@@ -76,9 +76,9 @@ RSpec.describe BoardsController, type: :request do
 
       it 'deletes the board' do
         board
-        expect {
+        expect do
           delete board_path(board)
-        }.to change(Board, :count).by(-1)
+        end.to change(Board, :count).by(-1)
         expect(response).to redirect_to(boards_path)
       end
     end
