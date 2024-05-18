@@ -93,5 +93,7 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
   config.hosts << "cafe-quest-09ffd781fa6a.herokuapp.com"
+  config.hosts << "beanpediacoffee.com"
+  config.hosts << "www.beanpediacoffee.com"
   config.eager_load = true
 end

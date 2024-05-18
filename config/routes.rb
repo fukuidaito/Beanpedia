@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'terms_of_service', to: 'static_pages#terms_of_service'
+  get 'terms_of_service', to: 'static_pages#terms_of_service', as: 'terms_of_service'
   get 'privacy', to: 'static_pages#privacy'
   devise_for :users, controllers: {
     omniauth_callbacks: "users/omniauth_callbacks" ,
