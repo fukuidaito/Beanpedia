@@ -1,64 +1,53 @@
 <header>
-<nav class='navbar navbar-expand-lg navigation navbar-light bg-light mb-0'>
-    <%= link_to root_path, class: "navbar-brand d-flex align-items-center" do %>
-      <%= image_tag 'logo.png', size: '50x50', class: 'me-2 rounded-circle ms-4' %>
-      <h1 class="mb-0">Beanpedia</h1>
-    <% end %>
-    <button class='navbar-toggler' data-bs-toggle='collapse' data-bs-target='#navbarSupportedContent'
-      aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation'>
-      <span class='navbar-toggler-icon'></span>
-    </button>
-    <div class='collapse navbar-collapse' id='navbarSupportedContent'>
-    <ul class='navbar-nav ms-auto main-nav align-items-center'>
-    <li class='nav-link btn btn-info'>
-      <%= link_to new_survey_path, class: "nav-link link-body-emphasis" do %>
-        <i class="fa-solid fa-gift"></i> コーヒー豆の提案を受ける
+  <nav class="navbar navbar-expand-lg navbar-light bg-light mb-0">
+    <div class="container-fluid">
+      <%= link_to root_path, class: "navbar-brand d-flex align-items-center" do %>
+        <%= image_tag 'logo.png', size: '50x50', class: 'me-2 rounded-circle' %>
+        <h1 class="mb-0">Beanpedia</h1>
       <% end %>
-    </li>
-  
-    <li class='nav-link btn btn-info'>
-      <%= link_to boards_path, class: 'nav-link' do %>
-        <i class="fas fa-list-ul"></i> 投稿一覧
-      <% end %>
-    </li>
-  
-    <li class='nav-link btn btn-info'>
-      <%= link_to ranking_boards_path, class: 'nav-link' do %>
-        <i class="fas fa-medal"></i> ランキング
-      <% end %>
-    </li>
-  
-    <li class='nav-link btn btn-info'>
-      <%= link_to bookmarks_boards_path, class: 'nav-link' do %>
-        <i class="fas fa-trophy"></i> お気に入り
-      <% end %>
-    </li>
-  
-    <li class='nav-link btn btn-info'>
-      <%= link_to bookmarks_boards_path, class: 'nav-link' do %>
-        <i class="fas fa-bookmark"></i> お気に入り一覧
-      <% end %>
-    </li>
-  
-    <li class='nav-link btn btn-info'>
-      <%= link_to new_board_path, class: "nav-link link-body-emphasis" do %>
-        <i class="fas fa-plus-square"></i> 新規投稿
-      <% end %>
-    </li>
-  
-    <li class='nav-link'>
-      <%= link_to logout_path, class: 'nav-link btn btn-info', data: { turbo_method: :delete } do %>
-        <i class="fas fa-sign-out-alt"></i> ログアウト
-      <% end %>
-    </li>
-  
-    <li class='nav-item'>
-      <%= link_to profile_path do %>
-        <%= image_tag current_user.avatar_url, class: 'rounded-circle mr-2', size: '40x40' %>
-        <i class="fas fa-user-circle"></i> <%= current_user.name %>
-      <% end %>
-    </li>
-  </ul>
-
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center">
+          <li class="nav-item">
+            <%= link_to new_survey_path, class: "nav-link btn btn-info mx-2" do %>
+              <i class="fa-solid fa-gift"></i> コーヒー豆の提案を受ける
+            <% end %>
+          </li>
+          <li class="nav-item">
+            <%= link_to boards_path, class: 'nav-link btn btn-info mx-2' do %>
+              <i class="fas fa-list-ul"></i> 投稿一覧
+            <% end %>
+          </li>
+          <li class="nav-item">
+            <%= link_to ranking_boards_path, class: 'nav-link btn btn-info mx-2' do %>
+              <i class="fas fa-medal"></i> ランキング
+            <% end %>
+          </li>
+          <li class="nav-item">
+            <%= link_to bookmarks_boards_path, class: 'nav-link btn btn-info mx-2' do %>
+              <i class="fas fa-bookmark"></i> お気に入り一覧
+            <% end %>
+          </li>
+          <li class="nav-item">
+            <%= link_to new_board_path, class: "nav-link btn btn-info mx-2" do %>
+              <i class="fas fa-plus-square"></i> 新規投稿
+            <% end %>
+          </li>
+          <li class="nav-item">
+            <%= link_to logout_path, class: 'nav-link btn btn-info mx-2', data: { turbo_method: :delete } do %>
+              <i class="fas fa-sign-out-alt"></i> ログアウト
+            <% end %>
+          </li>
+          <li class="nav-item">
+            <%= link_to profile_path, class: 'd-flex align-items-center mx-2' do %>
+              <%= image_tag current_user.avatar_url, class: 'rounded-circle me-2', size: '40x40' %>
+              <span><i class="fas fa-user-circle"></i> <%= current_user.name %></span>
+            <% end %>
+          </li>
+        </ul>
+      </div>
     </div>
-  </header>
+  </nav>
+</header>
