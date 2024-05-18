@@ -1,25 +1,29 @@
-<footer class="footer bg-brown text-center text-lg-start mt-auto py-3">
-  <div class="container p-4">
+<footer class="footer bg-white text-brack text-center text-lg-start mt-auto py-4">
+  <div class="container">
     <div class="row">
-      <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+      <div class="col-lg-6 col-md-12 mb-4 mb-md-0 text-lg-start">
         <small>
-          The <a href="#" class="text-reset">Beanpedia</a>
-          by <a href="https://github.com/fukuidaito" class="text-reset">fukuidaito</a>
+          <a href="#" class="text-reset text-decoration-none fw-bold">Beanpedia</a>
+          by <a href="https://github.com/fukuidaito" class="text-reset text-decoration-none">fukuidaito</a>
         </small>
       </div>
-      <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
-        <ul class="list-unstyled mb-0 d-flex justify-content-center justify-content-lg-end">
+      <div class="col-lg-6 col-md-12 mb-4 mb-md-0 d-flex justify-content-center justify-content-lg-end">
+        <ul class="list-unstyled d-flex mb-0">
           <li class="ms-3">
-            <%= link_to "利用規約", terms_of_service_path, class: "link-dark" %>
+            <%= link_to terms_of_service_path, class: "text-reset text-decoration-none" do %>
+              <i class="fas fa-file-contract me-1"></i> 利用規約
+            <% end %>
           </li>
           <li class="ms-3">
-            <%= link_to "Contact", "https://twitter.com/zutozako1", class: "link-dark" %>
+            <%= link_to "https://twitter.com/zutozako1", target: "_blank", class: "text-reset text-decoration-none" do %>
+              <i class="fab fa-twitter me-1"></i> Contact
+            <% end %>
           </li>
         </ul>
       </div>
     </div>
   </div>
-  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+  <div class="text-center py-3" style="background-color: rgba(0, 0, 0, 0.2);">
     © <%= Time.now.year %> Beanpedia. All rights reserved.
   </div>
 </footer>
