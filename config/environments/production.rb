@@ -22,10 +22,7 @@ Rails.application.configure do
 
   # Disable serving static files from the `/public` folder by default since
   # Apache or NGINX already handles this.
-  # config.public_file_server.enabled = ENV["RAILS_SERVE_STATIC_FILES"].present?
-  # config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present? || ENV['RENDER'].present?
-  config.public_file_server.enabled = true
-
+  config.public_file_server.enabled = ENV["RAILS_SERVE_STATIC_FILES"].present?
   # Compress CSS using a preprocessor.
   # config.assets.css_compressor = :sass
 
@@ -49,6 +46,12 @@ Rails.application.configure do
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   config.force_ssl = true
+
+  config.middleware.insert_before 0, Rack::Rewrite do
+    r301 %r{.*}, 'https://www.beanpediacoffee.com$&', if: Proc.new { |rack_env|
+      rack_env['HTTP_X_FORWARDED_PROTO'] != 'https'
+    }
+  end
 
   # Include generic and useful information about system operation, but avoid logging too much
   # information to avoid inadvertent exposure of personally identifiable information (PII).
@@ -95,5 +98,4 @@ Rails.application.configure do
   config.hosts << "cafe-quest-09ffd781fa6a.herokuapp.com"
   config.hosts << "beanpediacoffee.com"
   config.hosts << "www.beanpediacoffee.com"
-  config.eager_load = true
 end

@@ -62,6 +62,7 @@ gem 'rails-i18n', '~> 7.0.0'
 gem 'ransack'
 gem 'ruby-openai'
 gem 'sassc-rails', '2.1.2'
+gem 'rack-rewrite'
 
 # Use Sass to process CSS
 # gem "sassc-rails"
