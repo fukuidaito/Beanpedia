@@ -47,6 +47,16 @@ Rails.application.configure do
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   config.force_ssl = true
 
+  config.ssl_options = {
+    redirect: {
+      exclude: ->(request) {
+        Rails.logger.debug("X-Forwarded-Proto: #{request.headers['X-Forwarded-Proto']}")
+        request.path =~ /health_check/ || request.headers['X-Forwarded-Proto'] == 'https'
+      }
+    },
+    secure_cookies: true
+  }
+
 
   # Include generic and useful information about system operation, but avoid logging too much
   # information to avoid inadvertent exposure of personally identifiable information (PII).
