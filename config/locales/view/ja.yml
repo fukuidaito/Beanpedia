@@ -12,6 +12,28 @@ ja:
       success: "%{kind} アカウントでのログインに成功しました"
       user:
         success: "%{kind} アカウントでのログインに成功しました"
+        sessions:
+      signed_in: "ログインしました。"
+      signed_out: "ログアウトしました。"
+      already_signed_out: "すでにログアウトしています。"
+    registrations:
+      signed_up: "アカウント登録が完了しました。"
+      updated: "アカウント情報が更新されました。"
+      destroyed: "アカウントが削除されました。"
+    passwords:
+      send_instructions: "パスワード再設定の案内をメールで送りました。"
+      updated: "パスワードが更新されました。"
+    confirmations:
+      send_instructions: "確認メールを送信しました。"
+      confirmed: "アカウントが確認されました。"
+    failure:
+      unauthenticated: "ログインしてください。"
+      invalid: "メールアドレスまたはパスワードが正しくありません。"
+      locked: "アカウントがロックされています。"
+      last_attempt: "残り1回の試行でアカウントがロックされます。"
+      inactive: "アカウントが有効化されていません。"
+      timeout: "セッションがタイムアウトしました。もう一度ログインしてください。"
+      not_found_in_database: "メールアドレスまたはパスワードが正しくありません。"
   user_sessions:
     new:
       title: 'ログイン'

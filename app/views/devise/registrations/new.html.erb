@@ -1,36 +1,28 @@
-
-
 <div class="container bg-white mt-4">
-  <h1>ユーザー登録</h1>
+  <h1>ログイン</h1>
   <div class="row justify-content-center">
     <div class="col-lg-6 col-md-8 col-sm-10">
-      <%= form_with(model: resource, as: resource_name, url: registration_path(resource_name), local: true) do |f| %>
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name), local: true) do |f| %>
         <%= render "devise/shared/error_messages", resource: resource %>
 
         <div class="form-group mb-3">
-          <%= f.label :name, class: 'form-label' %>
-          <%= f.text_field :name, class: 'form-control', autofocus: true, autocomplete: "name" %>
-        </div>
-
-        <div class="form-group mb-3">
           <%= f.label :email, class: 'form-label' %>
-          <%= f.email_field :email, class: 'form-control', autocomplete: "email" %>
+          <%= f.email_field :email, class: 'form-control', autofocus: true, autocomplete: "email" %>
         </div>
 
         <div class="form-group mb-3">
           <%= f.label :password, class: 'form-label' %>
-          <% if @minimum_password_length %>
-          <em>(<%= @minimum_password_length %>文字以上で設定してください)</em>
-          <% end %>
-          <%= f.password_field :password, class: 'form-control', autocomplete: "new-password" %>
+          <%= f.password_field :password, class: 'form-control', autocomplete: "current-password" %>
         </div>
 
-        <div class="form-group mb-4">
-          <%= f.label :password_confirmation, "Confirmation", class: 'form-label' %>
-          <%= f.password_field :password_confirmation, class: 'form-control', autocomplete: "new-password" %>
-        </div>
+        <% if devise_mapping.rememberable? %>
+          <div class="form-group form-check mb-3">
+            <%= f.check_box :remember_me, class: 'form-check-input' %>
+            <%= f.label :remember_me, class: 'form-check-label' %>
+          </div>
+        <% end %>
 
-        <%= f.submit "登録", class: "btn btn-primary btn-block" %>
+        <%= f.submit "ログイン", class: "btn btn-primary btn-block" %>
       <% end %>
     </div>
   </div>
@@ -45,7 +37,7 @@
         <i class="fa-brands fa-google"></i>
         <span style="font-size: 1.2rem;">Googleアカウントでサインインする</span>
       </button>
-    <% end %> 
+    <% end %>
   </div>
 
   <div class="text-center my-3">
