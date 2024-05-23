@@ -7,6 +7,7 @@ pin "bootstrap" # @5.3.3
 pin "top", to: "top.js"
 pin "script", to: "script.js"
 pin "stars", to: "stars.js"
+pin "flash", to: "flash_nessage.js"
 pin "jquery" # @3.7.1
 pin "raty", to: "raty.js", preload: true
 pin "@rails/ujs", to: "@rails--ujs.js" # @7.1.3
