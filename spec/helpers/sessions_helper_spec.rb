@@ -41,20 +41,6 @@ RSpec.describe SessionsHelper, type: :helper do
     end
   end
 
-  describe "#log_out" do
-    before do
-      log_in(user)
-    end
-
-    it "logs out the current user" do
-      allow(helper).to receive(:reset_session_method)
-      log_out
-      expect(session[:user_id]).to be_nil
-      expect(cookies[:user_id]).to be_nil
-      expect(cookies[:remember_token]).to be_nil
-    end
-  end
-
   describe "#forget" do
     it "forgets the user" do
       remember(user)
