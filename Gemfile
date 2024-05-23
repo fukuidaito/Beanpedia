@@ -40,17 +40,17 @@ gem 'jbuilder'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 # Reduces boot times through caching; required in config/boot.rb
-gem 'bcrypt',          '3.1.18'
-gem 'bootsnap',        '1.16.0', require: false
+gem 'aws-sdk-s3', require: false
+gem 'bcrypt', '3.1.18'
+gem 'bootsnap', '1.16.0', require: false
 gem 'bootstrap'
 gem 'carrierwave', '~> 3.0'
 gem 'devise'
 gem 'dotenv-rails'
-gem 'font-awesome-sass'
 gem 'fog-aws'
+gem 'font-awesome-sass'
 gem 'geocoder'
 gem 'google_places'
-gem "aws-sdk-s3", require: false
 gem 'kaminari'
 gem 'line-bot-api'
 gem 'omniauth', '1.9.1'
