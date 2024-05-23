@@ -1,4 +1,3 @@
-
 name: Rails CI
 
 on:
@@ -24,16 +23,16 @@ jobs:
     - name: Set up Ruby
       uses: ruby/setup-ruby@v1
       with:
-        ruby-version: '3.1.4' 
+        ruby-version: '3.1.4'
 
-    - name: Cache Ruby gems # Ruby gemsをキャッシュします。
+    - name: Cache Ruby gems
       uses: actions/cache@v3
       with:
-        path: vendor/bundle # キャッシュするディレクトリを指定します。
-        key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }} # キャッシュのキーを指定します。
+        path: vendor/bundle
+        key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
         restore-keys: |
-          ${{ runner.os }}-gems-  # 部分一致する最新のキャッシュを探します。
-      
+          ${{ runner.os }}-gems-
+
     - name: Install dependencies
       run: |
         sudo apt-get update -qq
@@ -41,13 +40,16 @@ jobs:
         bundle install
 
     - name: Setup environment variables
-      run: echo "OPENAI_ACCESS_TOKEN=${{ secrets.OPENAI_ACCESS_TOKEN }}" >> $GITHUB_ENV
+      run: |
+        echo "OPENAI_ACCESS_TOKEN=${{ secrets.OPENAI_ACCESS_TOKEN }}" >> $GITHUB_ENV
+        echo "AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }}" >> $GITHUB_ENV
+        echo "AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }}" >> $GITHUB_ENV
 
     - name: Setup database
       run: |
-          cp config/database.ci.yml config/database.yml
-          bundle exec rails db:create RAILS_ENV=test
-          bundle exec rails db:migrate RAILS_ENV=test
+        cp config/database.ci.yml config/database.yml
+        bundle exec rails db:create RAILS_ENV=test
+        bundle exec rails db:migrate RAILS_ENV=test
   
     - name: Run RSpec
       run: bundle exec rspec
