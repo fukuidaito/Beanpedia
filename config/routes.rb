@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get '*path', to: 'application#render404'
   get 'terms_of_service', to: 'static_pages#terms_of_service', as: 'terms_of_service'
   get 'privacy', to: 'static_pages#privacy'
   devise_for :users, controllers: {
@@ -36,4 +35,6 @@ Rails.application.routes.draw do
 
   resources :bookmarks, only: [:create, :destroy]
   resources :surveys, only: [:new, :create, :show]
+  get '*path', to: 'application#render404'
+  get '*path', to: 'application#render500'
 end
