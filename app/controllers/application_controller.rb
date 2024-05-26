@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
+  rescue_from ActiveRecord::RecordNotFound, with: :render404
   include SessionsHelper
   include Pagy::Backend
   add_flash_types :success, :info, :warning, :danger
@@ -8,6 +9,11 @@ class ApplicationController < ActionController::Base
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :avatar])
     devise_parameter_sanitizer.permit(:account_update, keys: [:name, :avatar])
+  end
+
+  def render404(error = nil)
+    Rails.logger.error("❌#{error.message}") if error
+    render template: 'errors/render404', layout: 'error', status: :not_found
   end
 
   private
