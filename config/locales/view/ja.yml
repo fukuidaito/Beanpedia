@@ -71,3 +71,9 @@ ja:
     destroy:
       success: 'ログアウトしました'
     invalid_combination: 'emailかpasswordが間違っています'
+  meta_tags:
+    defaults:
+      site: 'サイト名'
+      title: 'デフォルトタイトル'
+      description: 'デフォルトの説明'
+      keywords: 'キーワード1, キーワード2'
