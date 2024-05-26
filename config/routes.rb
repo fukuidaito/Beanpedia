@@ -35,4 +35,6 @@ Rails.application.routes.draw do
 
   resources :bookmarks, only: [:create, :destroy]
   resources :surveys, only: [:new, :create, :show]
+  get '*path', to: 'application#render404'
+  get '*path', to: 'application#render500'
 end
