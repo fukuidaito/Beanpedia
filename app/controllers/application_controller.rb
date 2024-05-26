@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
+  rescue_from StandardError, with: :render500
   rescue_from ActiveRecord::RecordNotFound, with: :render404
   include SessionsHelper
   include Pagy::Backend
