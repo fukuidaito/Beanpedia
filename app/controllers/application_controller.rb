@@ -17,6 +17,11 @@ class ApplicationController < ActionController::Base
     render template: 'errors/render404', layout: 'error', status: :not_found
   end
 
+  def render500(error = nil)
+    Rails.logger.error("❌#{error.message}") if error
+    render template: 'errors/render500', layout: 'error', status: :internal_server_error
+  end
+
   private
 
   def after_sign_in_path_for(_resource)
