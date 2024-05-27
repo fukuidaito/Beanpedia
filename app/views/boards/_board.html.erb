@@ -1,40 +1,63 @@
 <% unless board.nil? %>
-  <div id="board-id-<%= board.id %>" class="col-md-6">
-    <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative fixed-height">
-      <div class="col-auto d-block">
-        <%= image_tag board.board_image.url, class: 'bd-placeholder-img', size: '250x250' %>
-      </div>
-      <div class="col p-4 d-flex flex-column position-static">
-        <h3><%= link_to truncate(board.title, length: 15), board_path(board), class: "mb-0" %></h3>
-        <div class="mb-1 text-body-secondary"><%= l board.created_at, format: :long %></div>
-        <p class="card-text mb-auto truncate-text text-container border-full"><%= truncate(board.body, length: 30) %></p>
-        <div class="social-buttons d-flex align-items-center">
-          <div class="me-2">
-            <%= render 'boards/twitter', board: board %>
+  <div id="board-id-<%= board.id %>" class="col-lg-4 col-md-6 mb-4">
+    <div class="card shadow-sm h-100">
+      <% if board.board_images.any? %>
+        <div id="carousel-<%= board.id %>" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-indicators">
+            <% board.board_images.each_with_index do |image, index| %>
+              <button type="button" data-bs-target="#carousel-<%= board.id %>" data-bs-slide-to="<%= index %>" class="<%= 'active' if index == 0 %>" aria-current="<%= 'true' if index == 0 %>" aria-label="Slide <%= index + 1 %>"></button>
+            <% end %>
           </div>
+          <div class="carousel-inner">
+            <% board.board_images.each_with_index do |image, index| %>
+              <div class="carousel-item <%= 'active' if index == 0 %>">
+                <%= image_tag image.image.url, class: 'd-block w-100' %>
+              </div>
+            <% end %>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carousel-<%= board.id %>" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carousel-<%= board.id %>" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      <% else %>
+        <%= image_tag 'mame.png', class: 'card-img-top' %>
+      <% end %>
+      <div class="card-body">
+        <h5 class="card-title"><%= link_to truncate(board.title, length: 15), board_path(board), class: "text-dark" %></h5>
+        <p class="card-text"><%= truncate(board.body, length: 50) %></p>
+        <div class="d-flex justify-content-between align-items-center">
+          <small class="text-muted"><%= l board.created_at, format: :long %></small>
           <div>
+            <%= render 'boards/twitter', board: board %>
             <%= render 'boards/line', board: board %>
           </div>
         </div>
-        <% if current_user.own?(board) %>
-          <%= render 'crud_menus', board: board %>
-        <% else %>
-          <%= render 'boards/bookmark_button', board: board %>
-        <% end %>
       </div>
-      <div class="col p-4 d-flex flex-column position-static">
-        <li class="list-inline-item">
-          <%= image_tag board.user.avatar_url, alt: 'User avatar', class: 'rounded-circle', size: '30x30' %>
-          <%= board.user.name %>
-        </li>
+      <div class="card-footer bg-transparent">
+        <div class="d-flex justify-content-between align-items-center">
+          <div class="d-flex align-items-center">
+            <%= image_tag board.user.avatar_url, alt: 'User avatar', class: 'rounded-circle me-2', size: '30x30' %>
+            <%= board.user.name %>
+          </div>
+          <% if current_user.own?(board) %>
+            <%= render 'crud_menus', board: board %>
+          <% else %>
+            <%= render 'boards/bookmark_button', board: board %>
+          <% end %>
+        </div>
         <div class="mt-2">
-        <div class="mb-2">
-        <p>総合評価</p>
-        <%= display_rating(board.rating) %>
-      </div>
-          <%= render_progress_bar(board, :acidity) %>
-          <%= render_progress_bar(board, :bitterness) %>
-          <%= render_progress_bar(board, :richness) %>
+          <p class="mb-1">総合評価</p>
+          <%= display_rating(board.rating) %>
+          <div class="mt-1">
+            <%= render_progress_bar(board, :acidity) %>
+            <%= render_progress_bar(board, :bitterness) %>
+            <%= render_progress_bar(board, :richness) %>
+          </div>
         </div>
       </div>
     </div>
