@@ -20,7 +20,7 @@
   </div>
   
   <div class="mb-3">
-    <%= f.label :board_images, '写真を添付', class: "form-label fw-bold" %>
+    <%= f.label :board_images, '写真を添付(複数枚投稿可)', class: "form-label fw-bold" %>
     <%= f.file_field :board_images_files, class: 'form-control', accept: 'image/*', multiple: true, name: 'board[board_images_files][]', onchange: 'previewImages(event)' %>
   </div>
   
