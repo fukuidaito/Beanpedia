@@ -43,7 +43,7 @@ class BoardsController < ApplicationController
   def create
     @board = current_user.boards.build(board_params)
     if @board.save
-      if params[:board][:board_images_files]
+      if params[:board]&.[](:board_images_files)
         params[:board][:board_images_files].each do |image|
           @board.board_images.create(image:)
         end
