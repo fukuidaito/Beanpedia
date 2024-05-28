@@ -34,6 +34,7 @@ class BoardsController < ApplicationController
 
   def new
     @board = Board.new
+    @board.board_images.build
   end
 
   def edit
@@ -42,6 +43,11 @@ class BoardsController < ApplicationController
   def create
     @board = current_user.boards.build(board_params)
     if @board.save
+      if params[:board]&.[](:board_images_files)
+        params[:board][:board_images_files].each do |image|
+          @board.board_images.create(image:)
+        end
+      end
       redirect_to boards_path, success: t('.success')
     else
       flash.now[:danger] = t('.board_failure') and render :new, status: :unprocessable_entity
@@ -83,8 +89,11 @@ class BoardsController < ApplicationController
   end
 
   def board_params
-    params.require(:board).permit(:title, :body, :board_image, :board_image_cache, :acidity, :bitterness, :richness, :address,
-                                  :latitude, :longitude, :rating).tap do |whitelisted|
+    params.require(:board).permit(
+      :title, :body, :acidity, :bitterness, :richness, :address,
+      :latitude, :longitude, :rating, :board_image_cache,
+      board_images_attributes: [:id, :image, :image_cache, :_destroy]
+    ).tap do |whitelisted|
       whitelisted[:rating] = whitelisted[:rating].to_i if whitelisted[:rating]
     end
   end

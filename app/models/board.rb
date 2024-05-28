@@ -2,6 +2,8 @@ class Board < ApplicationRecord
   belongs_to :user
   has_many :comments, -> { order(created_at: :desc) }, dependent: :destroy, inverse_of: :board
   has_many :bookmarks, dependent: :destroy
+  has_many :board_images, dependent: :destroy, class_name: 'BoardImage', inverse_of: :board
+  accepts_nested_attributes_for :board_images, allow_destroy: true
 
   enum rating: { good: 1, very_good: 2, excellent: 3, outstanding: 4, exceptional: 5 }
   enum acidity: { very_low: 1, low: 2, medium: 3, high: 4, very_high: 5 }, _prefix: true
