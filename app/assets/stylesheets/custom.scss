@@ -503,3 +503,75 @@ input[type=range]::-webkit-slider-thumb {
   margin-bottom: 10px;
   border: 2px solid #dee2e6;
 }
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.list-group-item {
+  opacity: 0; /* 初期状態は非表示 */
+  animation: fadeIn 0.5s forwards;
+}
+
+.list-group-item:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.list-group-item:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.list-group-item:nth-child(3) {
+  animation-delay: 0.3s;
+}
+.pagy-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.pagy-nav .page-link {
+  margin: 0 5px;
+  padding: 8px 16px;
+  border: 1px solid #007bff;
+  border-radius: 4px;
+  color: #007bff;
+  text-decoration: none;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.pagy-nav .page-link:hover {
+  background-color: #007bff;
+  color: white;
+}
+
+.pagy-nav .page-link.disabled {
+  color: #ccc;
+  border-color: #ccc;
+}
+
+.pagy-nav .page-item.active .page-link {
+  background-color: #007bff;
+  color: white;
+  border-color: #007bff;
+}
+
+.fa-star{
+  color: #59321a;
+}
+
+.fa-line{
+  color: #008000
+}
+
+.fa-x-twitter{
+  color: #010201
+}

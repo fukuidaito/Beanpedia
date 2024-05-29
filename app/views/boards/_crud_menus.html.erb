@@ -1,12 +1,12 @@
 <ul class='crud-menu-btn list-inline float-right'>
   <li class="list-inline-item">
     <%= link_to edit_board_path(board), id: "button-edit-#{board.id}" do %>
-      <%= icon 'fa', 'pen' %>
+    <i class="fa-regular fa-pen-to-square" style="color: #060505;"></i>
     <% end %>
   </li>
   <li class="list-inline-item">
     <%= link_to board_path(board), id: "button-delete-#{board.id}", data: { turbo_method: :delete, turbo_confirm: '投稿を削除しますか？' } do %>
-    <%= icon('fas', 'trash') %>
+    <i class="fa-solid fa-trash" style="color: #0c0d0d;"></i>
     <% end %>
   </li>
 </ul>

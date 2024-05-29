@@ -14,6 +14,13 @@
               <li class="list-inline-item text-muted">投稿日時: <%= l @board.created_at, format: :long %></li>
             </ul>
           </div>
+
+          <!-- ソーシャルメディアシェアボタン -->
+          <div class="d-flex justify-content-end mb-3">
+            <h4>シェア:</h4>
+            <%= render 'boards/twitter', board: @board %>
+            <%= render 'boards/line', board: @board %>
+          </div>
           
           <% if @board.board_images.any? %>
             <div id="carousel-<%= @board.id %>" class="carousel slide mb-3" data-bs-ride="carousel">
@@ -58,8 +65,10 @@
           
           <% if current_user.own?(@board) %>
             <%= render 'crud_menus', board: @board %>
+          <% else %>
+            <%= render 'boards/bookmark_button', board: @board %>
           <% end %>
-          
+
           <!-- コメントエリア -->
           <div class="border-top mt-3 pt-3">
             <%= render @comments %>
