@@ -1,11 +1,5 @@
 <% content_for(:title, t('.title')) %>
 <div class="container pt-3 bg-white mt-4 mb-4">
-  <div class="row">
-    <div class="col-lg-10 offset-lg-1">
-      <!-- 検索フォーム -->
-      <%= render 'search_form', q: @q, url: bookmarks_boards_path  %>
-    </div>
-  </div>
 
   <!-- 掲示板一覧 -->
   <div class="row">
