@@ -18,6 +18,11 @@
           <td><%= image_tag current_user.avatar.url, class: 'rounded-circle', size: '200x200' %></td>
         </tr>
       </table>
+
+      <h2 class="mt-5">自分の投稿</h2>
+      <div class="row">
+        <%= render @boards %>
+      </div>
     </div>
   </div>
 </div>

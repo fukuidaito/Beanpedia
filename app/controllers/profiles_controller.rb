@@ -2,6 +2,7 @@ class ProfilesController < ApplicationController
   before_action :set_user, only: %i[edit update]
 
   def show
+    @boards = current_user.boards.order(created_at: :desc)
   end
 
   def edit
