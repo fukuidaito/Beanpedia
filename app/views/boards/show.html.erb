@@ -82,6 +82,8 @@
   </div>
 </div>
 
+<%= render 'boards/new_board_button' %>
+
 <script>
   function initMap(){
     let mapPosition = {lat: <%= @board.latitude || 0 %>, lng: <%= @board.longitude || 0 %> };

@@ -1,23 +1,49 @@
 <% content_for(:title, t('.title')) %>
-<div class="container pt-3 bg-white mt-4 rounded">
+<div class="container pt-3 mt-4 bg-light shadow rounded-lg">
   <div class="row">
     <div class="col-md-10 offset-md-1">
-      <h1 class="float-left mb-5"><%= t('プロフィール') %></h1>
-      <%= link_to t('defaults.edit'), edit_profile_path, class: 'btn btn-success float-right' %>
-      <table class="table">
-        <tr>
-          <th scope="row"><%= User.human_attribute_name(:email) %></th>
-          <td><%= current_user.email %></td>
-        </tr>
-        <tr>
-          <th scope="row"><%= User.human_attribute_name(:full_name) %></th>
-          <td><%= current_user.name %></td>
-        </tr>
-        <tr>
-          <th scope="row"><%= User.human_attribute_name(:avatar) %></th>
-          <td><%= image_tag current_user.avatar.url, class: 'rounded-circle', size: '200x200' %></td>
-        </tr>
-      </table>
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="display-4"><%= t('プロフィール') %></h1>
+        <%= link_to t('defaults.edit'), edit_profile_path, class: 'btn btn-outline-primary btn-lg' %>
+      </div>
+      <div class="card mb-4 shadow-sm">
+        <div class="card-body">
+          <div class="d-flex align-items-center">
+            <div class="me-3">
+              <%= image_tag current_user.avatar.url, class: 'rounded-circle', size: '100x100' %>
+            </div>
+            <div>
+              <table class="table table-borderless">
+                <tr>
+                  <th scope="row"><%= User.human_attribute_name(:full_name) %></th>
+                  <td><%= current_user.name %></td>
+                </tr>
+                <tr>
+                  <th scope="row"><%= User.human_attribute_name(:email) %></th>
+                  <td><%= current_user.email %></td>
+                </tr>
+                <tr>
+                  <th scope="row">投稿数</th>
+                  <td><%= current_user.boards.count %></td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h2 class="mt-5 mb-4">自分の投稿</h2>
+      <div class="row g-4">
+        <% if @boards.any? %>
+          <%= render @boards %>
+        <% else %>
+          <div class="col-12 text-center">
+            <p class="lead text-muted">投稿すると自分の投稿が表示されます。</p>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
+
+<%= render 'boards/new_board_button' %>

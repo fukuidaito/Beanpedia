@@ -45,7 +45,7 @@
             <%= board.user.name %>
           </div>
           <% if current_user.own?(board) %>
-            <%= render 'crud_menus', board: board %>
+            <%= render 'boards/crud_menus', board: board %>
           <% else %>
             <%= render 'boards/bookmark_button', board: board %>
           <% end %>
