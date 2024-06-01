@@ -11,7 +11,7 @@
   
   <div class="mb-3">
     <%= f.label :address, '購入場所か店名を入力してください', class: "form-label fw-bold" %>
-    <%= f.text_field :address, autofocus: true, placeholder: "住所を入力してください", class: "form-control" %>
+    <%= f.text_field :address, id: 'address-input', autofocus: true, placeholder: "住所を入力してください", class: "form-control" %>
   </div>
   
   <div class="mb-3">
@@ -66,4 +66,34 @@
       }
     }
   }
+
+  function initAutocomplete() {
+    var addressInput = document.getElementById('address-input');
+    var autocomplete = new google.maps.places.Autocomplete(addressInput);
+    autocomplete.setFields(['address_components', 'geometry', 'name']);
+    autocomplete.addListener('place_changed', function() {
+      var place = autocomplete.getPlace();
+      if (!place.geometry) {
+        console.log("Autocomplete's returned place contains no geometry");
+        return;
+      }
+      var latitude = place.geometry.location.lat();
+      var longitude = place.geometry.location.lng();
+      var address = place.name;
+      console.log("Selected place:", { latitude, longitude, address });
+    });
+  }
+
+  document.addEventListener('turbo:load', function() {
+    if (typeof google === 'object' && typeof google.maps === 'object') {
+      initAutocomplete();
+    } else {
+      var script = document.createElement('script');
+      script.src = `https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAPS_API_KEY'] %>&libraries=places&callback=initAutocomplete`;
+      script.async = true;
+      script.defer = true;
+      document.head.appendChild(script);
+      window.initAutocomplete = initAutocomplete;
+    }
+  });
 </script>

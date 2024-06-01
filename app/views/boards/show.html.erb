@@ -32,7 +32,7 @@
               <div class="carousel-inner">
                 <% @board.board_images.each_with_index do |image, index| %>
                   <div class="carousel-item <%= 'active' if index == 0 %>">
-                    <%= image_tag image.image.url, class: 'd-block w-100' %>
+                    <%= image_tag image.image.url, class: 'd-block w-100', 'data-bs-toggle': 'modal', 'data-bs-target': '#imageModal', 'data-image-url': image.image.url %>
                   </div>
                 <% end %>
               </div>
@@ -46,7 +46,7 @@
               </button>
             </div>
           <% else %>
-            <%= image_tag 'mame.png', class: 'card-img-top mb-3' %>
+            <%= image_tag 'mame.png', class: 'card-img-top mb-3', 'data-bs-toggle': 'modal', 'data-bs-target': '#imageModal', 'data-image-url': image_path('mame.png') %>
           <% end %>
           
           <h4 class="mt-3 mb-2">【テイスト】</h4>
@@ -82,21 +82,55 @@
   </div>
 </div>
 
+<!-- モーダルの追加 -->
+<div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="imageModalLabel">画像のプレビュー</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <img id="modalImage" src="" class="img-fluid" alt="プレビュー画像">
+      </div>
+    </div>
+  </div>
+</div>
+
 <%= render 'boards/new_board_button' %>
 
 <script>
-  function initMap(){
-    let mapPosition = {lat: <%= @board.latitude || 0 %>, lng: <%= @board.longitude || 0 %> };
-    let map = new google.maps.Map(document.getElementById('map'), {
-      zoom: 14,
-      center: mapPosition
+  document.addEventListener('turbo:load', function() {
+    var imageModal = document.getElementById('imageModal');
+    imageModal.addEventListener('show.bs.modal', function (event) {
+      var button = event.relatedTarget;
+      var imageUrl = button.getAttribute('data-image-url');
+      var modalImage = imageModal.querySelector('#modalImage');
+      modalImage.src = imageUrl;
     });
-    let marker = new google.maps.Marker({
-      position: mapPosition,
-      map: map,
-      title: '<%= j @board.address %>'
-    });
-  }
-</script>
 
-<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAPS_API_KEY'] %>&callback=initMap" async defer></script>
+    function initMap(){
+      let mapPosition = {lat: <%= @board.latitude || 0 %>, lng: <%= @board.longitude || 0 %> };
+      let map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 14,
+        center: mapPosition
+      });
+      let marker = new google.maps.Marker({
+        position: mapPosition,
+        map: map,
+        title: '<%= j @board.address %>'
+      });
+    }
+
+    if (typeof google === 'object' && typeof google.maps === 'object') {
+      initMap();
+    } else {
+      var script = document.createElement('script');
+      script.src = `https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAPS_API_KEY'] %>&callback=initMap`;
+      script.async = true;
+      script.defer = true;
+      document.head.appendChild(script);
+      window.initMap = initMap;
+    }
+  });
+</script>
