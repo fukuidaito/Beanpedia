@@ -1,15 +1,104 @@
-<%= form_with model: @board, local: true do |form| %>
-    <div class="mb-3">
-      <%= form.label :title, "タイトル" %>
-      <%= form.text_field :title, class: "form-control", id: "board_title" %>
-    </div>
-    <div class="mb-3">
-      <%= form.label :body, "本文" %>
-      <%= form.text_area :body, class: "form-control", id: "board_body", rows: 10, style: "height: 200px" %>
-    </div>
-    <div class="mb-3">
-      <%= form.label :image %>
-      <%= form.file_field :board_image, class: "form-control" %>
-    </div>
-    <%= form.submit class: "btn btn-primary" %>
+<%= form_with model: @board, class: "new_board bg-light p-4 rounded shadow-sm", multipart: true do |f| %>
+  <div class="mb-3">
+    <%= f.label :rating, '総合評価', class: "form-label fw-bold" %>
+    <%= f.select :rating, Board.rating_options.map { |k, v| [k, Board.ratings[v]] }, {}, class: "form-select" %>
+  </div>
+
+  <div class="mb-3">
+    <%= f.label :title, 'コーヒー名', class: "form-label fw-bold" %>
+    <%= f.text_field :title, class: 'form-control' %>
+  </div>
+  
+  <div class="mb-3">
+    <%= f.label :address, '購入場所か店名を入力してください', class: "form-label fw-bold" %>
+    <%= f.text_field :address, id: 'address-input', autofocus: true, placeholder: "住所を入力してください", class: "form-control" %>
+  </div>
+  
+  <div class="mb-3">
+    <%= f.label :body, '感想・淹れ方・こだわり', class: "form-label fw-bold" %>
+    <%= f.text_area :body, class: 'form-control', rows: 10 %>
+  </div>
+  
+  <div class="mb-3">
+    <%= f.label :board_images, '写真を添付(複数枚投稿可)', class: "form-label fw-bold" %>
+    <%= f.file_field :board_images_files, class: 'form-control', accept: 'image/*', multiple: true, name: 'board[board_images_files][]', onchange: 'previewImages(event)' %>
+  </div>
+  
+  <div class="mb-3" id="preview-container" style="display: flex; flex-wrap: wrap; gap: 10px;">
+    <!-- プレビュー画像をここに追加 -->
+    <% if @board.board_images.any? %>
+      <% @board.board_images.each do |image| %>
+        <img src="<%= image.image.url %>" class="img-fluid rounded" style="width: 150px; height: 150px;">
+      <% end %>
+    <% end %>
+  </div>
+  
+  <div class="mb-3">
+    <%= f.label :acidity, '酸味', class: "form-label fw-bold" %>
+    <%= f.select :acidity, Board.acidities.keys.map { |key| [key.humanize, key] }, {}, { class: "form-select" } %>
+  </div>
+  
+  <div class="mb-3">
+    <%= f.label :bitterness, '苦味', class: "form-label fw-bold" %>
+    <%= f.select :bitterness, Board.bitternesses.keys.map { |key| [key.humanize, key] }, {}, { class: "form-select" } %>
+  </div> 
+  
+  <div class="mb-3">
+    <%= f.label :richness, 'コク', class: "form-label fw-bold" %>
+    <%= f.select :richness, Board.richnesses.keys.map { |key| [key.humanize, key] }, {}, { class: "form-select" } %>
+  </div>
+  
+  <div class="button">
+    <%= f.submit '投稿する', class: 'btn btn-outline-success' %>
+  </div>
 <% end %>
+
+<script>
+  function previewImages(event) {
+    const files = event.target.files;
+    const previewContainer = document.getElementById('preview-container');
+    previewContainer.innerHTML = ''; // プレビューコンテナをクリア
+    for (let i = 0; i < files.length; i++) {
+      const file = files[i];
+      const img = document.createElement('img');
+      img.src = URL.createObjectURL(file);
+      img.className = 'img-fluid rounded';
+      img.style.width = '150px';
+      img.style.height = '150px';
+      previewContainer.appendChild(img);
+      img.onload = function() {
+        URL.revokeObjectURL(img.src); // メモリを解放
+      }
+    }
+  }
+
+  function initAutocomplete() {
+    var addressInput = document.getElementById('address-input');
+    var autocomplete = new google.maps.places.Autocomplete(addressInput);
+    autocomplete.setFields(['address_components', 'geometry', 'name']);
+    autocomplete.addListener('place_changed', function() {
+      var place = autocomplete.getPlace();
+      if (!place.geometry) {
+        console.log("Autocomplete's returned place contains no geometry");
+        return;
+      }
+      var latitude = place.geometry.location.lat();
+      var longitude = place.geometry.location.lng();
+      var address = place.name;
+      console.log("Selected place:", { latitude, longitude, address });
+    });
+  }
+
+  document.addEventListener('turbo:load', function() {
+    if (typeof google === 'object' && typeof google.maps === 'object') {
+      initAutocomplete();
+    } else {
+      var script = document.createElement('script');
+      script.src = `https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAPS_API_KEY'] %>&libraries=places&callback=initAutocomplete`;
+      script.async = true;
+      script.defer = true;
+      document.head.appendChild(script);
+      window.initAutocomplete = initAutocomplete;
+    }
+  });
+</script>
