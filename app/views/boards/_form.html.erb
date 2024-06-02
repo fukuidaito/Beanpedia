@@ -49,7 +49,7 @@
   </div>
   
   <div class="button">
-    <%= f.submit '投稿する', class: 'btn btn-outline-success' %>
+    <%= f.submit '編集完了', class: 'btn btn-outline-success' %>
   </div>
 <% end %>
 
@@ -85,7 +85,9 @@
       var latitude = place.geometry.location.lat();
       var longitude = place.geometry.location.lng();
       var address = place.name;
-      console.log("Selected place:", { latitude, longitude, address });
+      document.getElementById('latitude').value = latitude;
+      document.getElementById('longitude').value = longitude;
+      document.getElementById('address-input').value = address;
     });
   }
 
