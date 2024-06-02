@@ -1,6 +1,6 @@
 <% unless board.nil? %>
   <div id="board-id-<%= board.id %>" class="col-lg-4 col-md-6 mb-4">
-    <div class="card shadow-sm h-100 border border-dark border border-3">
+    <div class="card shadow-sm h-100 border border-dark border-3 text-dark">
       <% if board.board_images.any? %>
         <div id="carousel-<%= board.id %>" class="carousel slide" data-bs-ride="carousel">
           <div class="carousel-indicators">
@@ -29,7 +29,7 @@
       <% end %>
       <div class="card-body">
         <h5 class="card-title"><%= link_to truncate(board.title, length: 15), board_path(board), class: "text-dark" %></h5>
-        <p class="card-text"><%= truncate(board.body, length: 50) %></p>
+        <p class="card-text text-dark"><%= truncate(board.body, length: 50) %></p>
         <div class="d-flex justify-content-between align-items-center">
           <small class="text-muted"><%= l board.created_at, format: :long %></small>
           <div class="d-flex justify-content-end mb-3">
@@ -42,7 +42,7 @@
         <div class="d-flex justify-content-between align-items-center">
           <div class="d-flex align-items-center">
             <%= image_tag board.user.avatar_url, alt: 'User avatar', class: 'rounded-circle me-2', size: '30x30' %>
-            <%= board.user.name %>
+            <span class="text-dark"><%= board.user.name %></span>
           </div>
           <% if current_user.own?(board) %>
             <%= render 'boards/crud_menus', board: board %>
@@ -51,7 +51,7 @@
           <% end %>
         </div>
         <div class="mt-2">
-          <p class="mb-1">総合評価</p>
+          <p class="mb-1 text-dark">総合評価</p>
           <%= display_rating(board.rating) %>
           <div class="mt-1">
             <%= render_progress_bar(board, :acidity) %>

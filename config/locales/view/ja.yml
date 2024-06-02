@@ -46,6 +46,8 @@ ja:
       title: '投稿一覧'
     bookmarks:
       title: 'お気に入り一覧'
+    edit:
+      title: '投稿編集'
   profiles:
     show:
       title: 'プロフィール'
