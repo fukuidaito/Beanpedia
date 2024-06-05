@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_05_27_222630) do
+ActiveRecord::Schema[7.0].define(version: 2024_06_04_233217) do
   create_table "board_images", charset: "utf8mb4", force: :cascade do |t|
     t.bigint "board_id", null: false
     t.string "image"
@@ -33,6 +33,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_27_222630) do
     t.float "latitude"
     t.float "longitude"
     t.integer "rating"
+    t.integer "stars", default: 1
     t.index ["user_id"], name: "index_boards_on_user_id"
   end
 
@@ -54,6 +55,17 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_27_222630) do
     t.datetime "updated_at", null: false
     t.index ["board_id"], name: "index_comments_on_board_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "reviews", charset: "utf8mb4", force: :cascade do |t|
+    t.text "review"
+    t.bigint "stars", default: 1
+    t.bigint "board_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["board_id"], name: "index_reviews_on_board_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
   create_table "surveys", charset: "utf8mb4", force: :cascade do |t|
@@ -90,4 +102,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_27_222630) do
   add_foreign_key "bookmarks", "users"
   add_foreign_key "comments", "boards"
   add_foreign_key "comments", "users"
+  add_foreign_key "reviews", "boards"
+  add_foreign_key "reviews", "users"
 end

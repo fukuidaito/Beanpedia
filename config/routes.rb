@@ -31,8 +31,11 @@ Rails.application.routes.draw do
     end
     resources :comments, only: [:index, :create, :update, :edit, :destroy], shallow: true
     post 'rate', on: :member
-  end
 
+    resources :reviews, only: [:create, :destroy], shallow: true
+  end
+  
+  resources :reviews, only: [:create, :destroy]
   resources :bookmarks, only: [:create, :destroy]
   resources :surveys, only: [:new, :create, :show]
   get '*path', to: 'application#render404'

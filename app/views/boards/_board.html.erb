@@ -52,7 +52,7 @@
         </div>
         <div class="mt-2">
           <p class="mb-1 text-dark">総合評価</p>
-          <%= display_rating(board.rating) %>
+          <div id="stars_<%= board.id %>" data-score="<%= board.stars %>"></div>
           <div class="mt-1">
             <%= render_progress_bar(board, :acidity) %>
             <%= render_progress_bar(board, :bitterness) %>
@@ -63,3 +63,23 @@
     </div>
   </div>
 <% end %>
+
+<script>
+  function initStarRating() {
+    $('[id^="stars_"]').each(function() {
+      const score = $(this).data('score');
+      if (!$(this).data('raty-initialized')) {
+        $(this).raty({
+          path: '/assets',
+          readOnly: true,
+          score: score
+        });
+        $(this).data('raty-initialized', true);
+      }
+    });
+  }
+
+  document.addEventListener('turbo:load', function() {
+    initStarRating();
+  });
+</script>

@@ -3,9 +3,10 @@ class Board < ApplicationRecord
   has_many :comments, -> { order(created_at: :desc) }, dependent: :destroy, inverse_of: :board
   has_many :bookmarks, dependent: :destroy
   has_many :board_images, dependent: :destroy, class_name: 'BoardImage', inverse_of: :board
+  has_many :reviews
+
   accepts_nested_attributes_for :board_images, allow_destroy: true
 
-  enum rating: { good: 1, very_good: 2, excellent: 3, outstanding: 4, exceptional: 5 }
   enum acidity: { very_low: 1, low: 2, medium: 3, high: 4, very_high: 5 }, _prefix: true
   enum bitterness: { very_low: 1, low: 2, medium: 3, high: 4, very_high: 5 }, _prefix: true
   enum richness: { very_low: 1, low: 2, medium: 3, high: 4, very_high: 5 }, _prefix: true
@@ -18,14 +19,8 @@ class Board < ApplicationRecord
   geocoded_by :address
   after_validation :geocode
 
-  def self.rating_options
-    {
-      '⭐️': :good,
-      '⭐️⭐️': :very_good,
-      '⭐️⭐️⭐️': :excellent,
-      '⭐️⭐️⭐️⭐️': :outstanding,
-      '⭐️⭐️⭐️⭐️⭐️': :exceptional
-    }
+  def average_rating
+    reviews.count == 0 ? 0 : reviews.average(:stars).round(1)
   end
 
   def self.ranking
@@ -33,6 +28,13 @@ class Board < ApplicationRecord
          .joins(:bookmarks)
          .group('boards.id')
          .order('bookmarks_count DESC')
+  end
+
+  def display_rating(stars)
+    full_star = "⭐️"
+    empty_star = "☆"
+    rating_display = full_star * stars + empty_star * (5 - stars)
+    rating_display
   end
 
   def self.ransackable_associations(_auth_object = nil)

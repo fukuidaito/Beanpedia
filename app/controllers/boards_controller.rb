@@ -30,6 +30,9 @@ class BoardsController < ApplicationController
     @board = Board.find(params[:id])
     @comment = Comment.new
     @comments = @board.comments.includes(:user).order(created_at: :desc)
+    @review = Review.new
+    @reviews = @board.reviews.order('created_at desc')
+    @has_review = @reviews.find_by(user_id: current_user.id) if current_user
   end
 
   def new
@@ -43,9 +46,9 @@ class BoardsController < ApplicationController
   def create
     @board = current_user.boards.build(board_params)
     if @board.save
-      if params[:board]&.[](:board_images_files)
+      if params[:board][:board_images_files].present?
         params[:board][:board_images_files].each do |image|
-          @board.board_images.create(image:)
+          @board.board_images.create(image: image)
         end
       end
       redirect_to boards_path, success: t('.success')
@@ -56,6 +59,11 @@ class BoardsController < ApplicationController
 
   def update
     if @board.update(board_params)
+      if params[:board][:board_images_files].present?
+        params[:board][:board_images_files].each do |image|
+          @board.board_images.create(image: image)
+        end
+      end
       redirect_to @board, success: t('defaults.message.updated', item: Board.model_name.human)
     else
       flash.now[:danger] = t('defaults.message.not_updated', item: Board.model_name.human)
@@ -68,10 +76,6 @@ class BoardsController < ApplicationController
     board.destroy!
     redirect_to boards_path, status: :see_other, success: t('defaults.flash_message.deleted', item: Board.model_name.human)
   end
-
-  # def bookmarks
-  #   @bookmark_boards = current_user.bookmark_boards.includes(:user).order(created_at: :desc)
-  # end
 
   def bookmarks
     @q = current_user.bookmark_boards.ransack(params[:q])
@@ -89,19 +93,7 @@ class BoardsController < ApplicationController
   end
 
   def board_params
-    params.require(:board).permit(
-      :title, :body, :acidity, :bitterness, :richness, :address,
-      :latitude, :longitude, :rating, :board_image_cache,
-      board_images_attributes: [:id, :image, :image_cache, :_destroy]
-    ).tap do |whitelisted|
-      whitelisted[:rating] = whitelisted[:rating].to_i if whitelisted[:rating]
-    end
-  end
-
-  def rate
-    board = Board.find(params[:id])
-    board.rating = params[:rating]
-    board.save
+    params.require(:board).permit(:title, :body, :acidity, :bitterness, :richness, :address, :latitude, :longitude, :stars)
   end
 
   def line_client
