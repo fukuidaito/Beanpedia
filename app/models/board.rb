@@ -3,7 +3,7 @@ class Board < ApplicationRecord
   has_many :comments, -> { order(created_at: :desc) }, dependent: :destroy, inverse_of: :board
   has_many :bookmarks, dependent: :destroy
   has_many :board_images, dependent: :destroy, class_name: 'BoardImage', inverse_of: :board
-  has_many :reviews
+  has_many :reviews, dependent: :destroy
 
   accepts_nested_attributes_for :board_images, allow_destroy: true
 
@@ -20,7 +20,7 @@ class Board < ApplicationRecord
   after_validation :geocode
 
   def average_rating
-    reviews.count == 0 ? 0 : reviews.average(:stars).round(1)
+    reviews.count.zero? ? 0 : reviews.average(:stars).round(1)
   end
 
   def self.ranking
@@ -31,10 +31,9 @@ class Board < ApplicationRecord
   end
 
   def display_rating(stars)
-    full_star = "⭐️"
-    empty_star = "☆"
-    rating_display = full_star * stars + empty_star * (5 - stars)
-    rating_display
+    full_star = '⭐️'
+    empty_star = '☆'
+    (full_star * stars) + (empty_star * (5 - stars))
   end
 
   def self.ransackable_associations(_auth_object = nil)

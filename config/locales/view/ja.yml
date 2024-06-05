@@ -86,3 +86,8 @@ ja:
       previous: <i class="fas fa-angle-left"></i>
       next: <i class="fas fa-angle-right"></i>
       truncate: "..."
+  reviews:
+    already_reviewed: "レビュー済みです。"
+    success: "レビューを投稿しました。"
+    failure: "レビューできません"
+    deleted: "レビューを削除しました。"

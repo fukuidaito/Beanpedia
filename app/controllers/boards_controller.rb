@@ -48,7 +48,7 @@ class BoardsController < ApplicationController
     if @board.save
       if params[:board][:board_images_files].present?
         params[:board][:board_images_files].each do |image|
-          @board.board_images.create(image: image)
+          @board.board_images.create(image:)
         end
       end
       redirect_to boards_path, success: t('.success')
@@ -61,7 +61,7 @@ class BoardsController < ApplicationController
     if @board.update(board_params)
       if params[:board][:board_images_files].present?
         params[:board][:board_images_files].each do |image|
-          @board.board_images.create(image: image)
+          @board.board_images.create(image:)
         end
       end
       redirect_to @board, success: t('defaults.message.updated', item: Board.model_name.human)
