@@ -48,6 +48,8 @@ ja:
       title: 'お気に入り一覧'
     edit:
       title: '投稿編集'
+    new: 
+      title: '新規投稿'
   profiles:
     show:
       title: 'プロフィール'
