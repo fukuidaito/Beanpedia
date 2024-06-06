@@ -50,67 +50,55 @@
 <% end %>
 
 <script>
-  function previewImages(event) {
-    const files = event.target.files;
-    const previewContainer = document.getElementById('preview-container');
-    previewContainer.innerHTML = ''; // プレビューコンテナをクリア
-    for (let i = 0; i < files.length; i++) {
-      const file = files[i];
-      const img = document.createElement('img');
-      img.src = URL.createObjectURL(file);
-      img.className = 'img-fluid rounded';
-      img.style.width = '150px';
-      img.style.height = '150px';
-      previewContainer.appendChild(img);
-      img.onload = function() {
-        URL.revokeObjectURL(img.src); // メモリを解放
-      }
-    }
-  }
-
   function initAutocomplete() {
     var addressInput = document.getElementById('address-input');
-    var autocomplete = new google.maps.places.Autocomplete(addressInput);
-    autocomplete.setFields(['address_components', 'geometry', 'name']);
-    autocomplete.addListener('place_changed', function() {
-      var place = autocomplete.getPlace();
-      if (!place.geometry) {
-        console.log("Autocomplete's returned place contains no geometry");
-        return;
-      }
-      var latitude = place.geometry.location.lat();
-      var longitude = place.geometry.location.lng();
-      var address = place.name;
-      console.log("Selected place:", { latitude, longitude, address });
-    });
+    if (addressInput) {
+      var autocomplete = new google.maps.places.Autocomplete(addressInput);
+      autocomplete.addListener('place_changed', function() {
+        var place = autocomplete.getPlace();
+        if (!place.geometry) {
+          console.log("Autocomplete's returned place contains no geometry");
+          return;
+        }
+        console.log("Selected place:", { latitude: place.geometry.location.lat(), longitude: place.geometry.location.lng(), address: place.name });
+      });
+    }
   }
 
   function initStarRating() {
-    if (!$('#star-rating').data('raty-initialized')) {
-      $('#star-rating').raty({
+    const starRatingElement = $('#star-rating');
+    if (starRatingElement.length && !starRatingElement.data('raty-initialized')) {
+      starRatingElement.raty({
         path: '/assets',
         scoreName: 'board[stars]',
-        score: $('#stars-input').val() || 1, // デフォルトの評価
-        click: function(score, event) {
+        score: $('#stars-input').val() || 1,
+        click: function(score) {
           $('#stars-input').val(score);
         }
       });
-      $('#star-rating').data('raty-initialized', true);
+      starRatingElement.data('raty-initialized', true);
     }
   }
 
-  document.addEventListener('turbo:load', function() {
-    if (typeof google === 'object' && typeof google.maps === 'object') {
-      initAutocomplete();
-    } else {
-      var script = document.createElement('script');
-      script.src = `https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAPS_API_KEY'] %>&libraries=places&callback=initAutocomplete`;
-      script.async = true;
-      script.defer = true;
-      document.head.appendChild(script);
-      window.initAutocomplete = initAutocomplete;
+  function cleanUpRaty() {
+    const starRatingElement = $('#star-rating');
+    if (starRatingElement.data('raty-initialized')) {
+      starRatingElement.raty('destroy');
+      starRatingElement.removeData('raty-initialized');
     }
+  }
 
+  document.addEventListener('turbo:before-cache', cleanUpRaty);
+  document.addEventListener('turbo:load', function() {
+    initAutocomplete();
     initStarRating();
   });
+
+  if (typeof google !== 'object' || typeof google.maps !== 'object') {
+    var script = document.createElement('script');
+    script.src = `https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAPS_API_KEY'] %>&libraries=places&callback=initAutocomplete`;
+    script.async = true;
+    script.defer = true;
+    document.head.appendChild(script);
+  }
 </script>
