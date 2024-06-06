@@ -1,7 +1,8 @@
 <%= form_with model: @board, class: "new_board bg-light p-4 rounded shadow-sm", multipart: true do |f| %>
   <div class="mb-3">
-    <%= f.label :rating, '総合評価', class: "form-label fw-bold" %>
-    <%= f.select :rating, Board.rating_options.map { |k, v| [k, Board.ratings[v]] }, {}, class: "form-select" %>
+    <%= f.label :stars, '総合評価', class: "form-label fw-bold" %>
+    <div id="star-rating"></div>
+    <%= f.hidden_field :stars, id: 'stars-input' %>
   </div>
 
   <div class="mb-3">
@@ -26,11 +27,6 @@
   
   <div class="mb-3" id="preview-container" style="display: flex; flex-wrap: wrap; gap: 10px;">
     <!-- プレビュー画像をここに追加 -->
-    <% if @board.board_images.any? %>
-      <% @board.board_images.each do |image| %>
-        <img src="<%= image.image.url %>" class="img-fluid rounded" style="width: 150px; height: 150px;">
-      <% end %>
-    <% end %>
   </div>
   
   <div class="mb-3">
@@ -49,7 +45,7 @@
   </div>
   
   <div class="button">
-    <%= f.submit '編集完了', class: 'btn btn-outline-success' %>
+    <%= f.submit '投稿する', class: 'btn btn-outline-success' %>
   </div>
 <% end %>
 
@@ -85,10 +81,22 @@
       var latitude = place.geometry.location.lat();
       var longitude = place.geometry.location.lng();
       var address = place.name;
-      document.getElementById('latitude').value = latitude;
-      document.getElementById('longitude').value = longitude;
-      document.getElementById('address-input').value = address;
+      console.log("Selected place:", { latitude, longitude, address });
     });
+  }
+
+  function initStarRating() {
+    if (!$('#star-rating').data('raty-initialized')) {
+      $('#star-rating').raty({
+        path: '/assets',
+        scoreName: 'board[stars]',
+        score: $('#stars-input').val() || 1, // デフォルトの評価
+        click: function(score, event) {
+          $('#stars-input').val(score);
+        }
+      });
+      $('#star-rating').data('raty-initialized', true);
+    }
   }
 
   document.addEventListener('turbo:load', function() {
@@ -102,5 +110,7 @@
       document.head.appendChild(script);
       window.initAutocomplete = initAutocomplete;
     }
+
+    initStarRating();
   });
 </script>

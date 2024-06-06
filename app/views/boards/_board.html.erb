@@ -66,18 +66,22 @@
 
 <script>
   function initStarRating() {
-    $('[id^="stars_"]').each(function() {
-      const score = $(this).data('score');
-      if (!$(this).data('raty-initialized')) {
-        $(this).raty({
+    document.querySelectorAll('[id^="stars_"]').forEach(function(element) {
+      const score = element.getAttribute('data-score');
+      if (!element.classList.contains('raty-initialized')) {
+        $(element).raty({
           path: '/assets',
           readOnly: true,
           score: score
         });
-        $(this).data('raty-initialized', true);
+        element.classList.add('raty-initialized');
       }
     });
   }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    initStarRating();
+  });
 
   document.addEventListener('turbo:load', function() {
     initStarRating();
