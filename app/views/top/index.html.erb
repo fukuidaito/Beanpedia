@@ -20,14 +20,32 @@
 </div>
 </div>
 
-<div class="hero-section rounded-4 border border-4">
-<div class="container h-100 d-flex justify-content-center align-items-center">
-    <div class="text-center">
-        <h1 class="text-white display-4 fw-bold">あなたにあったコーヒー豆を提案します。</h1>
-        <p class="lead text-white">Beanpediaは、あなたのアンケート結果から、お好みのコーヒー豆を提案します。</p>
-        <p><%= link_to '提案を受けてみる',new_survey_path, class: "btn btn-primary" %></p>
+<div class="features-section bg-light text-dark py-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 text-center mb-4">
+        <div class="feature-icon bg-primary text-white mb-3">
+          <i class="fas fa-seedling fa-3x"></i>
+        </div>
+        <h3>コーヒー豆の提案</h3>
+        <p>あなたのアンケート結果から、お好みのコーヒー豆を提案します。</p>
+      </div>
+      <div class="col-md-4 text-center mb-4">
+        <div class="feature-icon bg-success text-white mb-3">
+          <i class="fas fa-coffee fa-3x"></i>
+        </div>
+        <h3>フレーバー投稿</h3>
+        <p>お気に入りのコーヒーの味わいを投稿して、他のユーザーと共有しましょう。</p>
+      </div>
+      <div class="col-md-4 text-center mb-4">
+        <div class="feature-icon bg-warning text-white mb-3">
+          <i class="fas fa-comments fa-3x"></i>
+        </div>
+        <h3>コミュニティ</h3>
+        <p>コーヒーに関する情報を交換し、他の愛好家とつながりましょう。</p>
+      </div>
     </div>
-</div>
+  </div>
 </div>
 
 <div class="row g-0 position-relative mx-auto p-4 text-white">
@@ -58,3 +76,42 @@
 </div>
 
 
+<style>
+  .hero-section {
+    background: url('/assets/hero-background.jpg') no-repeat center center;
+    background-size: cover;
+    min-height: 60vh;
+  }
+
+  .features-section .feature-icon {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    margin: 0 auto 20px;
+  }
+
+  .card-title {
+    font-weight: bold;
+    font-size: 1.25rem;
+  }
+
+  .card-body p {
+    font-size: 0.9rem;
+  }
+
+  @media (max-width: 576px) {
+    .btn-lg {
+      font-size: 1rem;
+      padding: 0.5rem 1rem;
+    }
+    .display-4 {
+      font-size: 2rem;
+    }
+    .hero-section {
+      min-height: 40vh;
+    }
+  }
+</style>
