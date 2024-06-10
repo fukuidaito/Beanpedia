@@ -4,12 +4,22 @@
 <div class="container-fluid bg-white mb-4 rounded">
 <div class="container">
   <div class="row justify-content-center mt-4">
-    <div class="col-sm-4 border border-success mt-4">
-      <p>クイック検索 <%= render "boards/search_form", mode: "quick" %></p>
-    </div>   
-    <div class="col-sm-4 border border-success mt-4">
-      <p>通常検索 <%= render "boards/runsack", mode: "normal" %></p>
+    <div class="col-sm-4 mt-4">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title">通常検索</h5>
+          <%= render "boards/runsack", mode: "normal" %>
+        </div>
+      </div>
     </div> 
+    <div class="col-sm-4 mt-4">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title">クイック検索</h5>
+          <%= render "boards/search_form", mode: "quick" %>
+        </div>
+      </div>
+    </div>   
   </div>
 </div>
       <% if @boards.present? %>

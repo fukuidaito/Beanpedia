@@ -1,6 +1,5 @@
-<%= form_with url: search_boards_path, method: :board do |form| %>
-  <%= form.search_field :title_search, value: params[:title_search], oninput: "this.form.requestSubmit()" %>
+<%= form_with url: search_boards_path, method: :board, html: { class: "d-flex" }  do |form| %>
+  <%= form.search_field :title_search, placeholder: "クイック検索" ,class: "form-control", value: params[:title_search], oninput: "this.form.requestSubmit()" %>
 <% end %>
 
 <div id="search_results"></div>
-

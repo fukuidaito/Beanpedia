@@ -5,7 +5,7 @@
       <div class="card-body">
         <%= link_to board_path(board) do %>
           <p class="card-title">
-            <%= highlight(board.title, params.dig(:title_search)) %>
+            <%= highlight(board.title, params.dig(:title_cont)) %>
           </p>
         <% end %>
       </div>
