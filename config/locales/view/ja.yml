@@ -20,6 +20,9 @@ ja:
       signed_up: "アカウント登録が完了しました。"
       updated: "アカウント情報が更新されました。"
       destroyed: "アカウントが削除されました。"
+      signed_up: "ユーザー登録が完了しました。"
+      signed_up_but_unconfirmed: "メールの送信に失敗しました。再度お試しください。"
+      failed: "登録に失敗しました: %{errors}"
     passwords:
       send_instructions: "パスワード再設定の案内をメールで送りました。"
       updated: "パスワードが更新されました。"
