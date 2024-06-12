@@ -93,3 +93,6 @@ ja:
     success: "レビューを投稿しました。"
     failure: "レビューできません"
     deleted: "レビューを削除しました。"
+  welcome_mailer:
+    send_when_signup:
+      subject: "サービスへのご登録ありがとうございます"
