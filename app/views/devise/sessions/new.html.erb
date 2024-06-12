@@ -24,6 +24,10 @@
 
         <%= f.submit "ログイン", class: "btn btn-primary btn-block" %>
       <% end %>
+
+      <div class="text-center mt-3">
+        <%= link_to 'パスワードをお忘れですか？', new_password_path(resource_name), class: 'text-primary' %>
+      </div>
     </div>
   </div>
 

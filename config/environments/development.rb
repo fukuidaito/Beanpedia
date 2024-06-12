@@ -37,7 +37,7 @@ Rails.application.configure do
   config.active_storage.service = :amazon
 
   # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
 
   config.action_mailer.perform_caching = false
 
@@ -70,4 +70,15 @@ Rails.application.configure do
   # config.action_cable.disable_request_forgery_protection = true
   config.web_console.permissions = '172.28.0.1'
   config.hosts << "cafequest.fly.dev"
+
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    port:                 587,
+    address:              'smtp.gmail.com',
+    domain:               'smtp.gmail.com',
+    user_name:            ENV['WELCOME_MAILER_ADDRESS'],
+    password:             ENV['WELCOME_MAILER_PASSWORD'],
+    authentication:       'login',
+    enable_starttls_auto: true
+    }
 end
