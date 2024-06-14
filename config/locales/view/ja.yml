@@ -12,7 +12,7 @@ ja:
       success: "%{kind} アカウントでのログインに成功しました"
       user:
         success: "%{kind} アカウントでのログインに成功しました"
-        sessions:
+    sessions:
       signed_in: "ログインしました。"
       signed_out: "ログアウトしました。"
       already_signed_out: "すでにログアウトしています。"
@@ -37,6 +37,7 @@ ja:
       inactive: "アカウントが有効化されていません。"
       timeout: "セッションがタイムアウトしました。もう一度ログインしてください。"
       not_found_in_database: "メールアドレスまたはパスワードが正しくありません。"
+      already_authenticated: "すでにログインしていいます"
   user_sessions:
     new:
       title: 'ログイン'
