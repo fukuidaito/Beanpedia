@@ -3,38 +3,38 @@
   <div class="row justify-content-center">
     <div class="col-lg-8">
       <%= form_with model: @survey, url: surveys_path, html: { class: "form-needs-validation" }, local: true do |form| %>
-        <div class="card shadow">
-          <div class="card-header p-4">
+        <div class="card shadow" style="background-color: #f4f1ea; border-color: #a67c52;">
+          <div class="card-header p-4" style="background-color: #a67c52; color: #fff;">
             <h2 class="text-center">コーヒー豆の提案を受ける</h2>
           </div>
-          <div class="card-body p-4">
+          <div class="card-body p-4" style="background-color: #fcf8f3;">
             <div class="mb-4">
               <%= form.label :acidity, "コーヒーの酸味が好きですか？", class: "form-label" %>
-              <%= form.range_field :acidity, min: 1, max: 5, class: "form-range custom-range", id: "acidity" %>
+              <%= form.range_field :acidity, min: 1, max: 5, class: "form-range custom-range", id: "acidity", style: 'border-color: #a67c52;' %>
               <div class="d-flex justify-content-between">
                 <span>全く</span><span>普通</span><span>非常に</span>
               </div>
             </div>
             <div class="mb-4">
               <%= form.label :bitterness, "コーヒーの苦味が好きですか？", class: "form-label" %>
-              <%= form.range_field :bitterness, min: 1, max: 5, class: "form-range custom-range", id: "bitterness" %>
+              <%= form.range_field :bitterness, min: 1, max: 5, class: "form-range custom-range", id: "bitterness", style: 'border-color: #a67c52;' %>
               <div class="d-flex justify-content-between">
                 <span>全く</span><span>普通</span><span>非常に</span>
               </div>
             </div>
             <div class="mb-4">
               <%= form.label :body, "コーヒーのボディ（コク）はどのくらいが好きですか？", class: "form-label" %>
-              <%= form.range_field :body, min: 1, max: 5, class: "form-range custom-range", id: "body" %>
+              <%= form.range_field :body, min: 1, max: 5, class: "form-range custom-range", id: "body", style: 'border-color: #a67c52;' %>
               <div class="d-flex justify-content-between">
                 <span>軽い</span><span>普通</span><span>重い</span>
               </div>
             </div>
             <div class="mb-4">
               <%= form.label :flavor, "どのような風味が好きですか？", class: "form-label" %>
-              <%= form.select :flavor, ["フルーティー", "ナッティー", "チョコレート"], { prompt: "選択してください" }, { class: "form-select" } %>
+              <%= form.select :flavor, ["フルーティー", "ナッティー", "チョコレート"], { prompt: "選択してください" }, { class: "form-select", style: 'border-color: #a67c52;' } %>
             </div>
             <div class="text-center">
-              <%= form.submit "送信", class: "btn btn-primary btn-lg" %>
+              <%= form.submit "送信", class: "btn btn-primary btn-lg", style: 'background-color: #a67c52; border-color: #8d6e63;' %>
             </div>
           </div>
         </div>
@@ -42,3 +42,28 @@
     </div>
   </div>
 </div>
+
+<style>
+  .form-label {
+    color: #4B3832; /* ダークブラウン */
+  }
+  .form-range {
+    background-color: #f4f1ea; /* コーヒーのクリーム色 */
+    border-color: #a67c52; /* ダークブラウン */
+  }
+  .form-select {
+    background-color: #fcf8f3; /* ライトクリーム色 */
+    border-color: #a67c52; /* ダークブラウン */
+  }
+  .btn-primary {
+    background-color: #a67c52; /* ダークブラウン */
+    border-color: #8d6e63; /* 濃いダークブラウン */
+  }
+  .card-header {
+    background-color: #a67c52; /* ダークブラウン */
+    color: #fff; /* 白 */
+  }
+  .card-body {
+    background-color: #fcf8f3; /* ライトクリーム色 */
+  }
+</style>

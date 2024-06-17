@@ -1,6 +1,6 @@
 <% unless board.nil? %>
   <div id="board-id-<%= board.id %>" class="col-lg-4 col-md-6 mb-4">
-    <div class="card shadow-sm h-100 border border-dark border-3 text-dark">
+    <div class="card shadow-sm h-100 border border-2" style="background-color: #f4f1ea; border-color: #a67c52;">
       <% if board.board_images.any? %>
         <div id="carousel-<%= board.id %>" class="carousel slide" data-bs-ride="carousel">
           <div class="carousel-indicators">
@@ -11,7 +11,7 @@
           <div class="carousel-inner">
             <% board.board_images.each_with_index do |image, index| %>
               <div class="carousel-item <%= 'active' if index == 0 %>">
-                <%= image_tag image.image.url, class: 'd-block w-100 border border-2' %>
+                <%= image_tag image.image.url, class: 'd-block w-100 border border-2', style: 'border-color: #a67c52;' %>
               </div>
             <% end %>
           </div>
@@ -25,10 +25,10 @@
           </button>
         </div>
       <% else %>
-        <%= image_tag 'mame.png', class: 'card-img-top border border-2' %>
+        <%= image_tag 'mame.png', class: 'card-img-top border border-2', style: 'border-color: #a67c52;' %>
       <% end %>
-      <div class="card-body">
-        <h5 class="card-title"><%= link_to truncate(board.title, length: 15), board_path(board), class: "text-dark" %></h5>
+      <div class="card-body" style="background-color: #fcf8f3;">
+        <h5 class="card-title"><%= link_to truncate(board.title, length: 15), board_path(board), class: "text-dark", style: 'color: #4B3832;' %></h5>
         <p class="card-text text-dark"><%= truncate(board.body, length: 50) %></p>
         <div class="d-flex justify-content-between align-items-center">
           <small class="text-muted"><%= l board.created_at, format: :long %></small>
@@ -41,7 +41,7 @@
       <div class="card-footer bg-transparent">
         <div class="d-flex justify-content-between align-items-center">
           <div class="d-flex align-items-center">
-            <%= image_tag board.user.avatar_url, alt: 'User avatar', class: 'rounded-circle me-2', size: '30x30' %>
+            <%= image_tag board.user.avatar_url, alt: 'User avatar', class: 'rounded-circle me-2', size: '30x30', style: 'border: 2px solid #a67c52;' %>
             <span class="text-dark"><%= board.user.name %></span>
           </div>
           <% if current_user.own?(board) %>
@@ -87,3 +87,31 @@
     initStarRating();
   });
 </script>
+
+<style>
+  .card {
+    background-color: #f4f1ea; /* コーヒーのクリーム色 */
+    border-color: #a67c52; /* ダークブラウン */
+  }
+
+  .card-body {
+    background-color: #fcf8f3; /* ライトクリーム色 */
+  }
+
+  .card-title, .card-text, .text-dark {
+    color: #4B3832; /* ダークブラウン */
+  }
+
+  .border {
+    border-color: #a67c52; /* ダークブラウン */
+  }
+
+  .carousel-control-prev-icon,
+  .carousel-control-next-icon {
+    filter: invert(100%);
+  }
+
+  .card-footer {
+    background-color: #fcf8f3; /* ライトクリーム色 */
+  }
+</style>
