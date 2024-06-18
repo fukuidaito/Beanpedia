@@ -7,11 +7,6 @@ class ApplicationController < ActionController::Base
   add_flash_types :success, :info, :warning, :danger
   require 'line/bot'
 
-  def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :avatar])
-    devise_parameter_sanitizer.permit(:account_update, keys: [:name, :avatar])
-  end
-
   def render404(error = nil)
     Rails.logger.error("❌#{error.message}") if error
     render template: 'errors/render404', layout: 'error', status: :not_found
@@ -26,5 +21,12 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(_resource)
     boards_path
+  end
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(
+      :account_update,
+      keys: [:name, :avatar, :email, :password, :password_confirmation, :current_password]
+    )
   end
 end
