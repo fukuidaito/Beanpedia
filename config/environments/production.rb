@@ -96,14 +96,15 @@ Rails.application.configure do
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    address: 'smtp.gmail.com',
-    port: 587,
-    domain: 'example.com',
-    user_name: '<your-email>',
-    password: '<your-password>',
-    authentication: 'plain',
+    port:                 587,
+    address:              'smtp.gmail.com',
+    domain:               'smtp.gmail.com',
+    user_name:            ENV['WELCOME_MAILER_ADDRESS'],
+    password:             ENV['WELCOME_MAILER_PASSWORD'],
+    authentication:       'login',
     enable_starttls_auto: true
   }
+end
 
   config.ssl_options = {
     redirect: {
