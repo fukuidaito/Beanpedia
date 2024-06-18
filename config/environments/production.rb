@@ -92,6 +92,18 @@ Rails.application.configure do
   config.hosts << "cafe-quest-09ffd781fa6a.herokuapp.com"
   config.hosts << "beanpediacoffee.com"
   config.hosts << "www.beanpediacoffee.com"
+  config.action_mailer.default_url_options = { host: 'www.beanpediacoffee.com', protocol: 'https' }
+
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address: 'smtp.gmail.com',
+    port: 587,
+    domain: 'example.com',
+    user_name: '<your-email>',
+    password: '<your-password>',
+    authentication: 'plain',
+    enable_starttls_auto: true
+  }
 
   config.ssl_options = {
     redirect: {

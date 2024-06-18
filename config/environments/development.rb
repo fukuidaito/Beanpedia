@@ -70,6 +70,7 @@ Rails.application.configure do
   # config.action_cable.disable_request_forgery_protection = true
   config.web_console.permissions = '172.28.0.1'
   config.hosts << "cafequest.fly.dev"
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
@@ -80,5 +81,5 @@ Rails.application.configure do
     password:             ENV['WELCOME_MAILER_PASSWORD'],
     authentication:       'login',
     enable_starttls_auto: true
-    }
+  }
 end

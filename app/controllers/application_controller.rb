@@ -8,8 +8,9 @@ class ApplicationController < ActionController::Base
   require 'line/bot'
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :avatar])
-    devise_parameter_sanitizer.permit(:account_update, keys: [:name, :avatar])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :avatar, :email, :password, :password_confirmation])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:name, :avatar, :email, :password, :password_confirmation, :current_password])
+    devise_parameter_sanitizer.permit(:reset_password, keys: [:email, :password, :password_confirmation])
   end
 
   def render404(error = nil)
