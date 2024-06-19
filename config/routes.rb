@@ -3,7 +3,8 @@ Rails.application.routes.draw do
   get 'privacy', to: 'static_pages#privacy'
   devise_for :users, controllers: {
     omniauth_callbacks: "users/omniauth_callbacks" ,
-    registrations: "users/registrations"
+    registrations: "users/registrations" ,
+    passwords: 'users/passwords'
   }
 
   get 'users/auth/google_oauth2/callback', to: 'users/omniauth_callbacks#google_oauth2'

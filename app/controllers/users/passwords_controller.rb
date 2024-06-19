@@ -17,15 +17,26 @@ class Users::PasswordsController < Devise::PasswordsController
   # end
 
   # PUT /resource/password
-  # def update
-  #   super
-  # end
+  def update
+    self.resource = resource_class.reset_password_by_token(resource_params)
+    yield resource if block_given?
 
-  # protected
+    if resource.errors.empty?
+      resource.unlock_access! if unlockable?(resource)
+      flash_message = resource.active_for_authentication? ? :updated : :updated_not_active
+      set_flash_message!(:notice, flash_message)
+      sign_in(resource_name, resource)
+      respond_with resource, location: after_resetting_password_path_for(resource)
+    else
+      respond_with resource
+    end
+  end
 
-  # def after_resetting_password_path_for(resource)
-  #   super(resource)
-  # end
+  protected
+
+  def resource_params
+    params.require(:user).permit(:reset_password_token, :password, :password_confirmation)
+  end
 
   # The path used after sending reset password instructions
   # def after_sending_reset_password_instructions_path_for(resource_name)
