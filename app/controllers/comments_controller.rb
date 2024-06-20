@@ -17,7 +17,7 @@ class CommentsController < ApplicationController
       redirect_to board_path(@comment.board)
     else
       flash[:danger] = t('.failure')
-      redirect_to board_each_path(@comment.board)
+      redirect_to board_path(@comment.board)
     end
   end
 
