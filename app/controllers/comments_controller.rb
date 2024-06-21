@@ -14,11 +14,10 @@ class CommentsController < ApplicationController
     @comment = current_user.comments.build(comment_params)
     if @comment.save
       flash[:success] = t('.success')
-      redirect_to board_path(@comment.board)
     else
       flash[:danger] = t('.failure')
-      redirect_to board_each_path(@comment.board)
     end
+    redirect_to board_path(@comment.board)
   end
 
   def update
