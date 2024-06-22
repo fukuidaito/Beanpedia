@@ -1,9 +1,9 @@
 <header>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light mb-0">
+  <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #f3e5d1;">
     <div class="container-fluid">
       <%= link_to root_path, class: "navbar-brand d-flex align-items-center" do %>
         <%= image_tag 'logo.png', size: '50x50', class: 'me-2 rounded-circle' %>
-        <h1 class="mb-0">Beanpedia</h1>
+        <h1 class="mb-0" style="color: #6f4e37;">Beanpedia</h1>
       <% end %>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -11,39 +11,39 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center">
           <li class="nav-item">
-            <%= link_to new_survey_path, class: "nav-link btn btn-info mx-2" do %>
+            <%= link_to new_survey_path, class: "nav-link btn mx-2", style: "background-color: #d1a684; color: white;" do %>
               <i class="fa-solid fa-gift"></i> コーヒー豆の提案を受ける
             <% end %>
           </li>
           <li class="nav-item">
-            <%= link_to boards_path, class: 'nav-link btn btn-info mx-2' do %>
+            <%= link_to boards_path, class: 'nav-link btn mx-2', style: "background-color: #d1a684; color: white;" do %>
               <i class="fas fa-list-ul"></i> 投稿一覧
             <% end %>
           </li>
           <li class="nav-item">
-            <%= link_to ranking_boards_path, class: 'nav-link btn btn-info mx-2' do %>
+            <%= link_to ranking_boards_path, class: 'nav-link btn mx-2', style: "background-color: #d1a684; color: white;" do %>
               <i class="fas fa-medal"></i> ランキング
             <% end %>
           </li>
           <li class="nav-item">
-            <%= link_to bookmarks_boards_path, class: 'nav-link btn btn-info mx-2' do %>
+            <%= link_to bookmarks_boards_path, class: 'nav-link btn mx-2', style: "background-color: #d1a684; color: white;" do %>
               <i class="fas fa-bookmark"></i> お気に入り一覧
             <% end %>
           </li>
           <li class="nav-item">
-            <%= link_to new_board_path, class: "nav-link btn btn-info mx-2" do %>
+            <%= link_to new_board_path, class: "nav-link btn mx-2", style: "background-color: #d1a684; color: white;" do %>
               <i class="fas fa-plus-square"></i> 新規投稿
             <% end %>
           </li>
           <li class="nav-item">
-            <%= link_to logout_path, class: 'nav-link btn btn-info mx-2', data: { turbo_method: :delete } do %>
+            <%= link_to logout_path, class: 'nav-link btn mx-2', style: "background-color: #d1a684; color: white;", data: { turbo_method: :delete } do %>
               <i class="fas fa-sign-out-alt"></i> ログアウト
             <% end %>
           </li>
           <li class="nav-item">
             <%= link_to profile_path, class: 'd-flex align-items-center mx-2 border border-5' do %>
               <%= image_tag current_user.avatar_url, class: 'rounded-circle me-2', size: '40x40' %>
-              <span><%= current_user.name %></span>
+              <span style="color: #6f4e37;"><%= current_user.name %></span>
             <% end %>
           </li>
         </ul>
@@ -51,3 +51,91 @@
     </div>
   </nav>
 </header>
+
+<style>
+  body {
+    font-family: 'Arial', sans-serif;
+    background-color: #FFF7E6; /* Lighter background color */
+  }
+
+  .navbar {
+    background-color: #D2B48C; /* Lighter coffee color */
+  }
+
+  .navbar-brand h1 {
+    font-family: 'Brush Script MT', cursive;
+    color: #8B4513;
+    font-size: 2rem;
+    margin: 0;
+  }
+
+  .navbar-nav .nav-item .nav-link {
+    color: #FFF;
+    background-color: #A0522D;
+    margin: 5px 0;
+    padding: 10px 20px;
+    border-radius: 5px;
+  }
+
+  .navbar-nav .nav-item .nav-link:hover {
+    background-color: #8B4513;
+  }
+
+  .navbar-toggler {
+    border: none;
+  }
+
+  .navbar-toggler-icon {
+    color: #8B4513;
+  }
+
+  .rounded-circle {
+    border: 2px solid #8B4513;
+  }
+
+  .dropdown-menu {
+    background-color: #D2B48C;
+    border-radius: 5px;
+    padding: 10px;
+  }
+
+  .dropdown-item {
+    color: #FFF;
+    background-color: #A0522D;
+    margin: 5px 0;
+    padding: 10px 20px;
+    border-radius: 5px;
+  }
+
+  .dropdown-item:hover {
+    background-color: #8B4513;
+  }
+
+  .profile-link {
+    display: flex;
+    align-items: center;
+    border: 2px solid #8B4513;
+    border-radius: 5px;
+    padding: 5px;
+    color: #8B4513;
+  }
+
+  .profile-link img {
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+
+  .navbar-nav .nav-item {
+    margin: 0 10px;
+  }
+
+  .navbar-nav .nav-item .nav-link,
+  .profile-link {
+    white-space: nowrap;
+  }
+
+  .nav-item.dropdown {
+    margin: 0;
+  }
+</style>
+
