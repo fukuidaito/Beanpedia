@@ -1,53 +1,58 @@
-<%= form_with model: @board, class: "new_board bg-light p-4 rounded shadow-sm", multipart: true do |f| %>
-  <div class="mb-3">
-    <%= f.label :stars, '総合評価', class: "form-label fw-bold" %>
-    <div id="star-rating"></div>
-    <%= f.hidden_field :stars, id: 'stars-input' %>
-  </div>
 
-  <div class="mb-3">
-    <%= f.label :title, 'コーヒー名', class: "form-label fw-bold" %>
-    <%= f.text_field :title, class: 'form-control' %>
-  </div>
-  
-  <div class="mb-3">
-    <%= f.label :address, '購入場所か店名を入力してください', class: "form-label fw-bold" %>
-    <%= f.text_field :address, id: 'address-input', autofocus: true, placeholder: "住所を入力してください", class: "form-control" %>
-  </div>
-  
-  <div class="mb-3">
-    <%= f.label :body, '感想・淹れ方・こだわり', class: "form-label fw-bold" %>
-    <%= f.text_area :body, class: 'form-control', rows: 10 %>
-  </div>
-  
-  <div class="mb-3">
-    <%= f.label :board_images, '写真を添付(複数枚投稿可)', class: "form-label fw-bold" %>
-    <%= f.file_field :board_images_files, class: 'form-control', accept: 'image/*', multiple: true, name: 'board[board_images_files][]', onchange: 'previewImages(event)' %>
-  </div>
-  
-  <div class="mb-3" id="preview-container" style="display: flex; flex-wrap: wrap; gap: 10px;">
-    <!-- プレビュー画像をここに追加 -->
-  </div>
-  
-  <div class="mb-3">
-    <%= f.label :acidity, '酸味', class: "form-label fw-bold" %>
-    <%= f.select :acidity, Board.acidities.keys.map { |key| [key.humanize, key] }, {}, { class: "form-select" } %>
-  </div>
-  
-  <div class="mb-3">
-    <%= f.label :bitterness, '苦味', class: "form-label fw-bold" %>
-    <%= f.select :bitterness, Board.bitternesses.keys.map { |key| [key.humanize, key] }, {}, { class: "form-select" } %>
-  </div> 
-  
-  <div class="mb-3">
-    <%= f.label :richness, 'コク', class: "form-label fw-bold" %>
-    <%= f.select :richness, Board.richnesses.keys.map { |key| [key.humanize, key] }, {}, { class: "form-select" } %>
-  </div>
-  
-  <div class="button">
-    <%= f.submit '投稿する', class: 'btn btn-outline-success' %>
-  </div>
-<% end %>
+<% provide(:title, "Beanpedia") %>
+
+<div class="container mt-4">
+  <%= form_with model: @board, class: "new_board bg-light p-4 rounded shadow-sm", multipart: true do |f| %>
+    <div class="mb-3">
+      <%= f.label :stars, '総合評価', class: "form-label fw-bold" %>
+      <div id="star-rating" class="star-rating"></div>
+      <%= f.hidden_field :stars, id: 'stars-input' %>
+    </div>
+
+    <div class="mb-3">
+      <%= f.label :title, 'コーヒー名', class: "form-label fw-bold" %>
+      <%= f.text_field :title, class: 'form-control' %>
+    </div>
+    
+    <div class="mb-3">
+      <%= f.label :address, '購入場所か店名を入力してください', class: "form-label fw-bold" %>
+      <%= f.text_field :address, id: 'address-input', autofocus: true, placeholder: "住所を入力してください", class: "form-control" %>
+    </div>
+    
+    <div class="mb-3">
+      <%= f.label :body, '感想・淹れ方・こだわり', class: "form-label fw-bold" %>
+      <%= f.text_area :body, class: 'form-control', rows: 10 %>
+    </div>
+    
+    <div class="mb-3">
+      <%= f.label :board_images, '写真を添付(複数枚投稿可)', class: "form-label fw-bold" %>
+      <%= f.file_field :board_images_files, class: 'form-control', accept: 'image/*', multiple: true, name: 'board[board_images_files][]', onchange: 'previewImages(event)' %>
+    </div>
+    
+    <div class="mb-3" id="preview-container" style="display: flex; flex-wrap: wrap; gap: 10px;">
+      <!-- プレビュー画像をここに追加 -->
+    </div>
+    
+    <div class="mb-3">
+      <%= f.label :acidity, '酸味', class: "form-label fw-bold" %>
+      <%= f.select :acidity, Board.acidities.keys.map { |key| [key.humanize, key] }, {}, { class: "form-select" } %>
+    </div>
+    
+    <div class="mb-3">
+      <%= f.label :bitterness, '苦味', class: "form-label fw-bold" %>
+      <%= f.select :bitterness, Board.bitternesses.keys.map { |key| [key.humanize, key] }, {}, { class: "form-select" } %>
+    </div> 
+    
+    <div class="mb-3">
+      <%= f.label :richness, 'コク', class: "form-label fw-bold" %>
+      <%= f.select :richness, Board.richnesses.keys.map { |key| [key.humanize, key] }, {}, { class: "form-select" } %>
+    </div>
+    
+    <div class="button text-center">
+      <%= f.submit '投稿する', class: 'btn btn-outline-success' %>
+    </div>
+  <% end %>
+</div>
 
 <script>
   function initAutocomplete() {
@@ -102,3 +107,41 @@
     document.head.appendChild(script);
   }
 </script>
+
+<style>
+  body {
+    background-color: #f3ece2;
+    font-family: 'Roboto', sans-serif;
+  }
+
+  .new_board {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+
+  .form-label {
+    color: #6b4f36;
+  }
+
+  .btn-outline-success {
+    color: #6b4f36;
+    border-color: #6b4f36;
+  }
+
+  .btn-outline-success:hover {
+    background-color: #6b4f36;
+    color: #ffffff;
+  }
+
+  #preview-container img {
+    max-width: 100px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+  }
+
+  .star-rating {
+    color: #ffca28;
+  }
+</style>
