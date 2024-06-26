@@ -1,3 +1,20 @@
-<%= link_to new_board_path, class: 'btn btn-primary btn-lg fixed-new-post-btn border border-3 mb-4' do %>
-    <i class="fas fa-plus-square"></i> 新規投稿
-  <% end %>
+<%= link_to new_board_path, class: 'btn btn-primary btn-lg fixed-new-post-btn border border-3 mb-4', style: 'background-color: #8b5e3c; border-color: #4b2e2e; color: #f8f4e3;' do %>
+  <i class="fas fa-plus-square"></i> 新規投稿
+<% end %>
+
+<style>
+  .fixed-new-post-btn {
+    background-color: #8b5e3c;
+    border-color: #4b2e2e;
+    color: #f8f4e3;
+  }
+
+  .fixed-new-post-btn:hover {
+    background-color: #623d2a;
+    border-color: #3a2a1a;
+  }
+
+  .fixed-new-post-btn i {
+    margin-right: 5px;
+  }
+</style>
