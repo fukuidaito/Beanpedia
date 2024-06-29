@@ -7,7 +7,6 @@
   <meta charset="utf-8">
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
-  <%= show_meta_tags %>
   <%= javascript_importmap_tags %>
   <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
   <link rel= "stylesheet" href= "https://maxst.icons8.com/vue-static/landings/line-awesome/font-awesome-line-awesome/css/all.min.css" >
@@ -25,6 +24,7 @@
     crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/raty/3.1.1/jquery.raty.min.js" integrity="sha512-Isj3SyFm+B8u/cErwzYj2iEgBorGyWqdFVb934Y+jajNg9kiYQQc9pbmiIgq/bDcar9ijmw4W+bd72UK/tzcsA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="https://kit.fontawesome.com/512fbd940b.js" crossorigin="anonymous"></script>
+  <%= display_meta_tags(default_meta_tags) %>
 </head>
 
 <body class="d-flex flex-column min-vh-100 bg-dark.bg-gradient bg-black">
