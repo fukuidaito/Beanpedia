@@ -32,6 +32,7 @@ class BoardsController < ApplicationController
     @review = Review.new
     @reviews = @board.reviews.order('created_at desc')
     @has_review = @reviews.find_by(user_id: current_user.id) if current_user
+    prepare_meta_tags(@board)
   end
 
   def new
@@ -93,6 +94,14 @@ class BoardsController < ApplicationController
 
   def board_params
     params.require(:board).permit(:title, :body, :acidity, :bitterness, :richness, :address, :latitude, :longitude, :stars)
+  end
+
+  def prepare_meta_tags(board)
+    @meta_tags = {
+      image: board.image_url,
+      title: board.title,
+      description: board.body
+    }
   end
 
   def line_client

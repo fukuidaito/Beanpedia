@@ -29,15 +29,10 @@ module ApplicationHelper
     }
   end
 
-  def assign_meta_tags(options = {})
+  def assign_meta_tags(options = {}, meta_tags = {})
     defaults = t('meta_tags.defaults', default: {}).with_indifferent_access
     options.reverse_merge!(defaults)
-
-    if controller_name == 'boards' && action_name == 'show'
-      options[:image] = @board.image_url if @board.present? && @board.image_url.present?
-      options[:title] = @board.title if @board.present? && @board.title.present?
-      options[:description] = @board.body if @board.present? && @board.body.present?
-    end
+    options.reverse_merge!(meta_tags)
 
     Rails.logger.debug { "Meta tags options: #{options.inspect}" }
 
