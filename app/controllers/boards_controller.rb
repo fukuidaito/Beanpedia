@@ -93,7 +93,8 @@ class BoardsController < ApplicationController
   end
 
   def board_params
-    params.require(:board).permit(:title, :body, :acidity, :bitterness, :richness, :address, :latitude, :longitude, :stars)
+    params.require(:board).permit(:title, :body, :acidity, :bitterness, :richness, :address, :latitude, :longitude, :stars,
+                                  board_images_files: [])
   end
 
   def prepare_meta_tags(board)
