@@ -19,6 +19,10 @@ class Board < ApplicationRecord
   geocoded_by :address
   after_validation :geocode
 
+  def image_url
+    board_images.first&.image&.url
+  end
+
   def average_rating
     reviews.count.zero? ? 0 : reviews.average(:stars).round(1)
   end
