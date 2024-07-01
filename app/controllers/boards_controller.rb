@@ -1,8 +1,7 @@
 class BoardsController < ApplicationController
   include BoardsHelper
-  before_action :set_board, only: %i[edit update destroy]
+  before_action :set_board, only: %i[edit update destroy show]
   before_action :authenticate_user!, except: [:show]
-  skip_before_action :authenticate_user!, only: [:show]
 
   def index
     @q = Board.ransack(params[:q])
@@ -26,7 +25,6 @@ class BoardsController < ApplicationController
   end
 
   def show
-    @board = Board.find(params[:id])
     @comment = Comment.new
     @comments = @board.comments.includes(:user).order(created_at: :desc)
     @review = Review.new
@@ -89,7 +87,7 @@ class BoardsController < ApplicationController
   private
 
   def set_board
-    @board = current_user.boards.find(params[:id])
+    @board = params[:action] == 'show' ? Board.find(params[:id]) : current_user.boards.find(params[:id])
   end
 
   def board_params
@@ -98,11 +96,25 @@ class BoardsController < ApplicationController
   end
 
   def prepare_meta_tags(board)
-    @meta_tags = {
-      image: board.image_url,
+    set_meta_tags(
       title: board.title,
-      description: board.body
-    }
+      description: board.body,
+      image: board.image_url,
+      og: {
+        title: board.title,
+        description: board.body,
+        image: board.image_url,
+        url: request.url,
+        type: 'article'
+      },
+      twitter: {
+        card: 'summary_large_image',
+        site: '@zutozako1',
+        title: board.title,
+        description: board.body,
+        image: board.image_url
+      }
+    )
   end
 
   def line_client
