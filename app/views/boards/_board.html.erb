@@ -44,11 +44,14 @@
             <%= image_tag board.user.avatar_url, alt: 'User avatar', class: 'rounded-circle me-2', size: '30x30', style: 'border: 2px solid #a67c52;' %>
             <span class="text-dark"><%= board.user.name %></span>
           </div>
+          <div class="d-flex align-items-center">
           <% if current_user.own?(board) %>
             <%= render 'boards/crud_menus', board: board %>
           <% else %>
             <%= render 'boards/bookmark_button', board: board %>
           <% end %>
+          <span class="text-dark ms-2"><%= board.bookmarks_count %></span>
+          </div>
         </div>
         <div class="mt-2">
           <p class="mb-1 text-dark">総合評価</p>

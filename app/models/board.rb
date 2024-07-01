@@ -34,10 +34,8 @@ class Board < ApplicationRecord
          .order('bookmarks_count DESC')
   end
 
-  def display_rating(stars)
-    full_star = '⭐️'
-    empty_star = '☆'
-    (full_star * stars) + (empty_star * (5 - stars))
+  def bookmarks_count
+    bookmarks.count
   end
 
   def self.ransackable_associations(_auth_object = nil)
