@@ -4,6 +4,7 @@ class Board < ApplicationRecord
   has_many :bookmarks, dependent: :destroy
   has_many :board_images, dependent: :destroy, class_name: 'BoardImage', inverse_of: :board
   has_many :reviews, dependent: :destroy
+  
 
   accepts_nested_attributes_for :board_images, allow_destroy: true
 

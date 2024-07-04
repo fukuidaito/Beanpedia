@@ -46,7 +46,9 @@ class BoardsController < ApplicationController
     if @board.save
       if params[:board][:board_images_files].present?
         params[:board][:board_images_files].each do |image|
-          @board.board_images.create(image:)
+          unless image.blank?
+            @board.board_images.create(image: image)
+          end
         end
       end
       redirect_to boards_path, success: t('.success')
@@ -59,7 +61,9 @@ class BoardsController < ApplicationController
     if @board.update(board_params)
       if params[:board][:board_images_files].present?
         params[:board][:board_images_files].each do |image|
-          @board.board_images.create(image:)
+          unless image.blank?
+            @board.board_images.create(image: image)
+          end
         end
       end
       redirect_to @board, success: t('defaults.message.updated', item: Board.model_name.human)
@@ -86,13 +90,12 @@ class BoardsController < ApplicationController
 
   private
 
-  def set_board
-    @board = params[:action] == 'show' ? Board.find(params[:id]) : current_user.boards.find(params[:id])
+  def board_params
+    params.require(:board).permit(:title, :body, :acidity, :bitterness, :richness, :address, :latitude, :longitude, :stars)
   end
 
-  def board_params
-    params.require(:board).permit(:title, :body, :acidity, :bitterness, :richness, :address, :latitude, :longitude, :stars,
-                                  board_images_files: [])
+  def set_board
+    @board = params[:action] == 'show' ? Board.find(params[:id]) : current_user.boards.find(params[:id])
   end
 
   def prepare_meta_tags(board)
