@@ -4,7 +4,6 @@ class Board < ApplicationRecord
   has_many :bookmarks, dependent: :destroy
   has_many :board_images, dependent: :destroy, class_name: 'BoardImage', inverse_of: :board
   has_many :reviews, dependent: :destroy
-  
 
   accepts_nested_attributes_for :board_images, allow_destroy: true
 
@@ -35,9 +34,7 @@ class Board < ApplicationRecord
          .order('bookmarks_count DESC')
   end
 
-  def bookmarks_count
-    bookmarks.count
-  end
+  delegate :count, to: :bookmarks, prefix: true
 
   def self.ransackable_associations(_auth_object = nil)
     %w[bookmarks comments user]
